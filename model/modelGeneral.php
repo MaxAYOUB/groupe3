@@ -4,7 +4,7 @@
  *   Construction de la classe ModelGeneral
  */
 
-class ModelGeneral
+class modelGeneral
 {
     private $DAO; // Création d'une variable DAO
 
