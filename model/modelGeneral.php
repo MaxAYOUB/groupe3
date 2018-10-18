@@ -1,6 +1,6 @@
 <?php
 /*
- *   @T.Noël
+ *   @T.Noël @M.Ayoub
  *   Construction de la classe ModelGeneral
  */
 
@@ -43,7 +43,7 @@ class ModelGeneral
     {
         $this->DAO->bddConnexion(); // Connexion à la base
         // Requete pour l'insertion d'une nouvelle adresse
-        $ql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}');
+        $sql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}');
         $result = $this->DAO->bddQuery($sql);";
 
         // Mise en place des clés de cryptage
@@ -61,7 +61,7 @@ class ModelGeneral
         return $result;
     }
 
-    public function updateCompte()
+ /*    public function updateCompte()
     {
         $this->DAO->bddConnexion(); // Connexion à la base
         // Requete à construire
@@ -77,5 +77,5 @@ class ModelGeneral
         $sql = "";
         $result = $this->DAO->bddQuery($sql);   // Renvoi les informations d'authentification dans une variable result
         return $result;
-    }
+    } */
 }

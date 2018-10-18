@@ -1,29 +1,19 @@
 <?php
-    class viewGeneral{
-
-        function __construct(){
-        }
-
-
-        public function getConsoleAdmin(){
-
-        }
-
-        public function gererAvatar(){
-
-        }
-
-        public function gererCompte(){
-
-        }
-
-        public function gererPassword(){
-
-        }
-
-        private function verifierUser(){
-            
-        }
-    
+class viewGeneral
+{
+    public function afficherForm($database)
+    {
+        echo "Affichage du formulaire Ok";
     }
-?>
+
+    public function afficherFormOk()
+    {
+        echo "L'enregistrement est Ok";
+    }
+
+    public function afficherFormNotOk()
+    {
+        echo "L'enregistrement est NotOk";
+    }
+
+}
