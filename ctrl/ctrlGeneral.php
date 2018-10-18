@@ -5,7 +5,7 @@
         private $user;
 
         function __construct(){
-            // $this->vue=new viewGeneral();
+            $this->vue=new viewGeneral();
             $this->model=new modelGeneral();
         }
 
@@ -18,7 +18,7 @@
         }
 
         public function verifierAuthentification(){
-            $a['identifiant']="maxime@gmail.com";
+            // $a['identifiant']="maxime@gmail.com";
             // $a['identifiant']="max";
             $a['motdepasse']="toulouse31";
             $this->user=new Compte($a);
@@ -26,8 +26,8 @@
             // $this->user=new Compte($_POST);
             $verifAuthentification=$this->model->enregistrerFormulaire($this->user);
             var_dump($verifAuthentification);
-            if ($verifAuthentification){
-
+            if ($verifAuthentification!=false){
+                $this->vue->
             }else{
                 
             }

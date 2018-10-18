@@ -4,8 +4,8 @@
         private $config;
 
         function __construct(){
-            $this->bddConnection();
             $this->config = $this->configBdd();
+            $this->bddConnection();
         }
 
         public function bddConnection(){
@@ -52,7 +52,7 @@
         }
 
 
-        private function bddConfig(){
+        private function ConfigBdd(){
             return $bdd = array(
                 'host'  =>  "localhost",
                 'user'  =>  "root",
