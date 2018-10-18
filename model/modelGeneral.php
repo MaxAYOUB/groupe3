@@ -3,7 +3,7 @@
         private $dao;
 
         function __construct(){
-            $this->dao=new viewGenerale();
+            $this->dao=new DAO_mysql();
         }
 
     
