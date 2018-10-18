@@ -29,12 +29,13 @@
         }
         
         public function bddQuery($sql){
-    //         echo $sql;
+            echo $sql;
             $data = array();
             if(!$result = $this->myBdd->query($sql)){
                 die("Erreur de BDD : {$this->myBdd->connect_errno}");
             }
             else{
+                var_dump($result);
                 if(is_object($result)){
                     while($row = $result->fetch_assoc())
                     {
@@ -43,7 +44,8 @@
                     return $data;
                 }
                 else{
-                    return false;
+                    // if ()
+                    return "bien passe";
                 }
             }
         }
@@ -58,7 +60,7 @@
                 'host'  =>  "localhost",
                 'user'  =>  "root",
                 'pass'  =>    "",
-                'database'=>    "appliGPS",
+                'database'=>    "application_gps",
                 'charset'   =>  "utf8"
             );
         }

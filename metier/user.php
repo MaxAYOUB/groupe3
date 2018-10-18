@@ -38,47 +38,51 @@ class User{
         (isset($a['codePostal'])) ? $this->setCodepostal($a['codePostal']) : null;
         (isset($a['ville'])) ? $this->setVille($a['ville']) : null;
         (isset($a['administrateur'])) ? $this->setAdministrateur($a['administrateur']) : null;
+        (isset($a['supprime'])) ? $this->setSupprime($a['supprime']) : null;
 		
 	}
 
 /*
  * SETTERS
  */
-	public function setCivillite($v){
-		$this->civilite = isAlpha($v) ? $v : null;
+	public function setCivilite($v){
+		$this->civilite = $this->isAlpha($v) ? $v : null;
 	}
 	public function setNom($v){
-		$this->nom = isAlpha($v) ? $v : null;
+		$this->nom = $this->isAlpha($v) ? $v : null;
 	}
 	public function setPrenom($v){
-		$this->prenom = isAlpha($v) ? $v : null;
+		$this->prenom = $this->isAlpha($v) ? $v : null;
 	}
 	public function setPseudo($v){
-		$this->pseudo = isAlpha($v) ? $v : null;
+		$this->pseudo = $this->isAlpha($v) ? $v : null;
 	}
 	public function setEmail($v){
-		$this->email = isEmail($v) ? $v : null;
+		$this->email = $this->isEmail($v) ? $v : null;
 	}
 	public function setMotdepasse($v){
-		$this->motdepasse = isAlpha($v) ? $v : null;
+		$this->motdepasse = $this->isAlpha($v) ? $v : null;
 	}
 	public function setAvatar($v){
-		$this->avatar = isAlpha($v) ? $v : null;
+		$this->avatar = $this->isAlpha($v) ? $v : null;
 	}
 	public function setAppareil($v){
-		$this->appareil = isAlpha($v) ? $v : null;
+		$this->appareil = $this->isAlpha($v) ? $v : null;
 	}
 	public function setConditionsGenerales($v){
-		$this->conditionsGenerales = isAlpha($v) ? $v : null;
+		$this->conditionsGenerales = $this->isAlpha($v) ? $v : null;
 	}
 	public function setAdresse($v){
-		$this->adresse = isAlpha($v) ? $v : null;
+		$this->adresse = $this->isAlpha($v) ? $v : null;
 	}
 	public function setCodepostal($v){
-		$this->codePostal = isInteger($v) ? $v : null;
+		$this->codePostal = $this->isInteger($v) ? $v : null;
+	}
+	public function setSupprime($v){
+		$this->supprime = $this->isInteger($v) ? $v : null;
 	}
 	public function setVille($v){
-		$this->ville = isAlpha($v) ? $v : null;
+		$this->ville = $this->isAlpha($v) ? $v : null;
 	}
 	public function setAdministrateur($v){
 		$this->administrateur =$v;
