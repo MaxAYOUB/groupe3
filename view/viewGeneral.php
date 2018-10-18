@@ -5,25 +5,17 @@
         }
 
 
-        public function getConsoleAdmin(){
+        public function afficherConnexionOk(){
+            echo "connexion ok";
+        }
+
+        public function afficherConnexionNotOk(){
+            echo "connexion not ok";
+        }
+
+        public function afficherConnection(){
 
         }
 
-        public function gererAvatar(){
-
-        }
-
-        public function gererCompte(){
-
-        }
-
-        public function gererPassword(){
-
-        }
-
-        private function verifierUser(){
-            
-        }
-    
     }
 ?>
