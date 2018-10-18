@@ -4,10 +4,9 @@
  *   Construction de la classe ModelGeneral
  */
 
-class ModelGeneral
-{
-    private $DAO; // Création d'une variable DAO
+class modelGeneral {
 
+ 
     public function __construct()
     {
         $this->DAO = new DAO_mysql(); // Instanciation d'un objet DAO
