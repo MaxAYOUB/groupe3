@@ -58,7 +58,7 @@
                 'host'  =>  "localhost",
                 'user'  =>  "root",
                 'pass'  =>    "",
-                'database'=>    "application_GPS",
+                'database'=>    "application_gps",
                 'charset'   =>  "utf8"
             );
         }
