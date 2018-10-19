@@ -14,9 +14,9 @@ if (isset($_GET['c']) && isset($_GET['m']) && isset($_GET['a'])){
 	$ctrl = new $v;
 	$ctrl->index();
 }else{
-	$v="CtrlContact";
+	$v="ctrlGeneral";
 	$ctrl = new $v;
-	$ctrl->index();
+	$ctrl->getAccueil();
 	ini_set('safe_mode','Off');
 }
 

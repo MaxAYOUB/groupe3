@@ -1,0 +1,16 @@
+#h1Inscription {
+  color: #22222 22;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+#divInscription1 {
+  float: left;
+  padding: 3%;
+  border-right: 1px solid grey;
+}
+#divInscription2 {
+  position: relative;
+  float: right;
+  padding: 3%;
+}
+/*# sourceMappingURL=cssInscription.css.map */

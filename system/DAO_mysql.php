@@ -56,8 +56,8 @@
         private function configBdd(){
             return $bdd = array(
                 'host'  =>  "localhost",
-                'user'  =>  "root",
-                'pass'  =>    "",
+                'user'  =>  "pvi-s01",
+                'pass'  =>    "philippe31",
                 'database'=>    "application_gps",
                 'charset'   =>  "utf8"
             );
