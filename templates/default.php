@@ -3,7 +3,6 @@
 
 <head>
     <?php include "templates/partials/head.php"; ?>
-    <base href="http://cdi.afpa-balma.fr"/>
 </head>
 
 <body style="padding-top:150px;">
