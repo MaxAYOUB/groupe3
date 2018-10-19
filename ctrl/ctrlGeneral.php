@@ -43,6 +43,7 @@
             $_SESSION['avatar']=$tab['avatar'];
             $_SESSION['cles']=$tab['cles'];
             $_SESSION['email']=$tab['email'];
+            $_SESSION['connecte']=true;
         }
 
 
