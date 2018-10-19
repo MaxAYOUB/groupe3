@@ -37,12 +37,13 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
+
         $dataTab = array(
             'civilite' => $_POST['civilite'],
             'nom' => $_POST['nom'],
             'prenom' => $_POST['prenom'],
             'pseudo' => $_POST['pseudo'],
-            'mot_de_passe' => $_POST['motdepasse'],
+            'motdepasse' => $_POST['motdepasse'],
             'email' => $_POST['email'],
             'adresse' => $_POST['adresse'],
             'codePostal' => $_POST['codePostal'],
