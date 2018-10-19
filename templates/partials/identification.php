@@ -1,4 +1,4 @@
-<!-- test push -->
+<!-- test pull -->
 <form class="form-horizontal ;" style="padding:10%;" action="ctrlGeneral/verifierAuthentification" method="POST">
         <div class="form-group">
           <h1 style="text-align: center;">Connexion</h1>
