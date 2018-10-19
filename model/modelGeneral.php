@@ -1,10 +1,16 @@
 <?php
 /*
- *   @T.Noël
+ *   @T.Noël @M.Ayoub
  *   Construction de la classe ModelGeneral
  */
 
+<<<<<<< HEAD
 class modelGeneral {
+=======
+class modelGeneral
+{
+    private $DAO; // Création d'une variable DAO
+>>>>>>> thomas
 
  
     public function __construct()
@@ -41,28 +47,26 @@ class modelGeneral {
     public function enregistrerFormulaire($data)
     {
         $this->DAO->bddConnexion(); // Connexion à la base
-        // Requete adresse
-        $ql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'2 rue de la paix','Paris','75000');
+        // Requete pour l'insertion d'une nouvelle adresse
+        $sql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}');
         $result = $this->DAO->bddQuery($sql);";
 
+        // Mise en place des clés de cryptage
+        $cle = md5("Notre application".$data->getEmail(),$row_output=FALSE);
+        $cleMDP = md5("Notre application".$data->getMotdepasse(),$row_output=FALSE);
+        var_dump($cle);
         
-        // Requete user
+        // Requete pour l'insertion d'un nouvel utilisateur
         $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`) 
-
-        VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$data->getMotDePasse()}','{$data->getEmail()}','123456789','0',FALSE,
-                (SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '2 rue de la paix' AND `CP` = '75000'),
-                (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = 'asterix'),
-                (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = 'samsung'));";
-
-
-     /*    $sql = "INSERT INTO contact (id_contact, nom, prenom, telephone, email, message, id_civilite, id_objet)
-                VALUES (NULL, '{$data->getNom()}', '{$data['prenom']}', '{$data['tel']}', '{$data['email']}', '{$data['message']}', '{$data['id_civilite']}', '{$data['id_objet']}');"; */
+        VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getPrenom()}' AND `CP` = '{$data->getCodepostal()}'),
+                (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = '{$data->getAvatar()}'),
+                (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'));";
         // Renvoi les informations demandées dans une variable result
         $result = $this->DAO->bddQuery($sql);
         return $result;
     }
 
-    public function updateCompte()
+ /*    public function updateCompte()
     {
         $this->DAO->bddConnexion(); // Connexion à la base
         // Requete à construire
@@ -78,5 +82,5 @@ class modelGeneral {
         $sql = "";
         $result = $this->DAO->bddQuery($sql);   // Renvoi les informations d'authentification dans une variable result
         return $result;
-    }
+    } */
 }
