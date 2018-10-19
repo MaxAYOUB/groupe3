@@ -1,19 +1,43 @@
 <?php
 class viewGeneral
 {
+
+    public function afficherAccueil(){
+        $page="accueilNew.php";
+        include "templates/default.php";
+    }
+
     public function afficherForm($database)
     {
-        echo "Affichage du formulaire Ok";
+        $page="inscription.php";
+        include "templates/default.php";
     }
 
     public function afficherFormOk()
     {
-        echo "L'enregistrement est Ok";
+        $page="ok.php";
+        include "templates/default.php";
     }
 
     public function afficherFormNotOk()
     {
-        echo "L'enregistrement est NotOk";
+        $page="notok.php";
+        include "templates/default.php";
+    }
+
+    public function afficherConnexionOk(){
+        $page="ok.php";
+        include "templates/default.php";
+    }
+
+    public function afficherConnexionNotOk(){
+        $page="notok.php";
+        include "templates/default.php";
+    }
+
+    public function afficherConnection(){
+        $page="identification.php";
+        include "templates/default.php";
     }
 
 }

@@ -16,6 +16,10 @@ class ctrlGeneral
         $this->model = new modelGeneral();
     }
 
+    public function getAccueil(){
+        $this->vue->afficherAccueil();
+    }
+
     public function getForm()
     {
         // Variable avatar contenant le résultat de la requête getAvatar
@@ -27,7 +31,7 @@ class ctrlGeneral
             'avatar' => $avatar,
             'appareil' => $appareil,
         );
-        $this->view->afficherForm($database);
+        $this->vue->afficherForm($database);
     }
 
     // Enregistrement du formulaire
@@ -46,19 +50,19 @@ class ctrlGeneral
             'avatar' => $_POST['avatar'],
             'appareil' => $_POST['appareil'],
         );
-
+        // var_dump($dataTab);
         if ($this->verifier($dataTab)) {
             $this->user = new User($dataTab);
             $ret = $this->model->enregistrerFormulaire($this->user);
             if ($ret) {
                 $dataTab['admin']=false;
                 $this->gererSession($dataTab);
-                $this->view->afficheFormOk();
+                $this->vue->afficheFormOk();
             } else {
-                $this->view->afficheFormNotOk();
+                $this->vue->afficheFormNotOk();
             }
         } else {
-            $this->view->afficheFormNotOk();
+            $this->vue->afficherFormNotOk();
         }
     }
 
@@ -69,7 +73,7 @@ class ctrlGeneral
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['avatar'] != '' && $data['appareil'] != '' && $data['adresse'] != '' && $data['codePostal'] != '' && $data['ville'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['avatar'] != '' && $data['appareil'] != '') {
             return true;
         } else {
             return false;
@@ -85,4 +89,75 @@ class ctrlGeneral
         $_SESSION['email'] = $tab['email'];
         $_SESSION['connecte'] = true;
     }
+
+    public function getAuthentification(){
+        $this->vue->afficherConnection();
+    }
+
+    public function verifierAuthentification(){
+        // $a['identifiant']="maxime@gmail.com";
+        
+        //informations de tests 
+        // $a['identifiant']="max";
+        // $a['motdepasse']="toulouse31";
+        // $a=array();
+        // $this->user=new Compte($a);
+        
+        $this->user=new Compte($_POST);
+        // var_dump($this->user);
+
+        $verifAuthentification=$this->model->authentification($this->user);
+        // var_dump($verifAuthentification);
+
+        if ($verifAuthentification!=false){
+            $this->gererSession($verifAuthentification);
+            // var_dump($_SESSION);
+            $this->vue->afficherConnexionOk();
+        }else{
+            $this->vue->afficherConnexionNotOk();
+        }
+    }
+
+
+    public function AuthentificationApplication(){
+        $tab=json_decode($_POST, true);
+
+        $this->user=new Compte($tab);
+        
+        // var_dump($this->user);
+
+        $verifAuthentification=$this->model->authentification($this->user);
+        // var_dump($verifAuthentification);
+
+        if ($verifAuthentification!=false){
+            $this->gererSession($verifAuthentification);
+            // var_dump($_SESSION);
+        }else{
+            $_SESSION['erreur']="mauvais identifiant ou mot de passe";
+        }
+        return json_encode($_SESSION);
+    }
+
+    public function getModifierCompte(){
+
+        //test
+        $a['pseudo']="max ezfqsdf sdqf";
+        $a['motdepasse']="toulouse31";
+        $a['civilite']="Mr";
+        $a['nom']="ayoubR";
+        $a['prenom']="max";
+        $a['avatar']="avatar";
+        $a['appareil']="appareil2";
+        $a['adresse']="16 av Victor Hugo";
+        $a['ville']="tournefeuille";
+        $a['codePostal']=31170;
+        $this->user=new User($a);
+
+        $lesUpdates=array();
+
+        // $this->user=new Compte($_POST);
+        $lesUpdates=$this->model->updateCompte($this->user);
+        // var_dump($lesUpdates);
+    }
+
 }
