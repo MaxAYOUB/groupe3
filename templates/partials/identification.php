@@ -28,5 +28,56 @@
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">Se connecter</button>
           </div>
+          <p data-toggle="modal" data-target="#myModal1" style="text-align: center;">Identifiant ou mot de passe oublié</p>
         </div>
       </form>
+
+      <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modifier le mot de passe ou identifiant</h4>
+                </div>
+                
+                <div class="modal-body">
+                  <p>Entrez l'adresse courriel associée à votre compte pour recevoir les instructions de réinitialisation de votre mot de passe.</p>
+                    <input type="text" id="fname" name="firstname" placeholder="Email">
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                  <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#confirmation">valider</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+               <!-- Modal confirmation de demande -->
+               <div class="modal fade" id="confirmation" role="dialog">
+                    <div class="modal-dialog">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                          
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Confirmation de demande</h4>
+                        </div>
+                        
+                        <div class="modal-body">
+                                <p>Un email vous a bien été envoyé pour repondre à votre demande.</p>
+                                  
+                              </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">valider</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>  
