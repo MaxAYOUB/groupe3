@@ -51,6 +51,8 @@ class ctrlGeneral
             $this->user = new User($dataTab);
             $ret = $this->model->enregistrerFormulaire($this->user);
             if ($ret) {
+                $dataTab['admin']=false;
+                $this->gererSession($dataTab);
                 $this->view->afficheFormOk();
             } else {
                 $this->view->afficheFormNotOk();
@@ -58,6 +60,10 @@ class ctrlGeneral
         } else {
             $this->view->afficheFormNotOk();
         }
+    }
+
+    public function getDeconnexion() {
+        $_SESSION['connecte'] = false;
     }
 
     // Fonction vérifiant les champs de formulaire
@@ -68,5 +74,15 @@ class ctrlGeneral
         } else {
             return false;
         }
+    }
+
+    private function gererSession($tab)
+    {
+        $_SESSION['admin'] = $tab['admin'];
+        $_SESSION['pseudo'] = $tab['pseudo'];
+        $_SESSION['avatar'] = $tab['avatar'];
+        $_SESSION['cles'] = $tab['cles'];
+        $_SESSION['email'] = $tab['email'];
+        $_SESSION['connecte'] = true;
     }
 }
