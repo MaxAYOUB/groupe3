@@ -4,6 +4,7 @@
         private $model;
         private $compte;
         private $user;
+        private $adresse;
 
       //  public $test;
 
@@ -22,7 +23,9 @@
             // $a['identifiant']="tb";
             $this->user=new Compte($a);
             var_dump($this->user);
+
             //suppression compte*****
+
             $compteSup=$this->model->supprimerCompte($this->user);
             var_dump($compteSup);
            // $this->compte = new Compte($_POST);
@@ -32,12 +35,13 @@
            else{
             $this->vue->afficherRazNotOk();   
            } */
-           // ajouter compte
+
+           // ajouter un compte
+           
            $b['civilite']="M";
-          
            $b['nom']="tabert";
            $b['prenom']="eric";
-           $b['pseudo']="titi";   
+           $b['pseudo']="bonbon";   
            $b['email']="tabert.eric@wanadoo.fr";
            $b['motdepasse']="1234";
            //$b['avatar']="kl";
@@ -51,27 +55,46 @@
            $b['administrateur']=true;
            $b['supprime']="0";
 
-           $this->user=new User($b);
+          // $this->user=new User($b);
            
-           var_dump( $this->user);
+         //  var_dump( $this->user);
 
-           $ajoutCompte=$this->model->ajouterCompte($this->user);
+          // $ajoutCompte=$this->model->ajouterCompte($this->user);
            
            //$this->compte = new User($_POST);
           
-           if ($ajoutCompte){
-           $this->vue->afficherCompteOk();
-           }
-           else{
-            $this->vue->afficherCompteNotOk();   
-           } 
-          
+         //  if ($ajoutCompte){
+          // $this->vue->afficherCompteOk();
+         //  }
+         //  else{
+          //  $this->vue->afficherCompteNotOk();   
+          // } 
+          //modifier un compte
+          $this->user=new User($b);
+          var_dump( $this->user);
 
+          $modifCompte=$this->model->modifierCompte($this->user);
+          
+          //$this->compte = new User($_POST);
+          if ($modifCompte){
+            $this->vue->afficherCompteOk();
+            }
+            else{
+             $this->vue->afficherCompteNotOk();   
+            } 
         }
- 
+        // Fonction pour gerer le mot de passe
        // public function gererPassword(){
 
        // }
+       // Fonction pour gerer les avatars
+      // public function gererAvatar(){
+
+     //  }
+     //fonction pour verifier l'utilisateur
+       //public function verifierUser(){
+           
+   // }
     
        }
 ?>

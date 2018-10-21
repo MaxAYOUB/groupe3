@@ -35,8 +35,10 @@ class ModelAdmin{
 
        
     }
+    //fonction pour ajouter un compte 
+
      public function ajouterCompte($data){
-        
+        var_dump($resultat);
         $requeteAjoutAdresse="INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
          $resultat=$this->dao->bddQuery($requeteAjoutAdresse);
          var_dump($resultat);
@@ -57,7 +59,41 @@ class ModelAdmin{
         return $result;
         
         
-
-        
      }
+        //fonction pour modifier un compte
+        public function modifierCompte($data){
+          $requeteModifAdresse="UPDATE `adresse` set (`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}') WHERE (SELECT `pseudo`FROM `user`WHERE`pseudo`='{$data->getPseudo()}')";
+            $resultat=$this->dao->bddQuery($requeteModifAdresse);
+         var_dump($resultat);
+             
+            //Mise en place des clés de cryptage
+          $cle = md5("Notre application".$data->getEmail(),$row_output=FALSE);
+           $cleMDP = md5("Notre application".$data->getMotdepasse(),$row_output=FALSE);
+         var_dump($cle);
+      
+       
+       // Requete pour modifier un utilisateur
+       $requeteModifCompte = "UPDATE 'user' set (`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`) 
+       VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getPrenom()}' AND `CP` = '{$data->getCodepostal()}'),
+               (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = '{$data->getAvatar()}'),
+               (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'))WHERE `pseudo`='{$data->getPseudo()}';";
+       // Renvoi les informations demandées dans une variable result
+      
+       
+        $result = $this->dao->bddQuery($requeteModifCompte);
+        var_dump($result);
+        return $result;
+    }
+        //fonction pour ajouter un avatar
+        public function ajouterAvatar($data){
+
+    }
+        //fonction pour supprimer un avatar
+        public function supprimerAvatar($data){
+
+    }
+        //fonction pour verifier un utilisateur
+        public function ioop($data){
+
+    }
 }

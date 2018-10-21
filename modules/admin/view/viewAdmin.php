@@ -23,5 +23,13 @@ class ViewAdmin{
 	    echo ('compte notok');
 		/// include "templates/default.php";
 	 }
+	 public function afficherModifOk(){
+	    echo ('modif ok');
+	   /// include "templates/default.php";
+	}
+	public function afficherModifNotOk($data){
+	    echo ('modif notok');
+		/// include "templates/default.php";
+	 }
 }
 	
