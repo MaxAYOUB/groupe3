@@ -11,6 +11,8 @@
         </style>
 
 <form class="form-horizontal ;" style="padding:10%;" action="index.php?c=ctrlGeneral&m=verifierAuthentification" method="POST">
+<!-- test merge -->
+<form class="form-horizontal ;" style="padding:10%;" action="ctrlGeneral/verifierAuthentification" method="POST">
         <div class="form-group">
           <h1 style="text-align: center;">Connexion</h1>
           <br>
@@ -42,9 +44,6 @@
           <p data-toggle="modal" data-target="#myModal1" style="text-align: center;">Identifiant ou mot de passe oublié</p>
         </div>
       </form>
-      
-      
-      
       <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog">
             
