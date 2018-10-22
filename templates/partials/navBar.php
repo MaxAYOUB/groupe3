@@ -73,9 +73,9 @@
                     <li><a class="lien" href="#" style="padding: 0px;padding-top: 4px; padding-right: 20px; "><img
                                     src="images/appleicon.png " id="icon"></a>
                     </li>
-                    <li><a id="menutext" href="index.php?c=ctrlGeneral&m=getForm" style="  padding-left: 10px;">S'inscrire</a></li>
+                    <li><a id="menutext" href="ctrlGeneral/getForm" style="  padding-left: 10px;">S'inscrire</a></li>
 
-                    <li><a id="menutextconnecte" href="index.php?c=ctrlGeneral&m=getAuthentification" style="padding-left: 10px;">Se connecter</a></li>
+                    <li><a id="menutextconnecte" href="ctrlGeneral/getAuthentification" style="padding-left: 10px;">Se connecter</a></li>
                     <li class="active"><a id="menutext" href="">Home</a>
                     </li>
                 </ul>
