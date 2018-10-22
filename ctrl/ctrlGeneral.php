@@ -75,7 +75,7 @@ class ctrlGeneral
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['avatar'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
             return true;
         } else {
             return false;
