@@ -122,9 +122,53 @@
             <div class="form-group">
                 <label for="exampleInputFile" class="col-sm-3 control-label">Avatar</label>
                 <div class="col-sm-9">
-                    <input type="file" id="exampleInputFile" name="avatar">
+                   <!-- bouton choisir avatars -->
+                    <input type="button" value="Choisir avatar" id="exampleInputFile" data-toggle="modal" data-target="#myModal" name="avatar">
+                    <div><p>Aucun fichier sélectionner</p></div>
                 </div>
             </div>
+                    <!-- pop up choisir avatars -->
+                    
+          <!-- Modal avatar -->
+          <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Galerie d'avatars</h4>
+                    </div>
+                    
+                    <div class="modal-body" style="padding-left:10%;">
+                     
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+                            <img  src="images\logo.png" alt="">
+
+                    </div>
+                    
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulez</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Valider</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+
+
+              
 
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
