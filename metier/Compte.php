@@ -29,7 +29,7 @@ class Compte{
 	    $this->id_compte = $this->isAlpha($v) ? $v : null;
 	}
 	public function setMotdepasse($v){
-		$this->motdepasse = $this->isAlpha($v) ? $v : null;
+		$this->motdepasse = $this->isAlpha($v) ? md5($v,$raw_output=false) : null;
 	}
 	public function setTypetape($v){
 		$this->typetape = $this->isEmail($v) ? "email" : "pseudo";
