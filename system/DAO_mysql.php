@@ -6,10 +6,10 @@
         function __construct(){
             
             $this->config = $this->configBdd();
-            $this->bddConnection();
+            $this->bddConnexion();
         }
 
-        public function bddConnection(){
+        public function bddConnexion(){
             $this->myBdd = new mysqli(
                 $this->config['host'],
                 $this->config['user'],
