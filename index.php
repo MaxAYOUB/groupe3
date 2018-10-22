@@ -12,7 +12,7 @@ if (isset($_GET['c']) && isset($_GET['m']) && isset($_GET['a'])){
 }else if(isset($_GET['c']) && $_GET['c']!="" && !isset($_GET['m'])){
 	$v=$_GET['c'];
 	$ctrl = new $v;
-	$ctrl->index();
+	$ctrl->getForm();
 }else{
 	$v="ctrlGeneral";
 	$ctrl = new $v;

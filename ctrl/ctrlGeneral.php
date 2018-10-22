@@ -37,7 +37,7 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
-
+var_dump($_POST);
         $dataTab = array(
             'civilite' => $_POST['civilite'],
             'nom' => $_POST['nom'],
@@ -49,11 +49,13 @@ class ctrlGeneral
             'codePostal' => $_POST['codePostal'],
             'ville' => $_POST['ville'],
             'avatar' => $_POST['avatar'],
+            'telephone' => $_POST['telephone'],
             'appareil' => $_POST['appareil'],
         );
         // var_dump($dataTab);
         if ($this->verifier($dataTab)) {
             $this->user = new User($dataTab);
+            var_dump($this->user);
             $ret = $this->model->enregistrerFormulaire($this->user);
             var_dump($ret);
             if ($ret) {
@@ -75,7 +77,9 @@ class ctrlGeneral
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['avatar'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != ''
+        //  && $data['avatar'] != '' 
+         && $data['motdepasse'] != '' && $data['appareil'] != '') {
             return true;
         } else {
             return false;
