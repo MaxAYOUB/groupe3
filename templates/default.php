@@ -3,7 +3,10 @@
 
 <head>
     <?php include "templates/partials/head.php"; ?>
+<<<<<<< HEAD
     <base href="http://cdi.afpa-balma.fr"/>
+=======
+>>>>>>> master
 </head>
 
 <body style="padding-top:150px;">

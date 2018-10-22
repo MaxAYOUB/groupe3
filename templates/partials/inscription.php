@@ -2,7 +2,11 @@
 
     <h1 id="h1Inscription" class="col-sm-offset-1">INSCRIPTION</h1>
 
+<<<<<<< HEAD
         <form class="form-horizontal" method="POST" action="ctrlGeneral/enregForm">
+=======
+        <form class="form-horizontal" method="POST" action="index.php?c=ctrlGeneral&m=enregForm">
+>>>>>>> master
     <div id="divInscription1" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
 

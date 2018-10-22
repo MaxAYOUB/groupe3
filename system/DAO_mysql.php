@@ -56,11 +56,24 @@
         private function configBdd(){
             return $bdd = array(
                 'host'  =>  "localhost",
+<<<<<<< HEAD
                 'user'  =>  "pvi-s01",
                 'pass'  =>    "philippe31",
                 'database'=>    "application_gps",
+=======
+                'user'  =>  "root",
+                'pass'  =>    "",
+                'database'=>    "appligps",
+>>>>>>> master
                 'charset'   =>  "utf8"
             );
+            // return $bdd = array(
+            //     'host'  =>  "localhost",
+            //     'user'  =>  "pvi-s01",
+            //     'pass'  =>    "philippe31",
+            //     'database'=>    "appli_GPS",
+            //     'charset'   =>  "utf8"
+            // );
         }
     }
 ?>
