@@ -60,22 +60,4 @@ class modelGeneral
         $result = $this->DAO->bddQuery($sql);
         return $result;
     }
-
- /*    public function updateCompte()
-    {
-        $this->DAO->bddConnexion(); // Connexion à la base
-        // Requete à construire
-        $sql = "";
-        $result = $this->DAO->bddQuery($sql);   // Renvoi les informations demandées dans une variable result
-        return $result;
-    }
-
-    public function authentification()
-    {
-        $this->DAO->bddConnexion(); // Connexion à la base
-        // Requete à construire
-        $sql = "";
-        $result = $this->DAO->bddQuery($sql);   // Renvoi les informations d'authentification dans une variable result
-        return $result;
-    } */
 }
