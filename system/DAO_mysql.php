@@ -32,6 +32,7 @@
     //         echo $sql;
             $data = array();
             if(!$result = $this->myBdd->query($sql)){
+                var_dump($result);
                 die("Erreur de BDD : {$this->myBdd->connect_errno}");
             }
             else{

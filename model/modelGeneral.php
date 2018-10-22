@@ -40,19 +40,24 @@ class modelGeneral {
     {
         // Requete pour l'insertion d'une nouvelle adresse
         $sql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
+        
+        // var_dump($sql);
         if ($result = $this->DAO->bddQuery($sql)){
             $cle = md5("Notre application".$data->getEmail(),$row_output=FALSE);
             $cleMDP = md5("Notre application".$data->getMotdepasse(),$row_output=FALSE);
-            var_dump($cle);
+            var_dump($data);
             
             // Requete pour l'insertion d'un nouvel utilisateur
             $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`) 
-            VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getPrenom()}' AND `CP` = '{$data->getCodepostal()}'),
+            VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getAdresse()}' AND `CP` = '{$data->getCodepostal()}'),
                     (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = '{$data->getAvatar()}'),
-                    (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'));";
+                    (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'))";
             // Renvoi les informations demandées dans une variable result
+        // echo $sql;
+        
             $result = $this->DAO->bddQuery($sql);
         }
+        var_dump($result);
         return $result;
 
         // Mise en place des clés de cryptage
