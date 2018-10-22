@@ -8,7 +8,57 @@
             $this->vue=new viewGeneral();
             $this->model=new modelGeneral();
         }
-
+        public function getAccueil(){
+            $this->vue->afficherAccueil();
+        }
+        public function getForm()
+        {
+            // Variable avatar contenant le résultat de la requête getAvatar
+            $avatar = $this->model->getAvatar();
+            // Variable appareil contenant le résultat de la requête SQL getAppareil
+            $appareil = $this->model->getAppareil();
+            // Création d'un tableau associatif résultant des deux requêtes sur la BDD (avatar & appareil)
+            $database = array(
+                'avatar' => $avatar,
+                'appareil' => $appareil,
+            );
+            $this->vue->afficherForm($database);
+        }
+        // Enregistrement du formulaire
+        public function enregForm()
+        {
+    var_dump($_POST);
+            $dataTab = array(
+                'civilite' => $_POST['civilite'],
+                'nom' => $_POST['nom'],
+                'prenom' => $_POST['prenom'],
+                'pseudo' => $_POST['pseudo'],
+                'motdepasse' => $_POST['motdepasse'],
+                'email' => $_POST['email'],
+                'adresse' => $_POST['adresse'],
+                'codePostal' => $_POST['codePostal'],
+                'ville' => $_POST['ville'],
+                'avatar' => $_POST['avatar'],
+                'telephone' => $_POST['telephone'],
+                'appareil' => $_POST['appareil'],
+            );
+            // var_dump($dataTab);
+            if ($this->verifier($dataTab)) {
+                $this->user = new User($dataTab);
+                var_dump($this->user);
+                $ret = $this->model->enregistrerFormulaire($this->user);
+                var_dump($ret);
+                if ($ret) {
+                    $dataTab['admin']=false;
+                    $this->gererSession($dataTab);
+                    $this->vue->afficherFormOk();
+                } else {
+                    $this->vue->afficherFormNotOk($dataTab);
+                }
+            } else {
+                $this->vue->afficherFormNotOk($dataTab);
+            }
+        }
     public function getDeconnexion() {
         $_SESSION['connecte'] = false;
     }
@@ -93,7 +143,7 @@
         $a['prenom']="max";
         $a['avatar']="avatar";
         $a['appareil']="appareil2";
-        $a['adresse']="16 av Victor Hugo";
+        $a['adresse']="20 av Victor Hugo";
         $a['ville']="tournefeuille";
         $a['codePostal']=31170;
         $this->user=new User($a);
@@ -102,7 +152,7 @@
 
         // $this->user=new Compte($_POST);
         $lesUpdates=$this->model->updateCompte($this->user);
-        // var_dump($lesUpdates);
+        var_dump($lesUpdates);
     }
 
     }

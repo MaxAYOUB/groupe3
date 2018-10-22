@@ -3,16 +3,14 @@ session_start();
 // var_dump($_GET);
 if (isset($_GET['c']) && isset($_GET['m']) && isset($_GET['a'])){
 	
+$m=$_GET['m'];
 	$ctrl = new $_GET['c'];
-	$ctrl->$_GET['m']($_GET['a']);
+	$ctrl->$m($_GET['a']);
 
 }else if (isset($_GET['c']) && isset($_GET['m'])){
+	$m=$_GET['m'];
 	$ctrl = new $_GET['c'];
-	$ctrl->$_GET['m']();
-}else if(isset($_GET['c']) && $_GET['c']!="" && !isset($_GET['m'])){
-	$v=$_GET['c'];
-	$ctrl = new $v;
-	$ctrl->getForm();
+	$ctrl->$m();
 }else{
 	$v="ctrlGeneral";
 	$ctrl = new $v;
