@@ -13,6 +13,7 @@ class User{
 	private $email = null; 
 	private $motdepasse = null; 
 	private $avatar = null; 
+	private $telephone=null;
 	private $appareil = null;
 	private $conditionsGenerales = null;
 	private $adresse = null;
@@ -32,6 +33,7 @@ class User{
         (isset($a['email'])) ? $this->setEmail($a['email']) : null;
         (isset($a['motdepasse'])) ? $this->setMotdepasse($a['motdepasse']) : null;
         (isset($a['avatar'])) ? $this->setAvatar($a['avatar']) : null;
+        (isset($a['telephone'])) ? $this->setTelephone($a['telephone']) : null;
         (isset($a['appareil'])) ? $this->setAppareil($a['appareil']) : null;
         (isset($a['conditionsGenerales'])) ? $this->setConditionsGenerales($a['conditionsGenerales']) : null;
         (isset($a['adresse'])) ? $this->setAdresse($a['adresse']) : null;
@@ -64,6 +66,9 @@ class User{
 	}
 	public function setAvatar($v){
 		$this->avatar = $this->isAlpha($v) ? $v : null;
+	}
+	public function setTelephone($v){
+		$this->telephone = $this->isInteger($v) ? $v : null;
 	}
 	public function setAppareil($v){
 		$this->appareil = $this->isAlpha($v) ? $v : null;
@@ -109,6 +114,9 @@ class User{
 	}
 	public function getAvatar(){
 		return $this->avatar;
+	}
+	public function getTelephone(){
+		return $this->telephone;
 	}
 	public function getAppareil(){
 		return $this->appareil;

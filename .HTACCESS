@@ -3,10 +3,12 @@ RewriteEngine On
 ##RewriteRule ^test([_\-a-zA-Z\.0-9\/]*) test$1 [QSA,L]
 
 RewriteRule ^(.*)/images/(.*)$ $1/images/$2 [QSA,L]
+RewriteRule ^(.*)/images/avatar/(.*)$ $1/images/avatar/$2 [QSA,L]
 RewriteRule ^(.*)/javaScript/(.*)$ $1/javaScript/$2 [QSA,L]
 RewriteRule ^(.*)/css/(.*)$ $1/css/$2 [QSA,L]
 
 RewriteRule ^images/(.*)$ images/$1 [QSA,L]
+RewriteRule ^images/avatar/(.*)$ images/avatar/$1 [QSA,L]
 RewriteRule ^javaScript/(.*)$ javaScript/$1 [QSA,L]
 RewriteRule ^css/(.*)$ css/$1 [QSA,L]
 

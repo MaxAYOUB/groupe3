@@ -1,0 +1,76 @@
+#divTel {
+  float: right;
+}
+#divTel #imgTel {
+  position: fixed;
+  float: right;
+  padding: 0;
+}
+#h1Presentation,
+#h1Fonctionnalite1,
+#h1Fonctionnalite2,
+#h1Fonctionnalite3,
+#h1Fonctionnalite4 {
+  color: #22222 22;
+  margin-bottom: 3%;
+  font-weight: bold;
+}
+#divPresentation {
+  background: #f2f2f2;
+  margin: 4% 4% 0 4%;
+  padding: 1.5%;
+  border-radius: 0.5%;
+}
+#divPresentation #pPresentation {
+  margin-bottom: 5%;
+  text-align: justify;
+}
+#divPresentation #imgPresentation {
+  margin-bottom: 5%;
+  padding: 0;
+}
+#divPresentation hr {
+  width: 95%;
+  border-top: #2F3F4F 1px solid;
+}
+#divPresentation #aGooglePlay,
+#divPresentation #aNox {
+  background-color: #22222 22;
+}
+#divFonctionnalite1,
+#divFonctionnalite2,
+#divFonctionnalite3 {
+  background: #f2f2f2;
+  margin: 4% 4% 0 4%;
+  padding: 1.5%;
+  border-radius: 0.5%;
+}
+#divFonctionnalite4 {
+  background: #f2f2f2;
+  margin: 4% 4% 4% 4%;
+  padding: 1.5%;
+  border-radius: 0.5%;
+}
+#imgFonctionnalite1,
+#imgFonctionnalite3 {
+  float: left;
+  padding: 0;
+}
+#imgFonctionnalite2,
+#imgFonctionnalite4 {
+  float: right;
+  padding: 0;
+}
+#pFonctionnalite1,
+#pFonctionnalite3 {
+  position: relative;
+  float: right;
+  text-align: justify;
+}
+#pFonctionnalite2,
+#pFonctionnalite4 {
+  position: relative;
+  float: left;
+  text-align: justify;
+}
+/*# sourceMappingURL=cssAccueil.css.map */

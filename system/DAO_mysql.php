@@ -4,11 +4,12 @@
         private $config;
 
         function __construct(){
+            
             $this->config = $this->configBdd();
-            $this->bddConnection();
+            $this->bddConnexion();
         }
 
-        public function bddConnection(){
+        public function bddConnexion(){
             $this->myBdd = new mysqli(
                 $this->config['host'],
                 $this->config['user'],
@@ -31,6 +32,7 @@
     //         echo $sql;
             $data = array();
             if(!$result = $this->myBdd->query($sql)){
+                var_dump($result);
                 die("Erreur de BDD : {$this->myBdd->connect_errno}");
             }
             else{
@@ -52,14 +54,21 @@
         }
 
 
-        private function ConfigBdd(){
+        private function configBdd(){
             return $bdd = array(
                 'host'  =>  "localhost",
                 'user'  =>  "root",
                 'pass'  =>    "",
-                'database'=>    "appliGPS",
+                'database'=>    "application_gps",
                 'charset'   =>  "utf8"
             );
+            // return $bdd = array(
+            //     'host'  =>  "localhost",
+            //     'user'  =>  "pvi-s01",
+            //     'pass'  =>    "philippe31",
+            //     'database'=>    "appli_GPS",
+            //     'charset'   =>  "utf8"
+            // );
         }
     }
 ?>
