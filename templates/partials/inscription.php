@@ -75,13 +75,13 @@
                 <label for="inlineRadio1" class="col-sm-3 control-label">Type mobile</label>
                 <div class="col-sm-9">
                     <label class="radio-inline col-sm-3">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Android
+                        <input type="radio" name="appareil" id="inlineRadio1" value="samsung"> Android
                     </label>
                     <label class="radio-inline col-sm-3">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> iOS
+                        <input type="radio" name="appareil" id="inlineRadio2" value="apple"> iOS
                     </label>
                     <label class="radio-inline col-sm-3">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Autres
+                        <input type="radio" name="appareil" id="inlineRadio3" value="huawei"> Autres
                     </label>
                 </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="form-group">
                 <label for="tel" class="col-sm-3 control-label">Telephone</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="appareil" id="tel"
+                    <input type="text" class="form-control" name="telephone" id="tel"
                            placeholder="Entrer votre téléphone">
                 </div>
             </div>

@@ -16,7 +16,8 @@ class ctrlGeneral
         $this->model = new modelGeneral();
     }
 
-    public function getAccueil(){
+    public function getAccueil()
+    {
         $this->vue->afficherAccueil();
     }
 
@@ -37,7 +38,6 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
-
         $dataTab = array(
             'civilite' => $_POST['civilite'],
             'nom' => $_POST['nom'],
@@ -45,22 +45,24 @@ class ctrlGeneral
             'pseudo' => $_POST['pseudo'],
             'motdepasse' => $_POST['motdepasse'],
             'email' => $_POST['email'],
+            'telephone' => $_POST['telephone'],
             'adresse' => $_POST['adresse'],
             'codePostal' => $_POST['codePostal'],
             'ville' => $_POST['ville'],
             'avatar' => $_POST['avatar'],
             'appareil' => $_POST['appareil'],
         );
-        // var_dump($dataTab);
+
         if ($this->verifier($dataTab)) {
             $this->user = new User($dataTab);
             $ret = $this->model->enregistrerFormulaire($this->user);
-            var_dump($ret);
-            if ($ret) {
-                $dataTab['admin']=false;
+            if ($ret != false && isset($ret['0']['cles'])) {
+                $dataTab['cles'] = $ret['0']['cles'];
+                $dataTab['admin'] = false;
                 $this->gererSession($dataTab);
                 $this->vue->afficherFormOk();
             } else {
+                $dataTab['erreur'] = $ret;
                 $this->vue->afficherFormNotOk($dataTab);
             }
         } else {
@@ -68,14 +70,16 @@ class ctrlGeneral
         }
     }
 
-    public function getDeconnexion() {
+    public function getDeconnexion()
+    {
         $_SESSION['connecte'] = false;
     }
 
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['avatar'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['motdepasse'] != '' && $data['email'] != '' && $data['telephone'] != '' && $data['appareil'] != '') {
+            //  && $data['avatar'] != ''
             return true;
         } else {
             return false;
@@ -92,74 +96,71 @@ class ctrlGeneral
         $_SESSION['connecte'] = true;
     }
 
-    public function getAuthentification(){
+    public function getAuthentification()
+    {
         $this->vue->afficherConnection();
     }
 
-    public function verifierAuthentification(){
+    public function verifierAuthentification()
+    {
         // $a['identifiant']="maxime@gmail.com";
-        
-        //informations de tests 
+
+        //informations de tests
         // $a['identifiant']="max";
         // $a['motdepasse']="toulouse31";
         // $a=array();
         // $this->user=new Compte($a);
-        
-        $this->user=new Compte($_POST);
+
+        $this->user = new Compte($_POST);
         // var_dump($this->user);
 
-        $verifAuthentification=$this->model->authentification($this->user);
+        $verifAuthentification = $this->model->authentification($this->user);
         // var_dump($verifAuthentification);
 
-        if ($verifAuthentification!=false){
+        if ($verifAuthentification != false) {
             $this->gererSession($verifAuthentification);
             // var_dump($_SESSION);
             $this->vue->afficherConnexionOk();
-        }else{
+        } else {
             $this->vue->afficherConnexionNotOk($verifAuthentification);
         }
     }
 
-
-    public function AuthentificationApplication(){
-        $tab=json_decode($_POST, true);
-
-        $this->user=new Compte($tab);
-        
+    public function AuthentificationApplication()
+    {
+        $tab = json_decode($_POST, true);
+        $this->user = new Compte($tab);
         // var_dump($this->user);
-
-        $verifAuthentification=$this->model->authentification($this->user);
+        $verifAuthentification = $this->model->authentification($this->user);
         // var_dump($verifAuthentification);
-
-        if ($verifAuthentification!=false){
+        if ($verifAuthentification != false) {
             $this->gererSession($verifAuthentification);
             // var_dump($_SESSION);
-        }else{
-            $_SESSION['erreur']="mauvais identifiant ou mot de passe";
+        } else {
+            $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";
         }
         return json_encode($_SESSION);
     }
 
-    public function getModifierCompte(){
-
+    public function getModifierCompte()
+    {
         //test
-        $a['pseudo']="max ezfqsdf sdqf";
-        $a['motdepasse']="toulouse31";
-        $a['civilite']="Mr";
-        $a['nom']="ayoubR";
-        $a['prenom']="max";
-        $a['avatar']="avatar";
-        $a['appareil']="appareil2";
-        $a['adresse']="16 av Victor Hugo";
-        $a['ville']="tournefeuille";
-        $a['codePostal']=31170;
-        $this->user=new User($a);
+        $a['pseudo'] = "max ezfqsdf sdqf";
+        $a['motdepasse'] = "toulouse31";
+        $a['civilite'] = "Mr";
+        $a['nom'] = "ayoubR";
+        $a['prenom'] = "max";
+        $a['avatar'] = "avatar";
+        $a['appareil'] = "appareil2";
+        $a['adresse'] = "16 av Victor Hugo";
+        $a['ville'] = "tournefeuille";
+        $a['codePostal'] = 31170;
+        $this->user = new User($a);
 
-        $lesUpdates=array();
+        $lesUpdates = array();
 
         // $this->user=new Compte($_POST);
-        $lesUpdates=$this->model->updateCompte($this->user);
+        $lesUpdates = $this->model->updateCompte($this->user);
         // var_dump($lesUpdates);
     }
-
 }
