@@ -14,11 +14,13 @@
             $this->view->afficherConsoleAdmin();
         }
         public function gererCompte(){
-           /*  
+            
             $a['identifiant']="martin.m@gmail.com";
             // $a['identifiant']="tb";
             $this->user=new Compte($a);
             var_dump($this->user);
+           
+           
             //suppression compte*****
             $compteSup=$this->model->supprimerCompte($this->user);
             var_dump($compteSup);
@@ -28,7 +30,7 @@
            }
            else{
             $this->vue->afficherRazNotOk();   
-           } */
+           }
            // ajouter un compte
            
            $b['civilite']="M";
@@ -77,8 +79,8 @@
        // public function gererPassword(){
        // }
        // Fonction pour gerer les avatars
-      // public function gererAvatar(){
-     //  }
+      public function gererAvatar(){
+       }
      //fonction pour verifier l'utilisateur
        //public function verifierUser(){
            
