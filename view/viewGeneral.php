@@ -13,13 +13,13 @@ class viewGeneral
         include "templates/default.php";
     }
 
-    public function afficherFormOk()
+    public function afficherFormOk($tab)
     {
         $page="ok.php";
         include "templates/default.php";
     }
 
-    public function afficherFormNotOk()
+    public function afficherFormNotOk($tab)
     {
         $page="notok.php";
         include "templates/default.php";
@@ -30,7 +30,7 @@ class viewGeneral
         include "templates/default.php";
     }
 
-    public function afficherConnexionNotOk(){
+    public function afficherConnexionNotOk($tab){
         $page="notok.php";
         include "templates/default.php";
     }

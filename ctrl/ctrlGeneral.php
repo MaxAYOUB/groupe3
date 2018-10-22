@@ -55,15 +55,16 @@ class ctrlGeneral
         if ($this->verifier($dataTab)) {
             $this->user = new User($dataTab);
             $ret = $this->model->enregistrerFormulaire($this->user);
+            var_dump($ret);
             if ($ret) {
                 $dataTab['admin']=false;
                 $this->gererSession($dataTab);
-                $this->vue->afficheFormOk();
+                $this->vue->afficherFormOk();
             } else {
-                $this->vue->afficheFormNotOk();
+                $this->vue->afficherFormNotOk($dataTab);
             }
         } else {
-            $this->vue->afficherFormNotOk();
+            $this->vue->afficherFormNotOk($dataTab);
         }
     }
 
@@ -74,7 +75,7 @@ class ctrlGeneral
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['avatar'] != '' && $data['appareil'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
             return true;
         } else {
             return false;
@@ -115,7 +116,7 @@ class ctrlGeneral
             // var_dump($_SESSION);
             $this->vue->afficherConnexionOk();
         }else{
-            $this->vue->afficherConnexionNotOk();
+            $this->vue->afficherConnexionNotOk($verifAuthentification);
         }
     }
 
