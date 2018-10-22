@@ -30,4 +30,12 @@ class viewAdmin{
 	    echo ('modif notok');
 		/// include "templates/default.php";
 	 }
+	 public function afficherAvatarOk(){
+	    echo ('avatar ok');
+	   /// include "templates/default.php";
+	}
+	public function afficherAvatarNotOk(){
+	    echo ('avatar not ok');
+		/// include "templates/default.php";
+	 }
 }

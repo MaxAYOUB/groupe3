@@ -29,7 +29,7 @@
         }
         
         public function bddQuery($sql){
-    //         echo $sql;
+            //echo $sql;
             $data = array();
             if(!$result = $this->myBdd->query($sql)){
                 die("Erreur de BDD : {$this->myBdd->connect_errno}");

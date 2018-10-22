@@ -89,9 +89,25 @@ class ModelAdmin{
     }
         //fonction pour ajouter un avatar
         public function ajouterAvatar($data){
+           $requeteAjoutAvatar = "INSERT INTO `avatar`(`id_avatar`, `avatar`, `slug_avatar`, `supprime`) VALUES (NULL,'{$data->getAvatar()}','{$data->getSlugavatar()}','{$data->getSupprime()}')" ;
+            $resultat=$this->dao->bddQuery($requeteAjoutAvatar);
+            $verifAvatar = "SELECT `id_avatar`FROM  `avatar` WHERE `slug_avatar`='".$data->getSlugavatar()."' ";
+            $resultat=$this->dao->bddQuery($verifAvatar);
+            //var_dump($resultat);
+            return $resultat;
+
     }
         //fonction pour supprimer un avatar
         public function supprimerAvatar($data){
+          $supression = $data->getSupprime();
+          var_dump($supression);
+             if ($supression == 1) {
+               $requeteSupression= "DELETE FROM `avatar` WHERE `slug_avatar` = '".$data->getSlugavatar()."'";
+               $resultat=$this->dao->bddQuery($requeteSupression);
+               var_dump($resultat);
+               
+           } 
+           
     }
         //fonction pour verifier un utilisateur
         public function ioop($data){

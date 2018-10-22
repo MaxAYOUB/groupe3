@@ -5,7 +5,9 @@
         private $compte;
         private $user;
         private $adresse;
-      //  public $test;
+        private $avatar;
+     
+        //  public $test;
         function __construct(){
             $this->vue=new viewAdmin;
             $this->model=new modelAdmin;
@@ -15,9 +17,9 @@
         }
         public function gererCompte(){
             
-            $a['identifiant']="martin.m@gmail.com";
-            // $a['identifiant']="tb";
-            $this->user=new Compte($a);
+            $av['identifiant']="martin.m@gmail.com";
+            // $av['identifiant']="tb";
+            $this->user=new Compte($av);
             var_dump($this->user);
            
            
@@ -49,19 +51,19 @@
            $b['ville']="bruguieres";
            $b['administrateur']=true;
            $b['supprime']="0";
-          // $this->user=new User($b);
+          $this->user=new User($b);
            
-         //  var_dump( $this->user);
-          // $ajoutCompte=$this->model->ajouterCompte($this->user);
+          var_dump( $this->user);
+          $ajoutCompte=$this->model->ajouterCompte($this->user);
            
-           //$this->compte = new User($_POST);
+           $this->compte = new User($_POST);
           
-         //  if ($ajoutCompte){
-          // $this->vue->afficherCompteOk();
-         //  }
-         //  else{
-          //  $this->vue->afficherCompteNotOk();   
-          // } 
+          if ($ajoutCompte){
+          $this->vue->afficherCompteOk();
+          }
+          else{
+           $this->vue->afficherCompteNotOk();   
+          } 
           //modifier un compte
           $this->user=new User($b);
           var_dump( $this->user);
@@ -78,9 +80,34 @@
         // Fonction pour gerer le mot de passe
        // public function gererPassword(){
        // }
+      
+      
        // Fonction pour gerer les avatars
       public function gererAvatar(){
-       }
+       
+        $av['avatar'] = "donald";
+        $av['slug_avatar'] = "don";
+        $av['supprime'] = "1";
+       /*  $this->avatar= new avatar($av);
+        //var_dump( $this->avatar);
+        $ajoutAvatar=$this->model->ajouterAvatar($this->avatar);
+        var_dump($ajoutAvatar);
+        if ($ajoutAvatar != false){
+            $this->vue->afficherAvatarOk();
+            }
+            else{
+             $this->vue->afficherAvatarNotOk();   
+            }  */
+            $this->avatar= new avatar($av);
+            $supprimeAvatar=$this->model->supprimerAvatar($this->avatar);
+            //var_dump($this->avatar);
+
+
+        
+       
+        
+
+    }
      //fonction pour verifier l'utilisateur
        //public function verifierUser(){
            
