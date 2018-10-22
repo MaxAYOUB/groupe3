@@ -96,7 +96,7 @@ class modelGeneral {
             $result[0]['mot_de_passe']=md5($result[0]['mot_de_passe'],$raw_output=false);
 
             //verifie si le bon mot de passe a été tapé
-            // var_dump($obj);
+            var_dump($result);
             // var_dump($result[0]);
             if ($result[0]['mot_de_passe']==$obj->getMotdepasse()){
                 
@@ -188,18 +188,21 @@ class modelGeneral {
         }
         else{
             // gerer l'erreur
-            $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,".$o->getAdresse().",".$o->getVille().",".$o->getCodepostal().")";
+            $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,'".$o->getAdresse()."','".$o->getVille()."','".$o->getCodepostal()."')";
             $resultAjout = $this->DAO->bddQuery($requeteAdresseAjout);
+            var_dump($requeteAdresseAjout);
             $requeteAdresseId="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
        
-        echo "salut";
+                echo "salut";
             if($resultId = $this->DAO->bddQuery($requeteAdresseId)){
                 
+                var_dump($resultId);
                 // traiter le retour
                 $compte4 = array();
                 foreach($resultId as $obj){
-                    $compte3[] = $obj;
+                    $compte4[] = $obj;
                 }
+                var_dump($compte4);
                 $sonAdresse=$compte4[0]['id_adresse'];
                 $lesResult['adresse']=true;
             }
@@ -208,6 +211,7 @@ class modelGeneral {
                 $lesResult['adresse']=false;
             }
         }
+        // var_dump($resultId);
         // echo "117 : ".$compte3;
         var_dump($sonAdresse);
         var_dump($lesResult);
@@ -215,7 +219,7 @@ class modelGeneral {
             $requeteUpdate= "UPDATE `user` SET `civilite`='".$o->getCivilite()."', `nom`='".$o->getNom().
             "', `prenom`='".$o->getPrenom()."',`id_avatar` ='".$sonAvatar."', `id_adresse`='".$sonAdresse."', `id_appareil`='".$sonAppareil."'
             WHERE `pseudo`='".$o->getPseudo()."'";
-
+echo $requeteUpdate;
             if($result = $this->DAO->bddQuery($requeteUpdate)){
             
                 // traiter le retour

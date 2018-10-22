@@ -90,23 +90,13 @@
     }
 
     public function verifierAuthentification(){
-        // $a['identifiant']="maxime@gmail.com";
-        
-        //informations de tests 
-        // $a['identifiant']="max";
-        // $a['motdepasse']="toulouse31";
-        // $a=array();
-        // $this->user=new Compte($a);
-        
         $this->user=new Compte($_POST);
-        // var_dump($this->user);
 
         $verifAuthentification=$this->model->authentification($this->user);
-        // var_dump($verifAuthentification);
 
         if ($verifAuthentification!=false){
             $this->gererSession($verifAuthentification);
-            // var_dump($_SESSION);
+            
             $this->vue->afficherConnexionOk();
         }else{
             $this->vue->afficherConnexionNotOk($verifAuthentification);
@@ -118,15 +108,12 @@
         $tab=json_decode($_POST, true);
 
         $this->user=new Compte($tab);
-        
-        // var_dump($this->user);
 
         $verifAuthentification=$this->model->authentification($this->user);
-        // var_dump($verifAuthentification);
 
         if ($verifAuthentification!=false){
             $this->gererSession($verifAuthentification);
-            // var_dump($_SESSION);
+            
         }else{
             $_SESSION['erreur']="mauvais identifiant ou mot de passe";
         }
@@ -136,21 +123,20 @@
     public function getModifierCompte(){
 
         //test
-        $a['pseudo']="max ezfqsdf sdqf";
-        $a['motdepasse']="toulouse31";
-        $a['civilite']="Mr";
-        $a['nom']="ayoubR";
-        $a['prenom']="max";
-        $a['avatar']="avatar";
-        $a['appareil']="appareil2";
-        $a['adresse']="20 av Victor Hugo";
-        $a['ville']="tournefeuille";
-        $a['codePostal']=31170;
+        // $a['pseudo']="max";
+        // $a['motdepasse']="toulouse31";
+        // $a['civilite']="Mme";
+        // $a['nom']="ayoubRouan";
+        // $a['prenom']="maxime";
+        // $a['avatar']="avatar";
+        // $a['appareil']="appareil2";
+        // $a['adresse']="15 av Victor Hugo";
+        // $a['ville']="tournefeuille";
+        // $a['codePostal']=31170;
         $this->user=new User($a);
 
         $lesUpdates=array();
 
-        // $this->user=new Compte($_POST);
         $lesUpdates=$this->model->updateCompte($this->user);
         var_dump($lesUpdates);
     }
