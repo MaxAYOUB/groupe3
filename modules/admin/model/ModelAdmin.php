@@ -79,7 +79,15 @@ class ModelAdmin{
                (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'))WHERE `pseudo`='{$data->getPseudo()}';";
        // Renvoi les informations demandées dans une variable result
       
-       
+      // SELECT
+				//	co.id_contact, co.nom, co.prenom, co.tel, ci.libelle as civilite, ci.id_civilite, o.id_objet, o.libelle as objet
+				//	FROM contact AS co
+				//	JOIN civilite AS ci
+				//	ON co.id_civilite = ci.id_civilite
+				//	JOIN objet AS o
+				///	ON co.id_objet = o.id_objet
+				//	ORDER BY co.id_objet ASC, co.id_contact DESC
+				//	";
         $result = $this->dao->bddQuery($requeteModifCompte);
         var_dump($result);
         return $result;
