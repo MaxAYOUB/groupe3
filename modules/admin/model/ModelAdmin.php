@@ -99,15 +99,14 @@ class ModelAdmin{
     }
         //fonction pour supprimer un avatar
         public function supprimerAvatar($data){
-          $supression = $data->getSupprime();
-          var_dump($supression);
-             if ($supression == 1) {
-               $requeteSupression= "DELETE FROM `avatar` WHERE `slug_avatar` = '".$data->getSlugavatar()."'";
+          
+               $requeteSupression= "UPDATE `avatar` SET `supprime` = 1 WHERE `slug_avatar` = '".$data->getSlugavatar()."'";
                $resultat=$this->dao->bddQuery($requeteSupression);
-               var_dump($resultat);
+               $verfSuprrime =" SELECT `supprime` FROM  `avatar`WHERE `slug_avatar` = '".$data->getSlugavatar()."'";
+               $resultat=$this->dao->bddQuery($requeteSupression);
+
                
-           } 
-           
+          
     }
         //fonction pour verifier un utilisateur
         public function ioop($data){
