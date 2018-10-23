@@ -245,7 +245,7 @@ class modelGeneral
             }
             else{
                 // gerer l'erreur
-                $lesResult['adresse']=false;
+                $lesResult['adresse'] = false;
             }
         }
         // var_dump($resultId);
