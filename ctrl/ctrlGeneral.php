@@ -27,7 +27,7 @@
         // Enregistrement du formulaire
         public function enregForm()
         {
-    var_dump($_POST);
+    // var_dump($_POST);
             $dataTab = array(
                 'civilite' => $_POST['civilite'],
                 'nom' => $_POST['nom'],
@@ -45,9 +45,9 @@
             // var_dump($dataTab);
             if ($this->verifier($dataTab)) {
                 $this->user = new User($dataTab);
-                var_dump($this->user);
+                // var_dump($this->user);
                 $ret = $this->model->enregistrerFormulaire($this->user);
-                var_dump($ret);
+                // var_dump($ret);
                 if ($ret) {
                     $dataTab['admin']=false;
                     $this->gererSession($dataTab);
@@ -60,7 +60,14 @@
             }
         }
     public function getDeconnexion() {
+        $_SESSION['admin'] = "";
+        $_SESSION['pseudo'] = "";
+        $_SESSION['avatar'] = "";
+        $_SESSION['cles'] = "";
+        $_SESSION['email'] = "";
         $_SESSION['connecte'] = false;
+
+        $this->vue->afficherAccueil();
     }
 
     // Fonction vérifiant les champs de formulaire
@@ -141,6 +148,6 @@
         var_dump($lesUpdates);
     }
 
-    }
+}
     
 

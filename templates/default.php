@@ -8,7 +8,13 @@
 <body style="padding-top:150px;">
 
 <header>
-    <?php include "templates/partials/navBar.php"; ?>
+    <?php 
+    if (isset($_SESSION['connecte']) && $_SESSION['connecte']==true){
+        include "templates/partials/navBarConnect.php";
+    }else{
+        include "templates/partials/navBar.php"; 
+    }
+    ?>
     <?php 
     if ($page=="accueilNew.php"){include "templates/partials/bandeau.php";}; ?>
 </header>

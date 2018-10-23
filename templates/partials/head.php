@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/cssAccueil.css"/>
 <link rel="stylesheet" type="text/css" href="css/cssInscription.css"/>
 <link rel="stylesheet" type="text/css" href="css/cssMonCompte.css"/>
+<link rel="stylesheet" type="text/css" href="css/nav.css"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> <!--jquery-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!--bootstrap 3-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!--bootstrap 3-->
