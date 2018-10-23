@@ -13,7 +13,7 @@ class viewGeneral
         include "templates/default.php";
     }
 
-    public function afficherFormOk($tab)
+    public function afficherFormOk()
     {
         $page="ok.php";
         include "templates/default.php";

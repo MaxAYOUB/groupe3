@@ -26,7 +26,14 @@
                   <li ><a id = "connecter" href="#" >Se connecter</a></li>
                  
                     <li class="dropdown">
-                      <a id="admin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin 
+                      <a id="admin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <?php if ($_SESSION['admin']==true){
+                        echo "Admin";
+                      }else{
+                        echo "User";
+                      }
+                      
+                      ?>
                           <span ><img src="images/avatar/avataricon.jpg "></span>
                         </a>
                       <ul  class="dropdown-menu" >
