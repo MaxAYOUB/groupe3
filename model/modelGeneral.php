@@ -18,7 +18,7 @@ class modelGeneral
     // Fonction renvoyant les avatars dans le formulaire
     public function getAvatar()
     {
-        $sql = "SELECT * FROM avatar"; // Requete pour récupérer les avatars dans la BDD
+        $sql = "SELECT * FROM avatar WHERE supprime='0'"; // Requete pour récupérer les avatars dans la BDD
         $resultAvatar = $this->DAO->bddQuery($sql); // Renvoi le résultat de la requête dans une variable result
         return $resultAvatar;
     }
@@ -26,7 +26,7 @@ class modelGeneral
     // Fonction renvoyant le système de l'appareil dans le formulaire
     public function getAppareil()
     {
-        $sql = "SELECT * FROM appareil"; // Requete pour récupérer les systèmes dans la BDD
+        $sql = "SELECT * FROM appareil WHERE supprime='0'"; // Requete pour récupérer les systèmes dans la BDD
         $resultAppareil = $this->DAO->bddQuery($sql); // Renvoi le résultat de la requête dans une variable result
         return $resultAppareil;
     }
