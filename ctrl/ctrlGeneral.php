@@ -65,13 +65,9 @@ class ctrlGeneral
                 $dataTab['erreur'] = $ret;
                 $this->vue->afficherFormNotOk($dataTab);
             }
-        } else {
-            $this->vue->afficherFormNotOk($dataTab);
-        }
-    }
+        }}
 
-    public function getDeconnexion()
-    {
+    public function getDeconnexion() {
         $_SESSION['connecte'] = false;
     }
 
@@ -145,22 +141,25 @@ class ctrlGeneral
     public function getModifierCompte()
     {
         //test
-        $a['pseudo'] = "max ezfqsdf sdqf";
-        $a['motdepasse'] = "toulouse31";
-        $a['civilite'] = "Mr";
-        $a['nom'] = "ayoubR";
-        $a['prenom'] = "max";
-        $a['avatar'] = "avatar";
-        $a['appareil'] = "appareil2";
-        $a['adresse'] = "16 av Victor Hugo";
-        $a['ville'] = "tournefeuille";
-        $a['codePostal'] = 31170;
-        $this->user = new User($a);
+        $a['pseudo']="max ezfqsdf sdqf";
+        $a['motdepasse']="toulouse31";
+        $a['civilite']="Mr";
+        $a['nom']="ayoubR";
+        $a['prenom']="max";
+        $a['avatar']="avatar";
+        $a['appareil']="appareil2";
+        $a['adresse']="20 av Victor Hugo";
+        $a['ville']="tournefeuille";
+        $a['codePostal']=31170;
+        $this->user=new User($a);
 
-        $lesUpdates = array();
+        $lesUpdates=array();
 
         // $this->user=new Compte($_POST);
-        $lesUpdates = $this->model->updateCompte($this->user);
-        // var_dump($lesUpdates);
+        $lesUpdates=$this->model->updateCompte($this->user);
+        var_dump($lesUpdates);
     }
-}
+
+    }
+    
+

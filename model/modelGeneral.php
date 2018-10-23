@@ -218,7 +218,29 @@ class modelGeneral
             $lesResult['adresse'] = true;
         } else {
             // gerer l'erreur
+<<<<<<< HEAD
             $lesResult['adresse'] = false;
+=======
+            $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,".$o->getAdresse().",".$o->getVille().",".$o->getCodepostal().")";
+            $resultAjout = $this->DAO->bddQuery($requeteAdresseAjout);
+            $requeteAdresseId="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
+       
+        echo "salut";
+            if($resultId = $this->DAO->bddQuery($requeteAdresseId)){
+                
+                // traiter le retour
+                $compte4 = array();
+                foreach($resultId as $obj){
+                    $compte3[] = $obj;
+                }
+                $sonAdresse=$compte4[0]['id_adresse'];
+                $lesResult['adresse']=true;
+            }
+            else{
+                // gerer l'erreur
+                $lesResult['adresse']=false;
+            }
+>>>>>>> b9ded2bf87e89ca6ec0af89ecdca1145ba477667
         }
         // echo "117 : ".$compte3;
         var_dump($sonAdresse);

@@ -10,25 +10,6 @@ class DAO_mysql
         $this->bddConnexion();
     }
 
-    private function configBdd()
-    {
-        return $bdd = array(
-            'host' => "localhost",
-            'user' => "root",
-            'pass' => "",
-            'database' => "application_gps",
-            'charset' => "utf8",
-        );
-
-        /*  return $bdd = array(
-    'host' => "localhost",
-    'user' => "pvi-s01",
-    'pass' => "philippe31",
-    'database' => "appli_GPS",
-    'charset' => "utf8",
-    ); */
-    }
-
     public function bddConnexion()
     {
         $this->myBdd = new mysqli(
@@ -66,8 +47,21 @@ class DAO_mysql
         }
     }
 
-    public function __destruct()
-    {
-        $this->bddDeconnexion();
+    private function configBdd(){
+        //return $bdd = array(
+        //    'host'  =>  "localhost",
+        //    'user'  =>  "root",
+        //    'pass'  =>    "",
+        //    'database'=>    "application_gps",
+        //    'charset'   =>  "utf8"
+        //);
+        return $bdd = array(
+        'host'  =>  "localhost",
+        'user'  =>  "pvi-s01",
+        'pass'  =>    "philippe31",
+        'database'=>    "appli_GPS",
+        'charset'   =>  "utf8"
+        );
     }
 }
+
