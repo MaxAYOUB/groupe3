@@ -27,7 +27,7 @@
                  
                     <li class="dropdown">
                       <a id="admin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin 
-                          <span ><img src="images/avatar/avataricon.jpg "></span>
+                          <span ><img src="images\avataricon.jpg "></span>
                         </a>
                       <ul  class="dropdown-menu" >
                         <li><a href="#">Profil</a></li>
