@@ -101,138 +101,145 @@ class modelGeneral
         }
     }
 
-    public function authentification($obj)
-    {
-        $requete = "";
+    public function authentification($obj){
+        // var_dump($obj);
+            
+        $requete="";
         //ca dit si un identifiant et un mot de passe a été rentré
-        if ($obj->getTypetape() != "" && $obj->getMotdepasse() != "") {
-
-            if ($obj->getTypetape() == "email") {
+        if ($obj->getTypetape()!="" && $obj->getMotdepasse()!=""){
+            
+            if ($obj->getTypetape()=="email"){
                 // var_dump($obj->getTypetape());
-                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `email`='" . $obj->getIdentifiant() . "'";
-            } else {
-                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `pseudo`='" . $obj->getIdentifiant() . "'";
+                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `email`='".$obj->getIdentifiant()."'";
+            }else {
+                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `pseudo`='".$obj->getIdentifiant()."'";
             }
-
+            
+            // var_dump($requete);
             //recupére les infos de l'utilisateur return false si il n'existe pas
-            if ($result = $this->DAO->bddQuery($requete)) {
+            if($result = $this->DAO->bddQuery($requete)){
                 // traiter le retour
                 $compte = array();
-                foreach ($result as $obj1) {
+                foreach($result as $obj1){
                     $compte[] = $obj1;
                 }
-            } else {
+            }
+            else{
                 // gerer l'erreur
-                // var_dump($obj);
+            // var_dump($obj);
                 return false;
             }
             //test coder le mot de passe de la base
-            $result[0]['mot_de_passe'] = md5($result[0]['mot_de_passe'], $raw_output = false);
+            $result[0]['mot_de_passe']=md5($result[0]['mot_de_passe'],$raw_output=false);
 
             //verifie si le bon mot de passe a été tapé
-            // var_dump($obj);
+            var_dump($result);
             // var_dump($result[0]);
-            if ($result[0]['mot_de_passe'] == $obj->getMotdepasse()) {
-
-                $requete2 = "SELECT `avatar` FROM `avatar` WHERE `id_avatar`='" . $result[0]['id_avatar'] . "'";
+            if ($result[0]['mot_de_passe']==$obj->getMotdepasse()){
+                
+                $requete2="SELECT `avatar` FROM `avatar` WHERE `id_avatar`='".$result[0]['id_avatar']."'";
 
                 //récupére l'avatar utilisé par l'utilisateur
-                if ($result2 = $this->DAO->bddQuery($requete2)) {
-                    // traiter le retour
-                    $compte = array();
-                    foreach ($result2 as $obj2) {
-                        $compte[] = $obj2;
+                    if($result2 = $this->DAO->bddQuery($requete2)){
+                        // traiter le retour
+                        $compte = array();
+                        foreach($result2 as $obj2){
+                            $compte[] = $obj2;
+                        }
                     }
-                } else {
-                    // gerer l'erreur
-                    return false;
-                }
+                    else{
+                        // gerer l'erreur
+                        return false;
+                    }
 
-                //met toutes les infos dans un array pour le retourner au ctrlGeneral
-                $result[0]['avatar'] = $result2[0]['avatar'];
+                    //met toutes les infos dans un array pour le retourner au ctrlGeneral
+                    $result[0]['avatar']=$result2[0]['avatar'];
 
-                // var_dump($result);
+                    // var_dump($result);
                 return $result[0];
-            } else {
+            }else{
                 // var_dump($obj);
                 return false;
             }
-        } else {
+        }else{
             // var_dump($obj);
             return false;
         }
     }
 
-    public function updateCompte($o)
-    {
+    public function updateCompte($o){
+        
+        $sonAdresse="";
+        $sonAppareil="";
+        $sonAvatar="";
 
-        $sonAdresse = "";
-        $sonAppareil = "";
-        $sonAvatar = "";
+        $lesResult=array();
 
-        $lesResult = array();
 
-        $requeteAvatar = "SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar`='" . $o->getAvatar() . "'";
+        $requeteAvatar="SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar`='".$o->getAvatar()."'";
 
-        if ($result = $this->DAO->bddQuery($requeteAvatar)) {
+        if($result = $this->DAO->bddQuery($requeteAvatar)){
             // traiter le retour
             $compte1 = array();
-            foreach ($result as $obj) {
+            foreach($result as $obj){
                 $compte1[] = $obj;
             }
-            $sonAvatar = $compte1[0]['id_avatar'];
-            $lesResult['avatar'] = true;
-        } else {
+            $sonAvatar=$compte1[0]['id_avatar'];
+            $lesResult['avatar']=true;
+        }
+        else{
             // gerer l'erreur
-            $lesResult['avatar'] = false;
+            $lesResult['avatar']=false;
         }
         var_dump($sonAvatar);
 
-        $requeteAppareil = "SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil`='" . $o->getAppareil() . "'";
-
-        if ($result = $this->DAO->bddQuery($requeteAppareil)) {
+        $requeteAppareil="SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil`='".$o->getAppareil()."'";
+       
+        if($result = $this->DAO->bddQuery($requeteAppareil)){
             // traiter le retour
             $compte2 = array();
-            foreach ($result as $obj) {
+            foreach($result as $obj){
                 $compte2[] = $obj;
             }
-            $sonAppareil = $compte2[0]['id_appareil'];
-            $lesResult['appareil'] = true;
-        } else {
+            $sonAppareil=$compte2[0]['id_appareil'];
+            $lesResult['appareil']=true;
+        }
+        else{
             // gerer l'erreur
-            $lesResult['appareil'] = false;
+            $lesResult['appareil']=false;
         }
         var_dump($sonAppareil);
 
-        $requeteAdresse = "SELECT `id_adresse` FROM `adresse` WHERE `adresse`='" . $o->getAdresse() . "' AND `CP`='" . $o->getCodepostal() . "'";
-
+        $requeteAdresse="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
+       
         // echo "salut";
-        if ($result = $this->DAO->bddQuery($requeteAdresse)) {
-
+        if($result = $this->DAO->bddQuery($requeteAdresse)){
+            
             // traiter le retour
             $compte3 = array();
-            foreach ($result as $obj) {
+            foreach($result as $obj){
                 $compte3[] = $obj;
             }
-            $sonAdresse = $compte3[0]['id_adresse'];
-            $lesResult['adresse'] = true;
-        } else {
+            $sonAdresse=$compte3[0]['id_adresse'];
+            $lesResult['adresse']=true;
+        }
+        else{
             // gerer l'erreur
-<<<<<<< HEAD
-            $lesResult['adresse'] = false;
-=======
-            $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,".$o->getAdresse().",".$o->getVille().",".$o->getCodepostal().")";
+            $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,'".$o->getAdresse()."','".$o->getVille()."','".$o->getCodepostal()."')";
             $resultAjout = $this->DAO->bddQuery($requeteAdresseAjout);
+            var_dump($requeteAdresseAjout);
             $requeteAdresseId="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
        
-        echo "salut";
+                echo "salut";
             if($resultId = $this->DAO->bddQuery($requeteAdresseId)){
                 
+                var_dump($resultId);
                 // traiter le retour
                 $compte4 = array();
                 foreach($resultId as $obj){
-                    $compte3[] = $obj;
+                    $compte4[] = $obj;
                 }
+                var_dump($compte4);
                 $sonAdresse=$compte4[0]['id_adresse'];
                 $lesResult['adresse']=true;
             }
@@ -240,54 +247,56 @@ class modelGeneral
                 // gerer l'erreur
                 $lesResult['adresse']=false;
             }
->>>>>>> b9ded2bf87e89ca6ec0af89ecdca1145ba477667
         }
+        // var_dump($resultId);
         // echo "117 : ".$compte3;
         var_dump($sonAdresse);
         var_dump($lesResult);
-        if ($lesResult['avatar'] == true && $lesResult['appareil'] == true && $lesResult['adresse'] == true) {
-            $requeteUpdate = "UPDATE `user` SET `civilite`='" . $o->getCivilite() . "', `nom`='" . $o->getNom() .
-            "', `prenom`='" . $o->getPrenom() . "',`id_avatar` ='" . $sonAvatar . "', `id_adresse`='" . $sonAdresse . "', `id_appareil`='" . $sonAppareil . "'
-            WHERE `pseudo`='" . $o->getPseudo() . "'";
-
-            if ($result = $this->DAO->bddQuery($requeteUpdate)) {
-
+        if ($lesResult['avatar']==true && $lesResult['appareil']==true && $lesResult['adresse']==true){
+            $requeteUpdate= "UPDATE `user` SET `civilite`='".$o->getCivilite()."', `nom`='".$o->getNom().
+            "', `prenom`='".$o->getPrenom()."',`id_avatar` ='".$sonAvatar."', `id_adresse`='".$sonAdresse."', `id_appareil`='".$sonAppareil."'
+            WHERE `pseudo`='".$o->getPseudo()."'";
+echo $requeteUpdate;
+            if($result = $this->DAO->bddQuery($requeteUpdate)){
+            
                 // traiter le retour
                 $compte4 = array();
-                foreach ($result as $obj) {
+                foreach($result as $obj){
                     $compte4[] = $obj;
                 }
                 echo "true";
                 // $sonAdresse=$compte3[0]['id_adresse'];
                 // $lesResult['adresse']=true;
-            } else {
+            }
+            else{
                 // gerer l'erreur
             }
 
-            $requeteVerif = "SELECT * FROM `user` WHERE `pseudo`='" . $o->getPseudo() . "'";
+            $requeteVerif= "SELECT * FROM `user` WHERE `pseudo`='".$o->getPseudo()."'";
 
-            if ($result = $this->DAO->bddQuery($requeteVerif)) {
-
+            if($result = $this->DAO->bddQuery($requeteVerif)){
+            
                 // traiter le retour
                 $compte5 = array();
-                foreach ($result as $obj) {
+                foreach($result as $obj){
                     $compte5[] = $obj;
                 }
-                $lesResult['sonUpdate'] = true;
+                $lesResult['sonUpdate']=true;
                 // $sonAdresse=$compte3[0]['id_adresse'];
                 // $lesResult['adresse']=true;
-            } else {
+            }
+            else{
                 // gerer l'erreur
-                $lesResult['sonUpdate'] = false;
+                $lesResult['sonUpdate']=false;
             }
             // var_dump($compte5);
-            if ($lesResult['sonUpdate']) {
-                if ($compte5[0]['civilite'] == $o->getCivilite() && $compte5[0]['nom'] == $o->getNom() && $compte5[0]['prenom'] == $o->getPrenom() &&
-                    $compte5[0]['id_adresse'] == $sonAdresse && $compte5[0]['id_appareil'] == $sonAppareil && $compte5[0]['id_avatar'] == $sonAvatar) {
+            if ($lesResult['sonUpdate']){
+                if ($compte5[0]['civilite']==$o->getCivilite() && $compte5[0]['nom']==$o->getNom() && $compte5[0]['prenom']==$o->getPrenom() &&
+                $compte5[0]['id_adresse']==$sonAdresse && $compte5[0]['id_appareil']==$sonAppareil && $compte5[0]['id_avatar']==$sonAvatar){
 
-                    $lesResult['fait'] = true;
-                } else {
-                    $lesResult['fait'] = false;
+                    $lesResult['fait']=true;
+                }else{
+                    $lesResult['fait']=false;
                 }
             }
         }
