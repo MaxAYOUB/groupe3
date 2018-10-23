@@ -1,50 +1,52 @@
 <?php
-class ModelAdmin{
+class ModelAdmin
+{
     private $dao;
     /// constructeur
-     public function __construct(){
-        $this->dao=new DAO_mysql;
-    }   
+    public function __construct()
+    {
+        $this->dao = new DAO_mysql;
+    }
     //fonction pour traiter supprimer un utilisateur dans la base
-   
-    public function supprimerCompte($obj){
-        $result="";
+
+    public function supprimerCompte($obj)
+    {
+        $result = "";
         // $obj->getIdentifiant()="email";
         // $obj->getIdentifiant()="pseudo";
-        if ($obj->getTypetape()=="email"){
+        if ($obj->getTypetape() == "email") {
             var_dump($obj->getIdentifiant());
-            $compte="UPDATE `user` SET `supprime`='1' WHERE `email`='".$obj->getIdentifiant()."'"; 
+            $compte = "UPDATE `user` SET `supprime`='1' WHERE `email`='" . $obj->getIdentifiant() . "'";
             $this->dao->bddQuery($compte);
-            $requete = "SELECT `supprime` FROM `user` WHERE `email`='".$obj->getIdentifiant()."'";
-            $result=$this->dao->bddQuery($requete);
+            $requete = "SELECT `supprime` FROM `user` WHERE `email`='" . $obj->getIdentifiant() . "'";
+            $result = $this->dao->bddQuery($requete);
+            var_dump($result);
+        } else {
+            $compte = "UPDATE `user` SET `supprime`='1' WHERE `pseudo`='" . $obj->getIdentifiant() . "'";
+            $this->dao->bddQuery($compte);
+            $requete = "SELECT `supprime` FROM `user` WHERE `pseudo`='" . $obj->getIdentifiant() . "'";
+            $result = $this->dao->bddQuery($compte);
             var_dump($result);
         }
-        else{
-            $compte="UPDATE `user` SET `supprime`='1' WHERE `pseudo`='".$obj->getIdentifiant()."'"; 
-            $this->dao->bddQuery($compte);
-            $requete = "SELECT `supprime` FROM `user` WHERE `pseudo`='".$obj->getIdentifiant()."'";
-            $result=$this->dao->bddQuery($compte);
-            var_dump($result);
-        }
-            
-        
-            return $result[0];
-       
+
+        return $result[0];
+
     }
-    //fonction pour ajouter un compte 
-     public function ajouterCompte($data){
+    //fonction pour ajouter un compte
+    public function ajouterCompte($data)
+    {
         var_dump($resultat);
-        $requeteAjoutAdresse="INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
-         $resultat=$this->dao->bddQuery($requeteAjoutAdresse);
-         var_dump($resultat);
-          
-         // Mise en place des clés de cryptage
-        $cle = md5("Notre application".$data->getEmail(),$row_output=FALSE);
-        $cleMDP = md5("Notre application".$data->getMotdepasse(),$row_output=FALSE);
+        $requeteAjoutAdresse = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
+        $resultat = $this->dao->bddQuery($requeteAjoutAdresse);
+        var_dump($resultat);
+
+        // Mise en place des clés de cryptage
+        $cle = md5("Notre application" . $data->getEmail(), $row_output = false);
+        $cleMDP = md5("Notre application" . $data->getMotdepasse(), $row_output = false);
         var_dump($cle);
-        
+
         // Requete pour l'insertion d'un nouvel utilisateur
-        $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`) 
+        $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`)
         VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getPrenom()}' AND `CP` = '{$data->getCodepostal()}'),
                 (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = '{$data->getAvatar()}'),
                 (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'));";
@@ -52,64 +54,63 @@ class ModelAdmin{
         $result = $this->dao->bddQuery($sql);
         var_dump($result);
         return $result;
-        
-        
-     }
-        //fonction pour modifier un compte
-        public function modifierCompte($data){
-          $requeteModifAdresse="UPDATE `adresse` set (`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}') WHERE (SELECT `pseudo`FROM `user`WHERE`pseudo`='{$data->getPseudo()}')";
-            $resultat=$this->dao->bddQuery($requeteModifAdresse);
-         var_dump($resultat);
-             
-            //Mise en place des clés de cryptage
-          $cle = md5("Notre application".$data->getEmail(),$row_output=FALSE);
-           $cleMDP = md5("Notre application".$data->getMotdepasse(),$row_output=FALSE);
-         var_dump($cle);
-      
-       
-       // Requete pour modifier un utilisateur
-       $requeteModifCompte = "UPDATE 'user' set (`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`) 
+
+    }
+    //fonction pour modifier un compte
+    public function modifierCompte($data)
+    {
+        $requeteModifAdresse = "UPDATE `adresse` set (`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}') WHERE (SELECT `pseudo`FROM `user`WHERE`pseudo`='{$data->getPseudo()}')";
+        $resultat = $this->dao->bddQuery($requeteModifAdresse);
+        var_dump($resultat);
+
+        //Mise en place des clés de cryptage
+        $cle = md5("Notre application" . $data->getEmail(), $row_output = false);
+        $cleMDP = md5("Notre application" . $data->getMotdepasse(), $row_output = false);
+        var_dump($cle);
+
+        // Requete pour modifier un utilisateur
+        $requeteModifCompte = "UPDATE 'user' set (`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`)
        VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getPrenom()}' AND `CP` = '{$data->getCodepostal()}'),
                (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = '{$data->getAvatar()}'),
                (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'))WHERE `pseudo`='{$data->getPseudo()}';";
-       // Renvoi les informations demandées dans une variable result
-      
-      // SELECT
-				//	co.id_contact, co.nom, co.prenom, co.tel, ci.libelle as civilite, ci.id_civilite, o.id_objet, o.libelle as objet
-				//	FROM contact AS co
-				//	JOIN civilite AS ci
-				//	ON co.id_civilite = ci.id_civilite
-				//	JOIN objet AS o
-				///	ON co.id_objet = o.id_objet
-				//	ORDER BY co.id_objet ASC, co.id_contact DESC
-				//	";
+        // Renvoi les informations demandées dans une variable result
+
+        // SELECT
+        //    co.id_contact, co.nom, co.prenom, co.tel, ci.libelle as civilite, ci.id_civilite, o.id_objet, o.libelle as objet
+        //    FROM contact AS co
+        //    JOIN civilite AS ci
+        //    ON co.id_civilite = ci.id_civilite
+        //    JOIN objet AS o
+        ///    ON co.id_objet = o.id_objet
+        //    ORDER BY co.id_objet ASC, co.id_contact DESC
+        //    ";
         $result = $this->dao->bddQuery($requeteModifCompte);
         var_dump($result);
         return $result;
     }
-        //fonction pour ajouter un avatar
-        public function ajouterAvatar($data){
-           $requeteAjoutAvatar = "INSERT INTO `avatar`(`id_avatar`, `avatar`, `slug_avatar`, `supprime`) VALUES (NULL,'{$data->getAvatar()}','{$data->getSlugavatar()}','{$data->getSupprime()}')" ;
-            $resultat=$this->dao->bddQuery($requeteAjoutAvatar);
-            $verifAvatar = "SELECT `id_avatar`FROM  `avatar` WHERE `slug_avatar`='".$data->getSlugavatar()."' ";
-            $resultat=$this->dao->bddQuery($verifAvatar);
-            //var_dump($resultat);
-            return $resultat;
+    //fonction pour ajouter un avatar
+    public function ajouterAvatar($data)
+    {
+        $requeteAjoutAvatar = "INSERT INTO `avatar`(`id_avatar`, `avatar`, `slug_avatar`, `supprime`) VALUES (NULL,'{$data->getAvatar()}','{$data->getSlugavatar()}','{$data->getSupprime()}')";
+        $resultat = $this->dao->bddQuery($requeteAjoutAvatar);
+        $verifAvatar = "SELECT `id_avatar`FROM  `avatar` WHERE `slug_avatar`='" . $data->getSlugavatar() . "' ";
+        $resultat = $this->dao->bddQuery($verifAvatar);
+        //var_dump($resultat);
+        return $resultat;
 
     }
-        //fonction pour supprimer un avatar
-        public function supprimerAvatar($data){
-          $supression = $data->getSupprime();
-          var_dump($supression);
-             if ($supression == 1) {
-               $requeteSupression= "DELETE FROM `avatar` WHERE `slug_avatar` = '".$data->getSlugavatar()."'";
-               $resultat=$this->dao->bddQuery($requeteSupression);
-               var_dump($resultat);
-               
-           } 
-           
+    //fonction pour supprimer un avatar
+    public function supprimerAvatar($data)
+    {
+
+        $requeteSupression = "UPDATE `avatar` SET `supprime` = 1 WHERE `slug_avatar` = '" . $data->getSlugavatar() . "'";
+        $resultat = $this->dao->bddQuery($requeteSupression);
+        $verfSuprrime = " SELECT `supprime` FROM  `avatar`WHERE `slug_avatar` = '" . $data->getSlugavatar() . "'";
+        $resultat = $this->dao->bddQuery($requeteSupression);
+
     }
-        //fonction pour verifier un utilisateur
-        public function ioop($data){
+    //fonction pour verifier un utilisateur
+    public function ioop($data)
+    {
     }
 }
