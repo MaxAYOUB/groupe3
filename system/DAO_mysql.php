@@ -35,6 +35,7 @@ class DAO_mysql
         $data = array();
         if (!$result = $this->myBdd->query($sql)) {
             die("Erreur de BDD : {$this->myBdd->connect_errno}");
+            return false;
         } else {
             if (is_object($result)) {
                 while ($row = $result->fetch_assoc()) {
