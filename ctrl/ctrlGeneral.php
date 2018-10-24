@@ -3,7 +3,6 @@
  *   @T.Noël @M.Ayoub
  *   Construction de la classe ctrlGeneral
  */
-
 class ctrlGeneral
 {
     private $vue;
@@ -38,7 +37,6 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
-/* var_dump($_POST); */
         $dataTab = array(
             'civilite' => $_POST['civilite'],
             'nom' => $_POST['nom'],
@@ -84,9 +82,7 @@ class ctrlGeneral
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != ''
-        //  && $data['avatar'] != '' 
-         && $data['motdepasse'] != '' && $data['appareil'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
             return true;
         } else {
             return false;
@@ -110,12 +106,9 @@ class ctrlGeneral
 
     public function verifierAuthentification(){
         $this->user=new Compte($_POST);
-
         $verifAuthentification=$this->model->authentification($this->user);
-
         if ($verifAuthentification!=false){
             $this->gererSession($verifAuthentification);
-            
             $this->vue->afficherConnexionOk();
         }else{
             $this->vue->afficherConnexionNotOk($verifAuthentification);
@@ -124,14 +117,10 @@ class ctrlGeneral
 
     public function AuthentificationApplication(){
         $tab=json_decode($_POST, true);
-
         $this->user=new Compte($tab);
-
         $verifAuthentification=$this->model->authentification($this->user);
-
         if ($verifAuthentification!=false){
-            $this->gererSession($verifAuthentification);
-            
+            $this->gererSession($verifAuthentification);            
         }else{
             $_SESSION['erreur']="mauvais identifiant ou mot de passe";
         }
@@ -139,27 +128,11 @@ class ctrlGeneral
     }
 
     public function getModifierCompte(){
-
-        //test
-        // $a['pseudo']="max";
-        // $a['motdepasse']="toulouse31";
-        // $a['civilite']="Mme";
-        // $a['nom']="ayoubRouan";
-        // $a['prenom']="maxime";
-        // $a['avatar']="avatar";
-        // $a['appareil']="appareil2";
-        // $a['adresse']="15 av Victor Hugo";
-        // $a['ville']="tournefeuille";
-        // $a['codePostal']=31170;
         $this->user=new User($a);
-
         $lesUpdates=array();
-
         $lesUpdates=$this->model->updateCompte($this->user);
         var_dump($lesUpdates);
     }
-
-
-    }
+}
     
 
