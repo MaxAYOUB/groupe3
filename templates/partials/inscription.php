@@ -94,7 +94,6 @@
                 </div>
             </div>
 
-
             <div class="form-group">
                 <label for="pseudo" class="col-sm-3 control-label">Pseudonyme</label>
                 <div class="col-sm-9">
