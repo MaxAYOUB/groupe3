@@ -126,7 +126,7 @@
             <div class="col-sm-9">
                <!-- bouton choisir avatars -->
                 <input type="button" value="Choisir avatar" id="exampleInputFile" data-toggle="modal" data-target="#myModal" name="avatar">
-                <div><p>Avatar obligatoire</p></div>
+                <div><p id="textAvatar">Avatar obligatoire</p></div>
             </div>
         </div>
                 <!-- pop up choisir avatars -->
@@ -147,10 +147,12 @@
                  
                     <!-- Boucle Php qui récupère les avatars dans la BDD locale -->
                     <?php
-                    $avatar = ($database['avatar']);
-                    for ($i = 0; $i < count($avatar); $i++) {
-                        echo "<img style='cursor:pointer' src='{$avatar[$i]['avatar']}'</br>";
-                    }
+                        $avatar = ($database['avatar']);
+                        for ($i = 0; $i < count($avatar); $i++) {
+                            $slug = $avatar[$i]['slug_avatar'];
+                            // var_dump($slug);
+                            echo "<img name='avatar' id='{$slug}' onclick='enrgAvatar(\"{$slug}\")'style='cursor:pointer; margin:3px ' src='{$avatar[$i]['avatar']}'</br>";
+                        }
                     ?>
                     <!-- Fin de la boucle Php -->
 

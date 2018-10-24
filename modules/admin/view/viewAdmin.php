@@ -6,19 +6,13 @@ class ViewAdmin
     {
 
     }
+
+    
     public function afficherConsoleAdmin()
     {
+
     }
-    public function afficherRazOk()
-    {
-        echo ('ok');
-        /// include "templates/default.php";
-    }
-    public function afficherRazNotOk($data)
-    {
-        echo ('notok');
-        /// include "templates/default.php";
-    }
+
     public function afficherCompteOk()
     {
         echo ('compte ok');
@@ -29,16 +23,18 @@ class ViewAdmin
         echo ('compte notok');
         /// include "templates/default.php";
     }
-    public function afficherModifOk()
+
+    public function afficherRazOk()
     {
-        echo ('modif ok');
+        echo ('ok');
         /// include "templates/default.php";
     }
-    public function afficherModifNotOk($data)
+    public function afficherRazNotOk($data)
     {
-        echo ('modif notok');
+        echo ('notok');
         /// include "templates/default.php";
     }
+    
     public function afficherListeOk($data)
     {
         echo ('affiche liste ok');

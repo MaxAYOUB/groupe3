@@ -14,65 +14,65 @@ var contact = {
     'confirmationmotdepasse': "",
     'appareil': "",
     'setCivilite': function (n) {
-            this.civilite = n;
+        this.civilite = n;
         return;
     },
     'setNom': function (n) {
-        if (this.isAlpha(n) && n != ""){
+        if (this.isAlpha(n) && n != "") {
             this.nom = n;
-        }else{
+        } else {
             this.nom = "";
         }
-            
+
         return;
     },
     'setPrenom': function (p) {
-        if (this.isAlpha(p) && p != ""){
+        if (this.isAlpha(p) && p != "") {
             this.prenom = p;
-        }else{
+        } else {
             this.prenom = "";
         }
-            
+
         return;
     },
     'setTel': function (t) {
-        if (this.isNumerique(t) && t != ""){
+        if (this.isNumerique(t) && t != "") {
             this.telephone = t;
-        }else{
+        } else {
             this.telephone = "";
         }
-            
+
         return;
     },
     'setEmail': function (e) {
-        if (this.isEmail(e) && e != ""){
+        if (this.isEmail(e) && e != "") {
             this.email = e;
-        }else{
+        } else {
             this.email = "";
         }
-            
+
         return;
     },
     'setAdresse': function (n) {
-            this.adresse = n;
+        this.adresse = n;
         return;
     },
     'setVille': function (n) {
-        if (this.isAlpha(n) && n != ""){
+        if (this.isAlpha(n) && n != "") {
             this.ville = n;
-        }else{
+        } else {
             this.ville = "";
         }
-            
+
         return;
     },
     'setCodePostal': function (p) {
-        if (this.isNumerique(p) && p != ""){
+        if (this.isNumerique(p) && p != "") {
             this.codePostal = p;
-        }else{
+        } else {
             this.codePostal = "";
         }
-            
+
         return;
     },
     'setConditionsGenerales': function (t) {
@@ -158,7 +158,7 @@ var contact = {
         }
         return ok;
     },
-    'isEmail':function (val) {
+    'isEmail': function (val) {
         var ok = false;
         if (val != '') {
             var regex = /^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$/i;
@@ -167,17 +167,16 @@ var contact = {
         return ok;
     }
 }
+
+
+var Sonslug = "";
 window.onload = verification;
 
 function verification() {
-    
-    
+    console.log(Sonslug);
     var btn2 = document.getElementById("boutonFormulaire");
-    // console.log(btn2);
     btn2.addEventListener("click", function () {
-        // console.log("ca passe");
         var contact1 = Object.create(contact);
-        // console.log(contact1);
 
         contact1.setNom(document.getElementById("Nom").value);
         var test1 = contact1.getNom();
@@ -189,39 +188,31 @@ function verification() {
         var test4 = contact1.getEmail();
         contact1.setCivilite(document.getElementById("Civilite").value);
         var test5 = contact1.getCivilite();
-        // console.log(contact1);
         contact1.setPseudo(document.getElementById("Pseudo").value);
         var test6 = contact1.getPseudo();
         contact1.setMotdepasse(document.getElementById("Motdepasse").value);
         var test7 = contact1.getMotdepasse();
         contact1.setConfirmationmotdepasse(document.getElementById("Confirmationmotdepasse").value);
         var test9 = contact1.getConfirmationmotdepasse();
-        // console.log(contact1);
-        // var test8 = contact1.setAvatar(document.getElementById("Avatar").value);
-        // var test10 = contact1.setAppareil(document.getElementsByName("appareil").value);
+        var test8 = Sonslug;
         var lesAppareils = document.getElementsByName("appareil");
-        var test10="";
-        for (var i=0 ; i<lesAppareils.length;i++){
+        var test10 = "";
+        for (var i = 0; i < lesAppareils.length; i++) {
             if (lesAppareils[i].checked)
-            contact1.setAppareil(lesAppareils[i].value);
+                contact1.setAppareil(lesAppareils[i].value);
             test10 = contact1.getAppareil();
 
-            if(i==lesAppareils.length-1 && test10==""){
+            if (i == lesAppareils.length - 1 && test10 == "") {
                 contact1.setAppareil(test10)
             }
         }
-        // var test11 = contact1.setConditionsGenerales(document.getElementById("ConditionsGenerales").value);
         var condition = document.getElementById("ConditionsGenerales");
-        // console.log(condition);
-        // for (var i=0 ; i<condition.length;i++){
-            if (condition.checked){
-                contact1.setConditionsGenerales(true);
-            }else{
-                contact1.setConditionsGenerales(false);
-            }
-            var test11 = contact1.getConditionsGenerales();
-            
-        // }
+        if (condition.checked) {
+            contact1.setConditionsGenerales(true);
+        } else {
+            contact1.setConditionsGenerales(false);
+        }
+        var test11 = contact1.getConditionsGenerales();
         contact1.setAdresse(document.getElementById("Adresse").value);
         var test12 = contact1.getAdresse();
         contact1.setVille(document.getElementById("Ville").value);
@@ -231,106 +222,91 @@ function verification() {
 
         if (test1 != "" && test2 != "" && test3 != "" && test4 != "" && test5 != "" && test6 != "" && test7 != "" &&
             // test8 != "" && 
-            test9 ==test7 && test10 != "" && test11 == true) {
-                var result={};
-                result.civilite=test5;
-                result.nom=test1;
-                result.prenom=test2;
-                result.telephone=test3;
-                result.email=test4;
-                result.pseudo=test6;
-                result.motdepasse=test7;
-                // result.avatar=test8;
-                result.avatar="avatar";
-                result.appareil=test10;
-                result.conditionsGenerales=test11;
-                result.adresse=test12;
-                result.ville=test13;
-                result.codePostal=test14;
-                console.log(JSON.stringify(result));
-                console.log(typeof JSON.stringify(result));
-                myAjax(JSON.stringify(result));
-                // console.log(result);
-                // console.log("passe");
-        }else{
-            if(test1!= ""){
-                document.getElementById("Nom").style.borderColor="none";
-            }else{
-                document.getElementById("Nom").style.borderColor="red";
+            test9 == test7 && test10 != "" && test11 == true) {
+            var result = {};
+            result.civilite = test5;
+            result.nom = test1;
+            result.prenom = test2;
+            result.telephone = test3;
+            result.email = test4;
+            result.pseudo = test6;
+            result.motdepasse = test7;
+            result.avatar = test8;
+            result.appareil = test10;
+            result.conditionsGenerales = test11;
+            result.adresse = test12;
+            result.ville = test13;
+            result.codePostal = test14;
+            myAjax(JSON.stringify(result));
+        } else {
+            if (test1 != "") {
+                document.getElementById("Nom").style.borderColor = "none";
+            } else {
+                document.getElementById("Nom").style.borderColor = "red";
             }
-            if(test2!= ""){
-                document.getElementById("Prenom").style.borderColor="none";
-            }else{
-                document.getElementById("Prenom").style.borderColor="red";
+            if (test2 != "") {
+                document.getElementById("Prenom").style.borderColor = "none";
+            } else {
+                document.getElementById("Prenom").style.borderColor = "red";
             }
-            if(test3!= ""){
-                document.getElementById("Telephone").style.borderColor="none";
-            }else{
-                document.getElementById("Telephone").style.borderColor="red";
+            if (test3 != "") {
+                document.getElementById("Telephone").style.borderColor = "none";
+            } else {
+                document.getElementById("Telephone").style.borderColor = "red";
             }
-            if(test4!= ""){
-                document.getElementById("Email").style.borderColor="none";
-            }else{
-                document.getElementById("Email").style.borderColor="red";
+            if (test4 != "") {
+                document.getElementById("Email").style.borderColor = "none";
+            } else {
+                document.getElementById("Email").style.borderColor = "red";
             }
-            if(test6!= ""){
-                document.getElementById("Pseudo").style.borderColor="none";
-            }else{
-                document.getElementById("Pseudo").style.borderColor="red";
+            if (test6 != "") {
+                document.getElementById("Pseudo").style.borderColor = "none";
+            } else {
+                document.getElementById("Pseudo").style.borderColor = "red";
             }
-            if(test7!= ""){
-                document.getElementById("Motdepasse").style.borderColor="none";
-            }else{
-                document.getElementById("Motdepasse").style.borderColor="red";
+            if (test7 != "") {
+                document.getElementById("Motdepasse").style.borderColor = "none";
+            } else {
+                document.getElementById("Motdepasse").style.borderColor = "red";
             }
-            if(test9== test7){
-                document.getElementById("Confirmationmotdepasse").style.borderColor="none";
-            }else{
-                document.getElementById("Confirmationmotdepasse").style.borderColor="red";
+            if (test9 == test7) {
+                document.getElementById("Confirmationmotdepasse").style.borderColor = "none";
+            } else {
+                document.getElementById("Confirmationmotdepasse").style.borderColor = "red";
             }
-            if(test11!= ""){
-                document.getElementById("labelCG").style.color="none";
-            }else{
-                document.getElementById("labelCG").style.color="red";
+            if (test11 != "") {
+                document.getElementById("labelCG").style.color = "none";
+            } else {
+                document.getElementById("labelCG").style.color = "red";
             }
-            // console.log(test2!= "");
-            // console.log(test3!= "");
-            // console.log(test4!= "");
-            // console.log(test5!= "");
-            // console.log(test6!= "");
-            // console.log(test7!= "");
-            // console.log(test9==test7);
-            // console.log(test10!= "");
-            // console.log(test11==true);
-            // console.log("passe pas");
-            // console.log("passe");
         }
     }, false);
-    
 }
 
-
-
-
-
 function myAjax(obj) {
-    console.log(typeof obj);
     $.ajax({
         url: "ctrlGeneral/enregForm",
         type: "POST",
         dataType: 'html',
         data: obj,
         success: function (result) {
-            document.getElementById("article").innerHTML=result;
-            console.log(result);
+            document.getElementById("article").innerHTML = result;
         },
         error: function (result) {
             alert("error");
-            console.log(result);
         },
-        complete: function (result) {
-            console.log('fini');
-        }
-
+        complete: function (result) {}
     });
+}
+
+function enrgAvatar(slug) {
+    if (Sonslug != "") {
+        document.getElementById(Sonslug).style.border = "1.5px hidden";
+        document.getElementById(Sonslug).style.margin = "3px";
+    }
+    Sonslug = slug;
+    document.getElementById(Sonslug).style.margin = "1.5px";
+    document.getElementById(Sonslug).style.border = "1.5px solid green";
+    document.getElementById(Sonslug).style.borderRadius = "30px";
+    document.getElementById("textAvatar").innerHTML=Sonslug;
 }

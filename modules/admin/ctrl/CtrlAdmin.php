@@ -36,11 +36,11 @@ class CtrlAdmin
         //suppression compte
         $compteSup = $this->model->supprimerCompte($this->user);
         if ($compteSup['supprime'] == "1") {
-            $this->vue->afficherRazOk();
+            $this->vue->afficherCompteOk();
         } else {
-            $this->vue->afficherRazNotOk();
+            $this->vue->afficherCompteNotOk();
         }
-        // ajouter un compte
+        // Ajouter un compte
         $b['civilite'] = "M";
         $b['nom'] = "tabert";
         $b['prenom'] = "eric fdsg dfh df";
@@ -59,18 +59,18 @@ class CtrlAdmin
         $this->user = new User($b);
 
         $ajoutCompte = $this->model->ajouterCompte($this->user);
-        // retour du model
+        // Retour du model
         if ($ajoutCompte) {
             $this->vue->afficherCompteOk();
         } else {
             $this->vue->afficherCompteNotOk();
         }
 
-        //modifier un compte
+        // Modifier un compte
         $this->user = new User($b);
         $modifCompte = $this->model->modifierCompte($this->user);
 
-        //retour du model
+        // Retour du model
         if ($modifCompte) {
             $this->vue->afficherCompteOk();
         } else {
@@ -88,23 +88,28 @@ class CtrlAdmin
         $this->avatar = new avatar($av);
 
         if ($suprimmer == 0) {
-
-            //ajouter avatar
-
+            // Ajouter avatar
             $ajoutAvatar = $this->model->ajouterAvatar($this->avatar);
-            var_dump($ajoutAvatar);
-
         } else {
-
-            //supprimer avatar
+            // Supprimer avatar
 
             $supprimeAvatar = $this->model->supprimerAvatar($this->avatar);
-            var_dump($this->avatar);
         }
         if ($ajoutAvatar != false) {
             $this->vue->afficherAvatarOk();
-        } else { //view supprime ok?
+        } else {
             $this->vue->afficherAvatarNotOk();
         }
     }
+
+    public function mettreEnAdmin($pseudo){
+        $a=array();
+        $a['identifiant']=$pseudo;
+        $a['motdepasse']="";
+
+        $this->Compte=new Compte($a);
+
+        $this->model->passerEnAdmin($this->compte);
+    }
+
 }

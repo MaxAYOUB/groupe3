@@ -11,7 +11,7 @@
         </style>
 
 <!-- test merge -->
-<form class="form-horizontal ;" style="padding:10%;" action="ctrlGeneral/verifierAuthentification" method="POST">
+<form class="form-horizontal" id="identification" style="padding:10%" action="" method="POST">
         <div class="form-group">
           <h1 style="text-align: center;">Connexion</h1>
           <br>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Se connecter</button>
+            <button type="button" id="Seconnecter" class="btn btn-default">Se connecter</button>
           </div>
           <p data-toggle="modal" data-target="#myModal1" style="text-align: center;">Identifiant ou mot de passe oublié</p>
         </div>

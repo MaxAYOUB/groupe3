@@ -15,7 +15,7 @@ class ModelAdmin
         $resultat = $this->dao->bddQuery($requeteAjoutAdresse);
         // Mise en place des clés de cryptage
         $cle = md5("Notre application" . $data->getEmail(), $row_output = false);
-        $cleMDP = md5("Notre application" . $data->getMotdepasse(), $row_output = false);
+        $cleMDP = $data->getMotdepasse();
         // var_dump($cle);
         // Requete pour l'insertion d'un nouvel utilisateur
         $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`, `cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`)
@@ -70,7 +70,7 @@ class ModelAdmin
 
         // Mise en place des clés de cryptage
         $cle = md5("Notre application" . $data->getEmail(), $row_output = false);
-        $cleMDP = md5("Notre application" . $data->getMotdepasse(), $row_output = false);
+        $cleMDP = $data->getMotdepasse();
 
         // Requete pour modifier un utilisateur
         if ($lesResult['adresse'] == true) {
@@ -161,6 +161,38 @@ class ModelAdmin
         $resultat = $this->dao->bddQuery($requeteSupression);
         $verfSuprrime = " SELECT `supprime` FROM  `avatar`WHERE `slug_avatar` = '" . $data->getSlugavatar() . "'";
         $resultat = $this->dao->bddQuery($requeteSupression);
+    }
+
+    public function passerEnAdmin($obj){
+        $requeteAdmin="";
+        if ($obj->getTypetape()=="email"){
+            $requeteAdmin = "UPDATE `user` SET `admin`='true' WHERE `email`={$obj->getIdentifiant()}";
+        }else{
+            $requeteAdmin = "UPDATE `user` SET `admin`='true' WHERE `pseudo`={$obj->getIdentifiant()}";
+        }
+
+        $result = $this->dao->bddQuery($requeteAdmin);
+        $requeteVerif="";
+        if ($obj->getTypetape()=="email"){
+            $requeteVerif="SELECT `admin` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
+        }else{
+            $requeteVerif="SELECT `admin` FROM `user` WHERE `pseudo`={$obj->getIdentifiant()}";
+        }
+
+        if ($result2 = $this->DAO->bddQuery($requeteVerif)) {
+            $compte2 = array();
+            foreach ($result2 as $obj2) {
+                $compte2[] = $obj2;
+            }
+            $tabErreur['pseudo'] = true;
+            if ($compte2[0]['admin']==true){
+                return true;
+            }else{
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
 
