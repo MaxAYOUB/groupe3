@@ -21,12 +21,10 @@
                    
                   <li><a id = "icon1" class="lien" href="#" style="padding: 0px;padding-top: 4px;padding-right: 10px; " ><img src="images\appleicon.png "></a>
                   </li>
-                  <li><a  id = "inscrire" href="#">S'inscrire</a></li>
-                    
-                  <li ><a id = "connecter" href="#" >Se connecter</a></li>
+             
                  
                     <li class="dropdown">
-                      <a id="admin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <a id="admin"  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                       <?php if ($_SESSION['admin']==true){
                         echo "Admin";
                       }else{
@@ -37,9 +35,21 @@
                           <span ><img src="images/avatar/avataricon.jpg "></span>
                         </a>
                       <ul  class="dropdown-menu" >
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Mon compte</a></li>
-                        <li><a href="#">Paramètres</a></li>
+                        <li><a href="ctrlGeneral/getCompte">Profil</a></li>
+                   
+                     
+                        
+
+                        <li><a href="ctrlGeneral/getParametre">Paramètres</a></li>
+                        <?php if ($_SESSION['admin']==true){
+                        echo '<li><a href="ctrlGeneral/getListe">Liste des utilisateurs</a></li>
+                              
+                              <li><a href="ctrlGeneral/getGalerie">Galerie avatars</a></li>
+                              '
+                              ;
+                      }
+                      
+                      ?>
                         <li role="separator" class="divider"></li>
                         <li><a href="ctrlGeneral/getDeconnexion">Se déconnecter</a></li>
                       </ul>

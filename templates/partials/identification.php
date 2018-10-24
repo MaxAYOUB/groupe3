@@ -10,7 +10,6 @@
         }
         </style>
 
-<form class="form-horizontal ;" style="padding:10%;" action="index.php?c=ctrlGeneral&m=verifierAuthentification" method="POST">
 <!-- test merge -->
 <form class="form-horizontal ;" style="padding:10%;" action="ctrlGeneral/verifierAuthentification" method="POST">
         <div class="form-group">

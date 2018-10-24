@@ -101,21 +101,16 @@ class modelGeneral
         }
     }
 
-    public function authentification($obj){
-        // var_dump($obj);
-            
+    public function authentification($obj){            
         $requete="";
         //ca dit si un identifiant et un mot de passe a été rentré
         if ($obj->getTypetape()!="" && $obj->getMotdepasse()!=""){
             
             if ($obj->getTypetape()=="email"){
-                // var_dump($obj->getTypetape());
                 $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `email`='".$obj->getIdentifiant()."'";
             }else {
                 $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `pseudo`='".$obj->getIdentifiant()."'";
             }
-            
-            // var_dump($requete);
             //recupére les infos de l'utilisateur return false si il n'existe pas
             if($result = $this->DAO->bddQuery($requete)){
                 // traiter le retour
@@ -126,15 +121,12 @@ class modelGeneral
             }
             else{
                 // gerer l'erreur
-            // var_dump($obj);
                 return false;
             }
             //test coder le mot de passe de la base
             $result[0]['mot_de_passe']=md5($result[0]['mot_de_passe'],$raw_output=false);
 
             //verifie si le bon mot de passe a été tapé
-            // var_dump($result);
-            // var_dump($result[0]);
             if ($result[0]['mot_de_passe']==$obj->getMotdepasse()){
                 
                 $requete2="SELECT `avatar` FROM `avatar` WHERE `id_avatar`='".$result[0]['id_avatar']."'";
@@ -154,15 +146,11 @@ class modelGeneral
 
                     //met toutes les infos dans un array pour le retourner au ctrlGeneral
                     $result[0]['avatar']=$result2[0]['avatar'];
-
-                    // var_dump($result);
                 return $result[0];
             }else{
-                // var_dump($obj);
                 return false;
             }
         }else{
-            // var_dump($obj);
             return false;
         }
     }
@@ -176,7 +164,6 @@ class modelGeneral
 
         //sert a dire si toutes les requetes se sont bien passees
         $lesResult=array();
-
 
         //recupere l id de l'avatar choisi
         $requeteAvatar="SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar`='".$o->getAvatar()."'";
@@ -196,9 +183,6 @@ class modelGeneral
             
             $lesResult['avatar']=false;
         }
-        // var_dump($sonAvatar);
-
-
         //recupere l id de l'appareil choisi
         $requeteAppareil="SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil`='".$o->getAppareil()."'";
        
@@ -215,11 +199,8 @@ class modelGeneral
             // gerer l'erreur / dire le fait que ca s est mal passe
             $lesResult['appareil']=false;
         }
-        var_dump($sonAppareil);
 
         $requeteAdresse="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
-       
-        // echo "salut";
         if($result = $this->DAO->bddQuery($requeteAdresse)){
             
             // traiter le retour  / enregistrement de l id
@@ -235,19 +216,13 @@ class modelGeneral
 
             $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,'".$o->getAdresse()."','".$o->getVille()."','".$o->getCodepostal()."')";
             $resultAjout = $this->DAO->bddQuery($requeteAdresseAjout);
-            var_dump($requeteAdresseAjout);
             $requeteAdresseId="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
-       
-                echo "salut";
             if($resultId = $this->DAO->bddQuery($requeteAdresseId)){
-                
-                var_dump($resultId);
                 // traiter le retour  / enregistrement de l id
                 $compte4 = array();
                 foreach($resultId as $obj){
                     $compte4[] = $obj;
                 }
-                var_dump($compte4);
                 $sonAdresse=$compte4[0]['id_adresse'];
                 $lesResult['adresse']=true;
             }

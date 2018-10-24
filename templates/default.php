@@ -22,7 +22,7 @@
 <main>
     <section>
 
-        <article>
+        <article id="article">
 
             <?php
             if ($page !== "") {
@@ -41,7 +41,7 @@
 </main>
 
 <footer>
-    <!-- <?php include "templates/partials/footer.php"; ?> -->
+    <?php include "templates/partials/footer.php"; ?>
 </footer>
 
 </body>

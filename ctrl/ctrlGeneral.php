@@ -20,6 +20,33 @@ class ctrlGeneral
         $this->vue->afficherAccueil();
     }
 
+    // Ajout par Jade et Carl
+    public function getCompte()
+    {
+        $this->vue->afficherCompte();
+    }
+    public function getParametre()
+    {
+        $this->vue->afficherParametre();
+    }
+    public function getListe()
+    {
+        $this->vue->afficherListe();
+    }
+    public function getGalerie()
+    {
+        $this->vue->afficherGalerie();
+    }
+    public function getAjoutUser()
+    {
+        $this->vue->afficherAjoutUser();
+    }
+    public function getEditUser()
+    {
+        $this->vue->afficherEditUser();
+    }
+// Fin d'ajout
+
     public function getForm()
     {
         // Variable avatar contenant le résultat de la requête getAvatar
@@ -37,21 +64,9 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
-        $dataTab = array(
-            'civilite' => $_POST['civilite'],
-            'nom' => $_POST['nom'],
-            'prenom' => $_POST['prenom'],
-            'pseudo' => $_POST['pseudo'],
-            'motdepasse' => $_POST['motdepasse'],
-            'email' => $_POST['email'],
-            'telephone' => $_POST['telephone'],
-            'adresse' => $_POST['adresse'],
-            'codePostal' => $_POST['codePostal'],
-            'ville' => $_POST['ville'],
-            'avatar' => $_POST['avatar'],
-            'telephone' => $_POST['telephone'],
-            'appareil' => $_POST['appareil'],
-        );
+        foreach ($_POST as $key => $val) {
+            $dataTab = json_decode($key, true);
+        }
 
         if ($this->verifier($dataTab)) {
             $this->user = new User($dataTab);
@@ -68,16 +83,17 @@ class ctrlGeneral
             }
         }}
 
-        public function getDeconnexion() {
-            $_SESSION['admin'] = "";
-            $_SESSION['pseudo'] = "";
-            $_SESSION['avatar'] = "";
-            $_SESSION['cles'] = "";
-            $_SESSION['email'] = "";
-            $_SESSION['connecte'] = false;
-    
-            $this->vue->afficherAccueil();
-        }
+    public function getDeconnexion()
+    {
+        $_SESSION['admin'] = "";
+        $_SESSION['pseudo'] = "";
+        $_SESSION['avatar'] = "";
+        $_SESSION['cles'] = "";
+        $_SESSION['email'] = "";
+        $_SESSION['connecte'] = false;
+
+        $this->vue->afficherAccueil();
+    }
 
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
@@ -104,35 +120,36 @@ class ctrlGeneral
         $this->vue->afficherConnection();
     }
 
-    public function verifierAuthentification(){
-        $this->user=new Compte($_POST);
-        $verifAuthentification=$this->model->authentification($this->user);
-        if ($verifAuthentification!=false){
+    public function verifierAuthentification()
+    {
+        $this->user = new Compte($_POST);
+        $verifAuthentification = $this->model->authentification($this->user);
+        if ($verifAuthentification != false) {
             $this->gererSession($verifAuthentification);
             $this->vue->afficherConnexionOk();
-        }else{
+        } else {
             $this->vue->afficherConnexionNotOk($verifAuthentification);
         }
     }
 
-    public function AuthentificationApplication(){
-        $tab=json_decode($_POST, true);
-        $this->user=new Compte($tab);
-        $verifAuthentification=$this->model->authentification($this->user);
-        if ($verifAuthentification!=false){
-            $this->gererSession($verifAuthentification);            
-        }else{
-            $_SESSION['erreur']="mauvais identifiant ou mot de passe";
+    public function AuthentificationApplication()
+    {
+        $tab = json_decode($_POST, true);
+        $this->user = new Compte($tab);
+        $verifAuthentification = $this->model->authentification($this->user);
+        if ($verifAuthentification != false) {
+            $this->gererSession($verifAuthentification);
+        } else {
+            $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";
         }
         return json_encode($_SESSION);
     }
 
-    public function getModifierCompte(){
-        $this->user=new User($a);
-        $lesUpdates=array();
-        $lesUpdates=$this->model->updateCompte($this->user);
+    public function getModifierCompte()
+    {
+        $this->user = new User($a);
+        $lesUpdates = array();
+        $lesUpdates = $this->model->updateCompte($this->user);
         var_dump($lesUpdates);
     }
 }
-    
-
