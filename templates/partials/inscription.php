@@ -75,19 +75,19 @@
                 <label for="inlineRadio1" class="col-sm-3 control-label">Type mobile</label>
                 <div class="col-sm-9">
                     <label class="radio-inline col-sm-3">
-                        <input type="radio" name="appareil" id="inlineRadio1" value="samsung"> Android
+                        <input type="radio" name="appareil" id="inlineRadio1" value="samsung"> Apple
                     </label>
                     <label class="radio-inline col-sm-3">
-                        <input type="radio" name="appareil" id="inlineRadio2" value="apple"> iOS
+                        <input type="radio" name="appareil" id="inlineRadio2" value="apple"> Samsung
                     </label>
                     <label class="radio-inline col-sm-3">
-                        <input type="radio" name="appareil" id="inlineRadio3" value="huawei"> Autres
+                        <input type="radio" name="appareil" id="inlineRadio3" value="huawei"> Huawei
                     </label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="tel" class="col-sm-3 control-label">Telephone</label>
+                <label for="tel" class="col-sm-3 control-label">Téléphone</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="telephone" id="tel"
                            placeholder="Entrer votre téléphone">
@@ -96,7 +96,7 @@
 
 
             <div class="form-group">
-                <label for="pseudo" class="col-sm-3 control-label">Pseudo User</label>
+                <label for="pseudo" class="col-sm-3 control-label">Pseudonyme</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Entrer votre pseudo"
                            value=""/>
