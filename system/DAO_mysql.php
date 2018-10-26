@@ -56,20 +56,20 @@ class DAO_mysql
     }
 
     private function configBdd(){
-        return $bdd = array(
-           'host'  =>  "localhost",
-           'user'  =>  "root",
-           'pass'  =>    "",
-           'database'=>    "application_gps",
-           'charset'   =>  "utf8"
-        );
         // return $bdd = array(
-        // 'host'  =>  "localhost",
-        // 'user'  =>  "pvi-s01",
-        // 'pass'  =>    "philippe31",
-        // 'database'=>    "appli_GPS",
-        // 'charset'   =>  "utf8"
+          //  'host'  =>  "localhost",
+          //  'user'  =>  "root",
+          //  'pass'  =>    "",
+          //  'database'=>    "application_gps",
+           //'charset'   =>  "utf8"
         // );
+        return $bdd = array(
+        'host'  =>  "localhost",
+        'user'  =>  "pvi-s01",
+        'pass'  =>    "philippe31",
+        'database'=>    "appli_GPS",
+         'charset'   =>  "utf8"
+        );
     }
 }
 
