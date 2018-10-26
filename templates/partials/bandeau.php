@@ -1,28 +1,12 @@
-<!-- <style>
-    @media only screen and (min-width:0px) and (max-width:460px) {
-    #bandeau{
-      height: 55%;
-    }
-.imgpara {
-        width: 100%;
-        height: 248px;
-        margin: 0 auto;
-
-        background-image: url("images/img.jpg");
-        background-attachment: fixed;
-        z-index: 1;
-    }
-  
-</style> -->
+<!--Modifié par Babacar et Jade-->
 
 <div class="imgpara" id="bandeau">
     <div class="container">
-        <h2 id="h2">Welcome sur My Geo App.com</h2>
-        <p><a href="#" target="_blank">www.MyGeoApp.com</a></p>
-        <p style="color: azure">??? Mobile dropdown now working... This is a template for a simple marketing or
-            informational website. It includes a large callout called a jumbotron and three supporting pieces of
-            content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">S'inscrire</a>
+        <h3 id="h2">Welcome</h3>
+        <p style="color: azure">Avec MyGeoApp vous serez en mesure de vous géolocaliser.
+            Localiser les autres users en temps réel mais également de visualiser vos rendez-vous et leurs infos en un
+            coup d’œil. Pratique non ?</p>
+        <p><a class="btn btn-primary btn-md" href="ctrlGeneral/getForm" role="button">S'inscrire</a>
         </p>
     </div>
 </div>

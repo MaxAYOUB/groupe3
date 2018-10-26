@@ -1,9 +1,10 @@
+/*Modifié par Babacar et Jade*/
 #divTel {
   float: right;
+  padding: 0;
 }
 #divTel #imgTel {
-  position: fixed;
-  float: right;
+  float: left;
   padding: 0;
 }
 #h1Presentation,
@@ -11,7 +12,7 @@
 #h1Fonctionnalite2,
 #h1Fonctionnalite3,
 #h1Fonctionnalite4 {
-  color: #22222 22;
+  color: #222222;
   margin-bottom: 3%;
   font-weight: bold;
 }
@@ -33,10 +34,10 @@
   width: 95%;
   border-top: #2F3F4F 1px solid;
 }
-#divPresentation #aGooglePlay,
+/* #divPresentation #aGooglePlay,
 #divPresentation #aNox {
-  background-color: #22222 22;
-}
+  background-color: #ffffff;
+} */
 #divFonctionnalite1,
 #divFonctionnalite2,
 #divFonctionnalite3 {
@@ -65,12 +66,16 @@
 #pFonctionnalite3 {
   position: relative;
   float: right;
-  text-align: justify;
+  /*text-align: justify;*/
+  font-size: 1.5em;
 }
 #pFonctionnalite2,
 #pFonctionnalite4 {
   position: relative;
   float: left;
   text-align: justify;
+  font-size: 1.5em;
 }
-/*# sourceMappingURL=cssAccueil.css.map */
+#description {
+  font-weight: bold;
+}

@@ -2,42 +2,76 @@
 class viewGeneral
 {
 
-    public function afficherAccueil(){
-        $page="accueilNew.php";
+    public function afficherAccueil()
+    {
+        $_SESSION['page'] = "accueilNew.php";
         include "templates/default.php";
     }
 
     public function afficherForm($database)
     {
-        $page="inscription.php";
+        $_SESSION['page'] = "inscription.php";
         include "templates/default.php";
     }
 
-    public function afficherFormOk()
+    public function afficherFormOk($data)
     {
-        $page="ok.php";
-        include "templates/default.php";
+        
+        include "templates/partials/tabEnJSON.php";
     }
 
     public function afficherFormNotOk($tab)
     {
-        $page="notok.php";
+        
+        include "templates/partials/tabEnJSON.php";
+    }
+
+    public function afficherConnexionOk($data)
+    {
+        
+        include "templates/partials/tabEnJSON.php";
+    }
+
+    public function afficherConnexionNotOk($data)
+    {
+        
+        include "templates/partials/tabEnJSON.php";
+    }
+
+    public function afficherConnection()
+    {
+        $_SESSION['page'] = "identification.php";
         include "templates/default.php";
     }
 
-    public function afficherConnexionOk(){
-        $page="ok.php";
+// Ajout par Jade et Carl
+    public function afficherCompte()
+    {
+        $_SESSION['page'] = "templateMonCompte.php";
         include "templates/default.php";
     }
-
-    public function afficherConnexionNotOk($tab){
-        $page="notok.php";
+    public function afficherParametre()
+    {
+        $_SESSION['page'] = "contenueParametreUser.php";
         include "templates/default.php";
     }
-
-    public function afficherConnection(){
-        $page="identification.php";
+    public function afficherListe()
+    {
+        $_SESSION['page']= "ongletListe.php";
         include "templates/default.php";
     }
-
+    public function afficherGalerie()
+    {
+        $_SESSION['page']= "galerieAvatars.php";
+        include "templates/default.php";
+    }
+    public function afficherAjoutUser()
+    {
+        include "templates/partials/addUser.php";
+    }
+    public function afficherEditUser()
+    {
+        include "templates/partials/editUser.php";
+    }
+// Fin d'ajout
 }

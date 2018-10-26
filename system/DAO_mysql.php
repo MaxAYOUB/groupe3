@@ -34,7 +34,6 @@ class DAO_mysql
     {
         $data = array();
         if (!$result = $this->myBdd->query($sql)) {
-            // die("Erreur de BDD : {$this->myBdd->connect_errno}");
             return false;
         } else {
             if (is_object($result)) {
@@ -48,21 +47,29 @@ class DAO_mysql
         }
     }
 
+    public function __destruct(){
+        $this->bddDeconnexion();
+    }
+
+    public function dernier_id(){
+        return $this->myBdd->insert_id;
+    }
+
     private function configBdd(){
-        // return $bdd = array(
-        //   'host'  =>  "localhost",
-        //   'user'  =>  "root",
-        //   'pass'  =>    "",
-        //   'database'=>    "application_gps",
-        //    'charset'   =>  "utf8"
-        // );
         return $bdd = array(
-        'host'  =>  "localhost",
-        'user'  =>  "pvi-s01",
-        'pass'  =>    "philippe31",
-        'database'=>    "appli_GPS",
-        'charset'   =>  "utf8"
+           'host'  =>  "localhost",
+           'user'  =>  "root",
+           'pass'  =>    "",
+           'database'=>    "application_gps",
+           'charset'   =>  "utf8"
         );
+        // return $bdd = array(
+        // 'host'  =>  "localhost",
+        // 'user'  =>  "pvi-s01",
+        // 'pass'  =>    "philippe31",
+        // 'database'=>    "appli_GPS",
+        // 'charset'   =>  "utf8"
+        // );
     }
 }
 

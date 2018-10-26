@@ -1,8 +1,11 @@
-@media only screen and (min-width:768px) and (max-width:1460px)  {
+/*Modifié par Babacar et Jade*/
+
+
+@media only screen and (min-width:768px) and (max-width:2000px)  {
     #admin{
         
       
-        padding-top: 6px;
+        padding-top: 7px;
         padding-bottom: 0%
          
       
@@ -20,7 +23,6 @@
         .navbar-fixed-top .navbar-collapse {
             max-height: 500px;
         }
-    
      #icon{
        float:right
       
@@ -47,7 +49,7 @@
      }
      #admin{
         float:right ; 
-        
+        padding-top: 0px;
         padding-left: 100%;
         
          
@@ -83,7 +85,7 @@
     }
     .imgpara {
         width: 100%;
-        height: 248px;
+        height: 30%;
         margin: 0 auto;
        
         background-image: url('../images/img.jpg');
@@ -107,3 +109,11 @@
         -o-transition:padding 0.5s linear;         
         transition:padding 0.5s linear;  
       }  
+
+
+#avatar{
+    height:50px;
+    width:50px;
+    border-radius: 50%;
+    margin-top: -10%;
+}

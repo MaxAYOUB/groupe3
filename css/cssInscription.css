@@ -1,16 +1,23 @@
+/*Modifié par Babacar et Jade*/
 #h1Inscription {
-  color: #22222 22;
+  color: #222222;
   font-weight: bold;
   margin-bottom: 5%;
 }
-#divInscription1 {
+/*#divInscription1 {
   float: left;
   padding: 3%;
   border-right: 1px solid grey;
-}
+}*/
 #divInscription2 {
   position: relative;
   float: right;
   padding: 3%;
 }
-/*# sourceMappingURL=cssInscription.css.map */
+@media (min-width: 991px) {
+  #divInscription1 {
+    float: left;
+    padding: 3%;
+    border-right: 1px solid grey;
+  }
+}

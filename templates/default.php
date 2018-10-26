@@ -16,17 +16,17 @@
     }
     ?>
     <?php 
-    if ($page=="accueilNew.php"){include "templates/partials/bandeau.php";}; ?>
+    if ($_SESSION['page']=="accueilNew.php"){include "templates/partials/bandeau.php";}; ?>
 </header>
 
 <main>
     <section>
 
-        <article>
+        <article id="article">
 
             <?php
-            if ($page !== "") {
-                include "templates/partials/{$page}";
+            if (isset($_SESSION['page']) && $_SESSION['page'] !== "") {
+                include "templates/partials/{$_SESSION['page']}";
             } else {
                 include "templates/partials/accueilNew.php";
             } ?>
@@ -41,7 +41,7 @@
 </main>
 
 <footer>
-    <!-- <?php include "templates/partials/footer.php"; ?> -->
+    <?php include "templates/partials/footer.php"; ?>
 </footer>
 
 </body>

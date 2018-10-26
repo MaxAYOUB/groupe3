@@ -3,7 +3,6 @@
  *   @T.Noël @M.Ayoub
  *   Construction de la classe ctrlGeneral
  */
-
 class ctrlGeneral
 {
     private $vue;
@@ -21,10 +20,38 @@ class ctrlGeneral
         $this->vue->afficherAccueil();
     }
 
+    // Ajout par Jade et Carl
+    public function getCompte()
+    {
+        $this->vue->afficherCompte();
+    }
+    public function getParametre()
+    {
+        $this->vue->afficherParametre();
+    }
+    public function getListe()
+    {
+        $this->vue->afficherListe();
+    }
+    public function getGalerie()
+    {
+        $this->vue->afficherGalerie();
+    }
+    public function getAjoutUser()
+    {
+        $this->vue->afficherAjoutUser();
+    }
+    public function getEditUser()
+    {
+        $this->vue->afficherEditUser();
+    }
+// Fin d'ajout
+
     public function getForm()
     {
         // Variable avatar contenant le résultat de la requête getAvatar
         $avatar = $this->model->getAvatar();
+        $_SESSION['listeAvatar']=$avatar;
         // Variable appareil contenant le résultat de la requête SQL getAppareil
         $appareil = $this->model->getAppareil();
         // Création d'un tableau associatif résultant des deux requêtes sur la BDD (avatar & appareil)
@@ -38,55 +65,60 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
-/* var_dump($_POST); */
-        $dataTab = array(
-            'civilite' => $_POST['civilite'],
-            'nom' => $_POST['nom'],
-            'prenom' => $_POST['prenom'],
-            'pseudo' => $_POST['pseudo'],
-            'motdepasse' => $_POST['motdepasse'],
-            'email' => $_POST['email'],
-            'telephone' => $_POST['telephone'],
-            'adresse' => $_POST['adresse'],
-            'codePostal' => $_POST['codePostal'],
-            'ville' => $_POST['ville'],
-            'avatar' => $_POST['avatar'],
-            'telephone' => $_POST['telephone'],
-            'appareil' => $_POST['appareil'],
-        );
+        foreach ($_POST as $key => $val) {
+            $dataTab = json_decode($key, true);
+        }
+        $retour="retour";
+        // return "merde";
+
+        
 
         if ($this->verifier($dataTab)) {
             $this->user = new User($dataTab);
-            var_dump($this->user);
             $ret = $this->model->enregistrerFormulaire($this->user);
             if ($ret != false && isset($ret['0']['cles'])) {
                 $dataTab['cles'] = $ret['0']['cles'];
                 $dataTab['admin'] = false;
+
+                foreach ($_SESSION['listeAvatar'] as $avatars) {
+                    if ($avatars['slug_avatar']==$dataTab['avatar']){
+                        $dataTab['avatar']=$avatars['avatar'];
+                    }
+                }
                 $this->gererSession($dataTab);
-                $this->vue->afficherFormOk();
+                $retour="OK";
             } else {
                 $dataTab['erreur'] = $ret;
-                $this->vue->afficherFormNotOk($dataTab);
+                $retour="notOK";
             }
-        }}
 
-        public function getDeconnexion() {
-            $_SESSION['admin'] = "";
-            $_SESSION['pseudo'] = "";
-            $_SESSION['avatar'] = "";
-            $_SESSION['cles'] = "";
-            $_SESSION['email'] = "";
-            $_SESSION['connecte'] = false;
-    
-            $this->vue->afficherAccueil();
+        }else{
+            $dataTab['erreur']="true";
+            $retour="notOK";
         }
+        $this->vue->afficherFormOK($dataTab);
+        
+    }
+        
+
+    public function getDeconnexion()
+    {
+        $_SESSION['admin'] = "";
+        $_SESSION['pseudo'] = "";
+        $_SESSION['avatar'] = "";
+        $_SESSION['cles'] = "";
+        $_SESSION['email'] = "";
+        $_SESSION['connecte'] = false;
+        $_SESSION['nom'] = "";
+        $_SESSION['prenom'] = "";
+
+        $this->vue->afficherAccueil();
+    }
 
     // Fonction vérifiant les champs de formulaire
     private function verifier($data)
     {
-        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != ''
-        //  && $data['avatar'] != '' 
-         && $data['motdepasse'] != '' && $data['appareil'] != '') {
+        if ($data['civilite'] != '' && $data['nom'] != '' && $data['prenom'] != '' && $data['pseudo'] != '' && $data['email'] != '' && $data['motdepasse'] != '' && $data['appareil'] != '') {
             return true;
         } else {
             return false;
@@ -101,6 +133,8 @@ class ctrlGeneral
         $_SESSION['cles'] = $tab['cles'];
         $_SESSION['email'] = $tab['email'];
         $_SESSION['connecte'] = true;
+        $_SESSION['nom'] = $tab['nom'];
+        $_SESSION['prenom'] = $tab['prenom'];
     }
 
     public function getAuthentification()
@@ -108,58 +142,73 @@ class ctrlGeneral
         $this->vue->afficherConnection();
     }
 
-    public function verifierAuthentification(){
-        $this->user=new Compte($_POST);
+    public function verifierAuthentification()
+    {
 
-        $verifAuthentification=$this->model->authentification($this->user);
-
-        if ($verifAuthentification!=false){
+        foreach ($_POST as $key => $val) {
+            $dataTab = json_decode($key, true);
+        }
+        // var_dump($dataTab);
+        $this->user = new Compte($dataTab);
+        // var_dump($this->user);
+        $verifAuthentification = $this->model->authentification($this->user);
+        if ($verifAuthentification != false) {
             $this->gererSession($verifAuthentification);
-            
-            $this->vue->afficherConnexionOk();
-        }else{
-            $this->vue->afficherConnexionNotOk($verifAuthentification);
+            $data['bon']=true;
+            $this->vue->afficherConnexionOk($data);
+        } else {
+            // $this->vue->afficherConnexionNotOk($verifAuthentification);
+            $data['erreur']=true;
+            $this->vue->afficherConnexionNotOk($data);
         }
     }
 
-    public function AuthentificationApplication(){
-        $tab=json_decode($_POST, true);
-
-        $this->user=new Compte($tab);
-
-        $verifAuthentification=$this->model->authentification($this->user);
-
-        if ($verifAuthentification!=false){
+    public function AuthentificationApplication()
+    {
+        $tab = json_decode($_POST, true);
+        $this->user = new Compte($tab);
+        $verifAuthentification = $this->model->authentification($this->user);
+        if ($verifAuthentification != false) {
             $this->gererSession($verifAuthentification);
-            
-        }else{
-            $_SESSION['erreur']="mauvais identifiant ou mot de passe";
+        } else {
+            $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";
         }
         return json_encode($_SESSION);
     }
 
-    public function getModifierCompte(){
-
-        //test
-        // $a['pseudo']="max";
-        // $a['motdepasse']="toulouse31";
-        // $a['civilite']="Mme";
-        // $a['nom']="ayoubRouan";
-        // $a['prenom']="maxime";
-        // $a['avatar']="avatar";
-        // $a['appareil']="appareil2";
-        // $a['adresse']="15 av Victor Hugo";
-        // $a['ville']="tournefeuille";
-        // $a['codePostal']=31170;
-        $this->user=new User($a);
-
-        $lesUpdates=array();
-
-        $lesUpdates=$this->model->updateCompte($this->user);
+    public function getModifierCompte()
+    {
+        $this->user = new User($a);
+        $lesUpdates = array();
+        $lesUpdates = $this->model->updateCompte($this->user);
         var_dump($lesUpdates);
     }
 
+    public function gererPassword(){
+        
+        $this->user=new Compte($_POST);
+        $newData=array();
+        $newData=$this->model->razPassword($this->user);
 
+        //verifie si tout c'est bien passé
+        if (!$sesDonnees['erreurPseudo'] && !$sesDonnees['erreurPassword']){
+            //le message du mail
+            $message = "Bonjour,\r\nVous nous avez signialé que vous aviez oublié votre mot de passe et/ou votre pseudo.
+            \r\nVotre pseudo : {$sesDonnees['pseudo']}\r\nVotre password : {$sesDonnees['mot_de_passe']}\r\n \r\n
+            Veuillez penser à modifier votre mot de passe.";
+
+            //il ne faut pas que les lignes fassent plus de 70 char donc par sécurité on met ça pour les couper tous les 70 char
+            $message = wordwrap($message, 70, "\r\n");
+
+            //le header
+            $headers = 'From: filrouge@afpa-balma.fr' . "\r\n" .
+            'Reply-To: filrouge@afpa-balma.fr' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+            // Envoi du mail
+            $ok = mail($this->user->getIdentifiant(), 'Modification du mot de passe', $message, $headers);
+            // var_dump($ok);
+            
+        }
     }
-    
-
+}

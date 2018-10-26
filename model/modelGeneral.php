@@ -18,7 +18,7 @@ class modelGeneral
     // Fonction renvoyant les avatars dans le formulaire
     public function getAvatar()
     {
-        $sql = "SELECT * FROM avatar WHERE supprime='0'"; // Requete pour récupérer les avatars dans la BDD
+        $sql = "SELECT * FROM avatar"; // Requete pour récupérer les avatars dans la BDD
         $resultAvatar = $this->DAO->bddQuery($sql); // Renvoi le résultat de la requête dans une variable result
         return $resultAvatar;
     }
@@ -26,7 +26,7 @@ class modelGeneral
     // Fonction renvoyant le système de l'appareil dans le formulaire
     public function getAppareil()
     {
-        $sql = "SELECT * FROM appareil WHERE supprime='0'"; // Requete pour récupérer les systèmes dans la BDD
+        $sql = "SELECT * FROM appareil"; // Requete pour récupérer les systèmes dans la BDD
         $resultAppareil = $this->DAO->bddQuery($sql); // Renvoi le résultat de la requête dans une variable result
         return $resultAppareil;
     }
@@ -67,24 +67,67 @@ class modelGeneral
             $idEmail = true;
             $tabErreur['email'] = false;
         }
+
+        
         // Si les paramètres ($idEmail & $idPseudo) sont à True on envoit les requêtes d'insertion. (Pas besoin d'indiquer == true en php)
         if ($idEmail && $idPseudo) {
-            // Requete pour l'insertion d'une nouvelle adresse
-            $sql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
-            $result = $this->DAO->bddQuery($sql);
+            
+
+            // Requete pour l'insertion d'une nouvelle adresse si elle n'existe pas
+
+            $sonAdresse="";
+            $requeteAdresse="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='{$data->getAdresse()}' AND `CP`='{$data->getCodepostal()}'";
+            // var_dump($requeteAdresse);
+            if($result = $this->DAO->bddQuery($requeteAdresse)){
+                
+                // traiter le retour  / enregistrement de l id
+                $compte3 = array();
+                foreach($result as $obj){
+                    $compte3[] = $obj;
+                }
+                // var_dump($compte3);
+                $sonAdresse=$compte3[0]['id_adresse'];
+                $lesResult['adresse']=true;
+            }
+            else{
+                // gerer l'erreur / enregistrement d'une nouvelle adresse
+                // var_dump($result);
+                $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
+                $resultAjout = $this->DAO->bddQuery($requeteAdresseAjout);
+                $requeteAdresseId="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='{$data->getAdresse()}' AND `CP`='{$data->getCodepostal()}'";
+                // var_dump($requeteAdresseId);
+                if($resultId = $this->DAO->bddQuery($requeteAdresseId)){
+                    // traiter le retour  / enregistrement de l id
+                    $compte4 = array();
+                    foreach($resultId as $obj){
+                        $compte4[] = $obj;
+                    }
+                    $sonAdresse=$compte4[0]['id_adresse'];
+                    $lesResult['adresse']=true;
+                    // var_dump($compte4);
+                }
+                else{
+                    // gerer l'erreur / dire le fait que ca s est mal passe
+                    $lesResult['adresse'] = false;
+                }
+            }
+
+            // $sql = "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (NULL,'{$data->getAdresse()}','{$data->getVille()}','{$data->getCodepostal()}')";
+            // $result = $this->DAO->bddQuery($sql);
 
             // Mise en place des clés de cryptage
             $cle = md5("Notre application" . $data->getEmail(), $row_output = false);
-            $cleMDP = md5("Notre application" . $data->getMotdepasse(), $row_output = false);
+            $cleMDP = $data->getMotdepasse();
 
             // Requete pour l'insertion d'un nouvel utilisateur
             $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`,`telephone`,`cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`)
-            VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$data->getTelephone()}','{$cle}','0',FALSE,(SELECT `id_adresse` FROM `adresse` WHERE `adresse` = '{$data->getAdresse()}' AND `CP` = '{$data->getCodepostal()}'),
+            VALUES (NULL,'{$data->getCivilite()}','{$data->getNom()}','{$data->getPrenom()}','{$data->getPseudo()}','{$cleMDP}','{$data->getEmail()}','{$data->getTelephone()}','{$cle}','0',FALSE,{$sonAdresse},
             (SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar` = '{$data->getAvatar()}'),
             (SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil` = '{$data->getAppareil()}'))";
 
             // Renvoi les informations demandées dans une variable result
             $result = $this->DAO->bddQuery($sql);
+            
             $sql = "SELECT `cles` FROM `user` WHERE `pseudo` = '{$data->getPseudo()}'";
             // Recupère les infos de l'utilisateur return false s'il n'existe pas
             if ($result = $this->DAO->bddQuery($sql)) {
@@ -92,7 +135,9 @@ class modelGeneral
                 foreach ($result as $obj1) {
                     $compte[] = $obj1;
                 }
+                return $compte;
             } else {
+                
                 return false;
             }
             return $result;
@@ -101,21 +146,17 @@ class modelGeneral
         }
     }
 
-    public function authentification($obj){
-        // var_dump($obj);
-            
+    public function authentification($obj){     
+        // var_dump($obj);       
         $requete="";
         //ca dit si un identifiant et un mot de passe a été rentré
         if ($obj->getTypetape()!="" && $obj->getMotdepasse()!=""){
             
             if ($obj->getTypetape()=="email"){
-                // var_dump($obj->getTypetape());
-                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `email`='".$obj->getIdentifiant()."'";
+                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email`, `nom`, `prenom` FROM `user` WHERE `email`='".$obj->getIdentifiant()."'";
             }else {
-                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email` FROM `user` WHERE `pseudo`='".$obj->getIdentifiant()."'";
+                $requete = "SELECT `mot_de_passe`, `admin`, `pseudo`, `cles`,`id_avatar`, `email`, `nom`, `prenom` FROM `user` WHERE `pseudo`='".$obj->getIdentifiant()."'";
             }
-            
-            // var_dump($requete);
             //recupére les infos de l'utilisateur return false si il n'existe pas
             if($result = $this->DAO->bddQuery($requete)){
                 // traiter le retour
@@ -123,18 +164,13 @@ class modelGeneral
                 foreach($result as $obj1){
                     $compte[] = $obj1;
                 }
+
             }
             else{
                 // gerer l'erreur
-            // var_dump($obj);
                 return false;
             }
-            //test coder le mot de passe de la base
-            $result[0]['mot_de_passe']=md5($result[0]['mot_de_passe'],$raw_output=false);
-
             //verifie si le bon mot de passe a été tapé
-            // var_dump($result);
-            // var_dump($result[0]);
             if ($result[0]['mot_de_passe']==$obj->getMotdepasse()){
                 
                 $requete2="SELECT `avatar` FROM `avatar` WHERE `id_avatar`='".$result[0]['id_avatar']."'";
@@ -151,18 +187,13 @@ class modelGeneral
                         // gerer l'erreur
                         return false;
                     }
-
                     //met toutes les infos dans un array pour le retourner au ctrlGeneral
                     $result[0]['avatar']=$result2[0]['avatar'];
-
-                    // var_dump($result);
                 return $result[0];
             }else{
-                // var_dump($obj);
                 return false;
             }
         }else{
-            // var_dump($obj);
             return false;
         }
     }
@@ -176,7 +207,6 @@ class modelGeneral
 
         //sert a dire si toutes les requetes se sont bien passees
         $lesResult=array();
-
 
         //recupere l id de l'avatar choisi
         $requeteAvatar="SELECT `id_avatar` FROM `avatar` WHERE `slug_avatar`='".$o->getAvatar()."'";
@@ -196,9 +226,6 @@ class modelGeneral
             
             $lesResult['avatar']=false;
         }
-        // var_dump($sonAvatar);
-
-
         //recupere l id de l'appareil choisi
         $requeteAppareil="SELECT `id_appareil` FROM `appareil` WHERE `slug_appareil`='".$o->getAppareil()."'";
        
@@ -215,11 +242,8 @@ class modelGeneral
             // gerer l'erreur / dire le fait que ca s est mal passe
             $lesResult['appareil']=false;
         }
-        var_dump($sonAppareil);
 
         $requeteAdresse="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
-       
-        // echo "salut";
         if($result = $this->DAO->bddQuery($requeteAdresse)){
             
             // traiter le retour  / enregistrement de l id
@@ -235,19 +259,13 @@ class modelGeneral
 
             $requeteAdresseAjout= "INSERT INTO `adresse`(`id_adresse`, `adresse`, `ville`, `CP`) VALUES (null,'".$o->getAdresse()."','".$o->getVille()."','".$o->getCodepostal()."')";
             $resultAjout = $this->DAO->bddQuery($requeteAdresseAjout);
-            var_dump($requeteAdresseAjout);
             $requeteAdresseId="SELECT `id_adresse` FROM `adresse` WHERE `adresse`='".$o->getAdresse()."' AND `CP`='".$o->getCodepostal()."'";
-       
-                echo "salut";
             if($resultId = $this->DAO->bddQuery($requeteAdresseId)){
-                
-                var_dump($resultId);
                 // traiter le retour  / enregistrement de l id
                 $compte4 = array();
                 foreach($resultId as $obj){
                     $compte4[] = $obj;
                 }
-                var_dump($compte4);
                 $sonAdresse=$compte4[0]['id_adresse'];
                 $lesResult['adresse']=true;
             }
@@ -302,5 +320,83 @@ class modelGeneral
             }
         }
         return $lesResult;
+    }
+
+
+    public function razPassword($obj){
+
+        //c'est ce que je renverrai
+        //je met tout a vide pour ne pas avoir à vérifier si ça existe dans le ctrlGeneral
+        $sesDonnees=array();
+        $sesDonnees['pseudo']="";
+        $sesDonnees['erreurPseudo']=true;
+        $sesDonnees['mo_de_passe']="";
+        $sesDonnees['erreurPassword']=true;
+
+        //verifie si l'email rentré correspond bien à un utilisateur et récupére son pseudo
+        $requetePseudo= "SELECT `pseudo` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
+
+        if($result = $this->DAO->bddQuery($requeteVerif)){
+            
+            // traiter le retour / dire que ca s est bien passe
+            $compte5 = array();
+            foreach($result as $obj2){
+                $compte5[] = $obj2;
+            }
+
+            //sauvegarde le pseudo et dit qu'il n'y a pas eu d'erreur
+            $sesDonnees['pseudo']=$compte5[0]['pseudo'];
+            $sesDonnees['erreurPseudo']=false;
+        }
+        else{
+            // gerer l'erreur / dire le fait que ca s est mal passe
+            $sesDonnees['erreurPseudo']=true;
+        }
+
+        //permet de ne faire la suite que si le client a été trouvé
+        if (!$sesDonnees['erreurPseudo']){
+
+            //créé une chaine de charactére aléatoire de 15 charactéres avec des chiffres et/ou des lettres 
+            $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $longueurMax = strlen($caracteres);
+            $chaineAleatoire = '';
+            for ($i = 0; $i < 15; $i++){
+                $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+            }
+
+            //sauvegarde la version non codée du mot de passe pour la donner au client
+            $sesDonnees['mot_de_passe']=$chaineAleatoire;
+
+            //code le mot de passe
+            $chaineAleatoire=md5($chaineAleatoire,$raw_output = false);
+
+            //change le mot de passe dans la base de donnée
+            $requeteUpdate= "UPDATE `user` SET `mot_de_passe`='{$chaineAleatoire}'WHERE `email`='{$obj->getIdentifiant()}'";
+            $result2 = $this->DAO->bddQuery($requeteUpdate);
+
+            //vérifie si le changement s'est bien effectué
+            $requetePassword= "SELECT `mot_de_passe` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
+            if($result3 = $this->DAO->bddQuery($requetePassword)){
+                
+                // traiter le retour / dire que ca s est bien passe
+                $compte5 = array();
+                foreach($result3 as $obj3){
+                    $compte5[] = $obj3;
+                }
+                //a été changé ou pas = erreur ou pas
+                if($compte5[0]['mot_de_passe']==$chaineAleatoire){
+                    $sesDonnees['erreurPassword']=false;
+                }else{
+                    $sesDonnees['mot_de_passe']="";
+                    $sesDonnees['erreurPassword']=true;
+                }
+            }
+            else{
+                // gerer l'erreur / dire le fait que ca s est mal passe
+                $sesDonnees['mot_de_passe']="";
+                $sesDonnees['erreurPassword']=true;
+            }
+        }
+        return $sesDonnees;
     }
 }

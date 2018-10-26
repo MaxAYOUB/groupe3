@@ -1,0 +1,73 @@
+@media (min-width: 991px) {
+  #divListe {
+    float: left;
+    padding: 3%;
+    border-right: 1px solid grey;
+    overflow: auto;
+  }
+  #divGeneral {
+    margin: 5% 20% 0 20%;
+  }
+}
+#h1Liste,
+#h1Add {
+  color: #222222;
+  margin-bottom: 7%;
+}
+#h1Galerie {
+  color: #222222;
+  font-weight: bold;
+}
+#divListe {
+  float: left;
+  padding: 3%;
+  /* border-right: 1px solid grey; */
+  overflow: auto;
+}
+#divAdd {
+  float: right;
+  padding: 3%;
+  overflow: auto;
+}
+#tableListe {
+  text-align: center;
+  margin: auto;
+}
+#tableListe tr {
+  height: 60px;
+  border-bottom: dimgrey 1px solid;
+}
+#tableListe tr th {
+  width: 150px;
+  text-align: center;
+}
+#tableListe tr #imgListe {
+  width: 30%;
+}
+#tableListe tr #btnModifier,
+#tableListe tr #btnAdmin {
+  padding: 0;
+  margin: 4%;
+}
+#tableListe tr #edit {
+  margin-right: 10%;
+  margin-top: 5%;
+  font-size: 150%;
+  color: green;
+  cursor: pointer;
+}
+#tableListe tr #remove {
+  margin-top: 5%;
+  font-size: 150%;
+  color: darkred;
+}
+#divGalerie {
+  padding: 3%;
+  overflow: auto;
+  height: 60vh;
+}
+#divGalerieBtn {
+  height: 5vh;
+  border-top: 1px grey solid;
+  padding: 3%;
+}
