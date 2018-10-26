@@ -290,7 +290,7 @@ function myAjax(obj) {
         dataType: 'html',
         data: obj,
         success: function (result) {
-            document.getElementById("article").innerHTML = result;
+            //document.getElementById("article").innerHTML = result;
             console.log(typeof result);
             // console.log({result});
             var result2 = JSON.parse(result);
