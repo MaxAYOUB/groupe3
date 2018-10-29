@@ -86,7 +86,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-default" data-toggle="modal">valider
+                    <button type="submit" class="btn btn-default" data-toggle="modal">valider
                     </button>
                 </div>
             </div>
