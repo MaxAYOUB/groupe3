@@ -215,6 +215,7 @@ class ctrlGeneral
     }
 
     public function modifierMotDePasse(){
+        var_dump($_SESSION);
         $this->user=new Compte($_POST);
         $this->model->modifierPassword();
     }
