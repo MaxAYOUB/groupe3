@@ -408,24 +408,40 @@ var_dump($requetePseudo);
     }
 
     public function modifierPassword($obj){
-        $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}' WHERE `email`='{$_SESSION['email']}'";
-        $result2 = $this->DAO->bddQuery($sql);
-
         $verif= "SELECT `mot_de_passe` FROM `user` WHERE  `email`='{$_SESSION['email']}'";
-        if($result3 = $this->DAO->bddQuery($verif)){
+        if($result4 = $this->DAO->bddQuery($verif)){
                 
             // traiter le retour / dire que ca s est bien passe
-            $compte5 = array();
-            foreach($result3 as $obj3){
-                $compte5[] = $obj3;
+            $compte1 = array();
+            foreach($result4 as $obj1){
+                $compte1[] = $obj1;
             }
             var_dump($compte5);
             //a été changé ou pas = erreur ou pas
-            if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
-                return true;
+            if($compte1[0]['mot_de_passe']==$obj->getIdentifiant()){
+                $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}' WHERE `email`='{$_SESSION['email']}'";
+                $result2 = $this->DAO->bddQuery($sql);
+
+                $verif= "SELECT `mot_de_passe` FROM `user` WHERE  `email`='{$_SESSION['email']}'";
+                if($result3 = $this->DAO->bddQuery($verif)){
+                
+                    // traiter le retour / dire que ca s est bien passe
+                    $compte5 = array();
+                    foreach($result3 as $obj3){
+                        $compte5[] = $obj3;
+                    }
+                    var_dump($compte5);
+                    //a été changé ou pas = erreur ou pas
+                    if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
+                        return true;
+                    }else{
+                        // $this->modifierPassword($obj);
+                    }
+                }
             }else{
                 // $this->modifierPassword($obj);
             }
         }
+        
     }
 }
