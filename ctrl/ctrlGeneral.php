@@ -202,6 +202,11 @@ class ctrlGeneral
 
             // Envoi du mail
             $ok = mail($this->user->getIdentifiant(), 'Modification du mot de passe', $message, $headers);
+            if ($ok){
+                $this->getAccueil();
+            }else{
+                $this->getAuthentification();
+            }
         }
     }
 }
