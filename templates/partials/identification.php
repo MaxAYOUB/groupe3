@@ -71,7 +71,7 @@
 <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <form style="padding:10%" action="" method="POST" action="ctrlGeneral/gererPassword">
+        <form method="POST" action="ctrlGeneral/gererPassword">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -86,7 +86,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-default" data-toggle="modal">valider
+                    <button type="submit" class="btn btn-default" data-toggle="modal">valider
                     </button>
                 </div>
             </div>
