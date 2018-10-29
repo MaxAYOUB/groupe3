@@ -71,24 +71,26 @@
 <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modifier le mot de passe ou l'identifiant</h4>
-            </div>
+        <form style="padding:10%" action="" method="POST" action="ctrlGeneral/gererPassword">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modifier le mot de passe ou l'identifiant</h4>
+                </div>
 
-            <div class="modal-body">
-                <p>Entrez l'adresse courriel associée à votre compte pour recevoir les instructions de réinitialisation
-                    de votre mot de passe.</p>
-                <input type="text" id="fname" name="firstname" placeholder="Email">
-            </div>
+                <div class="modal-body">
+                    <p>Entrez l'adresse courriel associée à votre compte pour recevoir les instructions de réinitialisation
+                        de votre mot de passe.</p>
+                    <input type="text" id="fname" name="firstname" placeholder="Email">
+                </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="ctrlGeneral/gererPassword">valider
-                </button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal">valider
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
