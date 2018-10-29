@@ -161,6 +161,8 @@ class ctrlGeneral
         $this->user = new Compte($tab);
         $verifAuthentification = $this->model->authentification($this->user);
         if ($verifAuthentification != false) {
+            $avatar = $this->model->getAvatar();
+            $verifAuthentification['avatar']=$avatar;
             $this->gererSession($verifAuthentification);
         } else {
             $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";

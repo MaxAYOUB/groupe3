@@ -408,7 +408,7 @@ var_dump($requetePseudo);
     }
 
     public function modifierPassword($obj){
-        $sql="UPDATE `user` SET `mot_de_passe`='{$chaineAleatoire}'WHERE `email`='{$obj->getIdentifiant()}'";
+        $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}'WHERE `email`='{$_SESSION['email']}'";
         $result2 = $this->DAO->bddQuery($sql);
 
     }
