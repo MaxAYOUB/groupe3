@@ -430,7 +430,7 @@ var_dump($requetePseudo);
                     foreach($result3 as $obj3){
                         $compte5[] = $obj3;
                     }
-                    var_dump($compte5);
+                    // var_dump($compte5);
                     return true;
                     //a été changé ou pas = erreur ou pas
                     if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
