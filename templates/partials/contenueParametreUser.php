@@ -81,12 +81,12 @@
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="validerPassword">valider</button>
-                    <script src="jsPassword.js"></script>
+                    
                   </div>
                 </div>
             </div>
           </div>
-
+          <script src="jsPassword.js"></script>
                    
 
                       <!-- Modal galerie avatar -->
