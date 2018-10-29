@@ -182,8 +182,8 @@ class ctrlGeneral
     public function gererPassword(){
         
         $this->user=new Compte($_POST);
-        $newData=array();
-        $newData=$this->model->razPassword($this->user);
+        $sesDonnees=array();
+        $sesDonnees=$this->model->razPassword($this->user);
 
         //verifie si tout c'est bien passé
         if (!$sesDonnees['erreurPseudo'] && !$sesDonnees['erreurPassword']){
