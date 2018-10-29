@@ -86,7 +86,7 @@
                 </div>
             </div>
           </div>
-          <script src="jsPassword.js"></script>
+          <script src="javaScript/jsPassword.js"></script>
                    
 
                       <!-- Modal galerie avatar -->
