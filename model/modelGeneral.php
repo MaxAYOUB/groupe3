@@ -115,7 +115,10 @@ class modelGeneral
             // Mise en place des clés de cryptage
             $cle = md5("Notre application" . $data->getEmail(), $row_output = false);
             $cleMDP = $data->getMotdepasse();
-            $sonAdresse= $sonAdresse!=""? $sonAdresse:"null";
+            // $sonAdresse= ($sonAdresse!=""? $sonAdresse:"null");
+            if ($sonAdresse==""){
+                $sonAdresse="null";
+            }
 
             // Requete pour l'insertion d'un nouvel utilisateur
             $sql = "INSERT INTO `user`(`id_user`, `civilite`, `nom`, `prenom`, `pseudo`, `mot_de_passe`, `email`,`telephone`,`cles`, `supprime`, `admin`, `id_adresse`, `id_avatar`, `id_appareil`)
