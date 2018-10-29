@@ -207,6 +207,8 @@ class ctrlGeneral
             }else{
                 $this->getAuthentification();
             }
+        }else{
+            $this->getAuthentification();
         }
     }
 }
