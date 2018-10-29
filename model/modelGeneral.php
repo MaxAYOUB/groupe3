@@ -335,7 +335,7 @@ class modelGeneral
         $sesDonnees['erreurPassword']=true;
 
         //verifie si l'email rentré correspond bien à un utilisateur et récupére son pseudo
-        $requetePseudo= "SELECT `pseudo` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
+        $requetePseudo= "SELECT `pseudo` FROM `user` WHERE `email`='{$obj->getIdentifiant()}'";
 var_dump($requetePseudo);
         if($result66 = $this->DAO->bddQuery($requetePseudo)){
             
