@@ -177,7 +177,7 @@ class ctrlGeneral
     }
 
     public function gererPassword(){
-        
+        var_dump($_POST);
         $this->user=new Compte($_POST);
         $sesDonnees=array();
         $sesDonnees=$this->model->razPassword($this->user);
