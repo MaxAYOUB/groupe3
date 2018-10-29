@@ -431,7 +431,7 @@ var_dump($requetePseudo);
                         $compte5[] = $obj3;
                     }
                     // var_dump($compte5);
-                    return true;
+                    // return true;
                     //a été changé ou pas = erreur ou pas
                     if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
                         return true;
@@ -442,6 +442,7 @@ var_dump($requetePseudo);
                 }
             }else{
                 // $this->modifierPassword($obj);
+                return false;
             }
         }else{
             return false;
