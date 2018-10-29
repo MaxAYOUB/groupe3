@@ -208,7 +208,7 @@ class ctrlGeneral
                 $this->getAuthentification();
             }
         }else{
-            $this->getAuthentification();
+            var_dump($sesDonnees);
         }
     }
 }
