@@ -202,7 +202,7 @@ class ctrlGeneral
 
             // Envoi du mail
             $ok = mail($this->user->getIdentifiant(), 'Modification du mot de passe', $message, $headers);
-            // var_dump($ok);
+            var_dump($ok);
         }
     }
 }
