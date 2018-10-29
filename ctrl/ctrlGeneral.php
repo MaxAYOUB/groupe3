@@ -184,6 +184,7 @@ class ctrlGeneral
 
         //verifie si tout c'est bien passé
         if (!$sesDonnees['erreurPseudo'] && !$sesDonnees['erreurPassword']){
+            var_dump($sesDonnees);
             //le message du mail
             $message = "Bonjour,\r\nVous nous avez signialé que vous aviez oublié votre mot de passe et/ou votre pseudo.
             \r\nVotre pseudo : {$sesDonnees['pseudo']}\r\nVotre password : {$sesDonnees['mot_de_passe']}\r\n \r\n

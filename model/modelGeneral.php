@@ -379,7 +379,8 @@ var_dump($requetePseudo);
             $result2 = $this->DAO->bddQuery($requeteUpdate);
 
             //vérifie si le changement s'est bien effectué
-            $requetePassword= "SELECT `mot_de_passe` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
+            $requetePassword= "SELECT `mot_de_passe` FROM `user` WHERE `email`='{$obj->getIdentifiant()}'";
+            var_dump($requetePassword);
             if($result3 = $this->DAO->bddQuery($requetePassword)){
                 
                 // traiter le retour / dire que ca s est bien passe
