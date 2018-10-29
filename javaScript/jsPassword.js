@@ -50,7 +50,7 @@ function verification() {
             result.motdepasse = test2;
             // console.log("passe");
             // Convertion de la chaine de caractére en JSON 
-            myAjax(result);
+            myAjax(JSON.stringify(result));
         } else {
             if (test1 != "") {
                 document.getElementById("inputEmail3").style.borderColor = "none";
