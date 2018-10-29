@@ -223,6 +223,6 @@ class ctrlGeneral
         var_dump($_SESSION);
         var_dump($_POST);
         $this->user=new Compte($_POST);
-        $this->model->modifierPassword();
+        $this->model->modifierPassword($this->user);
     }
 }

@@ -424,7 +424,7 @@ var_dump($requetePseudo);
             if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
                 return true;
             }else{
-                $this->modifierPassword($obj);
+                // $this->modifierPassword($obj);
             }
         }
     }
