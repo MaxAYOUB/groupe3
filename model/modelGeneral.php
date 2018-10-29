@@ -406,4 +406,10 @@ var_dump($requetePseudo);
         var_dump($sesDonnees);
         return $sesDonnees;
     }
+
+    public function modifierPassword($obj){
+        $sql="UPDATE `user` SET `mot_de_passe`='{$chaineAleatoire}'WHERE `email`='{$obj->getIdentifiant()}'";
+        $result2 = $this->DAO->bddQuery($requeteUpdate);
+
+    }
 }

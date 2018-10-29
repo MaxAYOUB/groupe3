@@ -59,64 +59,36 @@
           <!-- Modal mot de passe-->
           <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog">
+              <form method="POST" action="ctrlGeneral/modifierMotDePasse">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modifier le mot de passe</h4>
+                  </div>
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modifier le mot de passe</h4>
-                </div>
+                  <div class="modal-body">
+                    <p>Ancien mot de passe</p>
+                      <input type="text" id="fname" name="firstname" placeholder="************">
+                  </div>
+                  <div class="modal-body">
+                      <p>Nouveau mot de passe</p>
+                      <input type="text" id="fname1" name="motdepasse" placeholder="************">
+                  </div>
+                  <div class="modal-body">
+                          <p>confimation mot de passe</p>
+                          <input type="text" id="fname2" name="firstname" placeholder="************">
+                      </div>
 
-                <div class="modal-body">
-                  <p>Ancien mot de passe</p>
-                    <input type="text" id="fname" name="firstname" placeholder="************">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">valider</button>
+                  </div>
                 </div>
-                <div class="modal-body">
-                    <p>Nouveau mot de passe</p>
-                     <input type="text" id="fname1" name="firstname" placeholder="************">
-                </div>
-                <div class="modal-body">
-                        <p>confimation mot de passe</p>
-                         <input type="text" id="fname2" name="firstname" placeholder="************">
-                    </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">valider</button>
-                </div>
-              </div>
-
+              </form>
             </div>
           </div>
 
-                   <!-- Modal mail-->
-                   <div class="modal fade" id="myModal2" role="dialog">
-                        <div class="modal-dialog">
-
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Modifier email</h4>
-                            </div>
-
-                            <div class="modal-body">
-                              <p>adresse email actuelle</p>
-                              <p>adresse@actuelle.com</p>
-
-                            </div>
-
-                            <div class="modal-body">
-                                    <p>Nouvelle adresse email</p>
-                                     <input type="text" id="fname5" name="firstname" placeholder="************">
-                                </div>
-
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Modifier email</button>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
+                   
 
                       <!-- Modal galerie avatar -->
               <div class="modal fade" id="myModalgalerie" role="dialog">

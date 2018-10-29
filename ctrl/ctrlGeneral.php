@@ -186,7 +186,7 @@ class ctrlGeneral
         if (!$sesDonnees['erreurPseudo'] && !$sesDonnees['erreurPassword']){
             var_dump($sesDonnees);
             //le message du mail
-            $message = "Bonjour,\r\nVous nous avez signialé que vous aviez oublié votre mot de passe et/ou votre pseudo.
+            $message = "Bonjour,\r\nVous nous avez signalé que vous aviez oublié votre mot de passe et/ou votre pseudo.
             \r\nVotre pseudo : {$sesDonnees['pseudo']}\r\nVotre password : {$sesDonnees['mot_de_passe']}\r\n \r\n
             Veuillez penser à modifier votre mot de passe.";
 
@@ -208,5 +208,10 @@ class ctrlGeneral
         }else{
             var_dump($sesDonnees);
         }
+    }
+
+    public function modifierMotDePasse(){
+        $this->user=new Compte($_POST);
+        $this->model->modifierPassword();
     }
 }

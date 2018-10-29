@@ -30,7 +30,6 @@ class CtrlAdmin
     public function gererCompte()
     {
 
-        $a['identifiant'] = "martin.sylvie@jkljkl.fr";
         $this->user = new Compte($a);
 
         //suppression compte
