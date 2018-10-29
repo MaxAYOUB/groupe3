@@ -418,7 +418,7 @@ var_dump($requetePseudo);
             }
             // var_dump($compte5);
             //a été changé ou pas = erreur ou pas
-            if($compte1[0]['mot_de_passe']==$obj->getIdentifiant()){
+            if($compte1[0]['mot_de_passe']==md5($obj->getIdentifiant(), $raw_output = false)){
                 $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}' WHERE `email`='{$_SESSION['email']}'";
                 $result2 = $this->DAO->bddQuery($sql);
 
