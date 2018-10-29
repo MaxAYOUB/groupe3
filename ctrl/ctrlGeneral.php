@@ -147,11 +147,6 @@ class ctrlGeneral
         if ($verifAuthentification != false) {
             $avatar = $this->model->getAvatar();
             $_SESSION['listeAvatar']=$avatar;
-            // foreach ($_SESSION['listeAvatar'] as $avatars) {
-            //     if ($avatars['slug_avatar']==$verifAuthentification['avatar']){
-            //         $verifAuthentification['avatar']=$avatars['avatar'];
-            //     }
-            // }
             $this->gererSession($verifAuthentification);
             $data['bon']=true;
             $this->vue->afficherConnexionOk($data);
@@ -223,6 +218,7 @@ class ctrlGeneral
         var_dump($_SESSION);
         var_dump($_POST);
         $this->user=new Compte($_POST);
-        $this->model->modifierPassword($this->user);
+        $result['erreur']=$this->model->modifierPassword($this->user);
+        $this->vue->afficherConnexionOk($result);
     }
 }

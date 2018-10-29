@@ -416,7 +416,7 @@ var_dump($requetePseudo);
             foreach($result4 as $obj1){
                 $compte1[] = $obj1;
             }
-            var_dump($compte5);
+            // var_dump($compte5);
             //a été changé ou pas = erreur ou pas
             if($compte1[0]['mot_de_passe']==$obj->getIdentifiant()){
                 $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}' WHERE `email`='{$_SESSION['email']}'";
@@ -431,16 +431,20 @@ var_dump($requetePseudo);
                         $compte5[] = $obj3;
                     }
                     var_dump($compte5);
+                    return true;
                     //a été changé ou pas = erreur ou pas
                     if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
                         return true;
                     }else{
                         // $this->modifierPassword($obj);
+                        return false;
                     }
                 }
             }else{
                 // $this->modifierPassword($obj);
             }
+        }else{
+            return false;
         }
         
     }
