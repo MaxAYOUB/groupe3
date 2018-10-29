@@ -76,6 +76,7 @@ class user
     }
     public function setAvatar($v)
     {
+        $v = str_replace("_", " ", $v);
         $this->avatar = $this->isAlpha($v) ? $v : null;
     }
     public function setTelephone($v)
