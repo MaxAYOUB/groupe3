@@ -1,6 +1,8 @@
+/*Modifié par Babacar et Jade*/
+
 @colorDiv: #e3e3e3;
 @colorBody: #2F3F4F;
-@colorgrey : #22222;
+@colorgrey: #222222;
 
 #h1Inscription {
   color: @colorgrey;
@@ -8,14 +10,22 @@
   margin-bottom: 5%;
 }
 
-#divInscription1 {
+/*#divInscription1 {
   float: left;
   padding: 3%;
   border-right: 1px solid grey;
-}
+}*/
 
 #divInscription2 {
   position: relative;
   float: right;
   padding: 3%;
+}
+
+@media (min-width: 991px) {
+  #divInscription1 {
+    float: left;
+    padding: 3%;
+    border-right: 1px solid grey;
+  }
 }

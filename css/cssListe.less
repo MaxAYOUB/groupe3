@@ -1,0 +1,82 @@
+@colorDiv: #e3e3e3;
+@colorBody: #2F3F4F;
+@colorgrey: #222222;
+
+@media  (min-width:991px) {
+  #divListe {
+    float: left;
+    padding: 3%;
+    border-right: 1px solid grey;
+    overflow: auto;
+  }
+  #divGeneral{
+    margin: 5% 20% 0 20%;
+  }
+
+  }
+
+#h1Liste, #h1Add {
+  color: @colorgrey;
+  //font-weight: bold;
+  margin-bottom: 7%;
+}
+#h1Galerie {
+  color: @colorgrey;
+  font-weight: bold;
+}
+
+#divListe {
+  float: left;
+  padding: 3%;
+  /* border-right: 1px solid grey; */
+  overflow: auto;
+}
+
+#divAdd {
+  float: right;
+  padding: 3%;
+  overflow: auto;
+}
+
+#tableListe {
+  text-align: center;
+  margin: auto;
+  tr {
+    height: 60px;
+    border-bottom: dimgrey 1px solid;
+    th {
+      width: 150px;
+      text-align: center;
+    }
+    #imgListe {
+      width: 30%;
+    }
+    #btnModifier, #btnAdmin {
+      padding: 0;
+      margin: 4%;
+    }
+    #edit {
+      margin-right: 10%;
+      margin-top: 5%;
+      font-size: 150%;
+      color: green;
+      cursor : pointer;
+    }
+    #remove {
+      margin-top: 5%;
+      font-size: 150%;
+      color: darkred;
+    }
+  }
+}
+
+#divGalerie {
+  padding: 3%;
+  overflow: auto;
+  height: 60vh;
+}
+#divGalerieBtn {
+  height: 5vh;
+  border-top : 1px grey solid;
+  padding: 3%;
+}

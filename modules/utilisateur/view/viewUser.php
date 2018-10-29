@@ -7,7 +7,7 @@
 
         public function afficherErreurAcces(){
             
-        $page="erreurAcces.php";
+        $page="notAdmin.php";
         include "templates/default.php";
         }
     }
