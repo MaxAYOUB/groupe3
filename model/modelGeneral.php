@@ -333,11 +333,11 @@ class modelGeneral
         //verifie si l'email rentré correspond bien à un utilisateur et récupére son pseudo
         $requetePseudo= "SELECT `pseudo` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
 
-        if($result = $this->DAO->bddQuery($requetePseudo)){
+        if($result66 = $this->DAO->bddQuery($requetePseudo)){
             
             // traiter le retour / dire que ca s est bien passe
             $compte5 = array();
-            foreach($result as $obj2){
+            foreach($result66 as $obj2){
                 $compte5[] = $obj2;
             }
 
@@ -346,6 +346,7 @@ class modelGeneral
             $sesDonnees['erreurPseudo']=false;
         }
         else{
+            var_dump($result66);
             // gerer l'erreur / dire le fait que ca s est mal passe
             $sesDonnees['erreurPseudo']=true;
         }
