@@ -65,10 +65,7 @@ class ctrlGeneral
     // Enregistrement du formulaire
     public function enregForm()
     {
-        foreach ($_POST as $key => $val) {
-            $dataTab = json_decode($key, true);
-        }
-
+            $dataTab = $_POST;
 
         if ($this->verifier($dataTab)) {
             $this->user = new user($dataTab);

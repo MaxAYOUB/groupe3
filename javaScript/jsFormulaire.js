@@ -237,7 +237,7 @@ function verification() {
             result.adresse = test12;
             result.ville = test13;
             result.codePostal = test14;
-            myAjax(JSON.stringify(result));
+            myAjax(result);
         } else {
             if (test1 != "") {
                 document.getElementById("Nom").style.borderColor = "none";
