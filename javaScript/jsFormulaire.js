@@ -290,29 +290,29 @@ function myAjax(obj) {
         dataType: 'html',
         data: obj,
         success: function (result) {
-            document.getElementById("article").innerHTML = result;
-            console.log(typeof result);
-            console.log({result});
-            // var result2 = JSON.parse(result);
-            // console.log(result2.erreur);
+            // document.getElementById("article").innerHTML = result;
+            // console.log(typeof result);
+            // console.log({result});
+            var result2 = JSON.parse(result);
+            console.log(result2.erreur);
             
-            // if (result2.erreur==undefined || result2.erreur==false){
-            //     console.log("vrai");
-            //     location.assign("ctrlGeneral/getAccueil");
-            // }else{
-            //     // document.getElementById("confirmation").style.display="modal";
-            //     if (result2.erreur.email){
-            //         document.getElementById("Email").style.borderColor = "red";
-            //         document.getElementById("Email").value = "";
-            //         document.getElementById("Email").placeholder= "email déjà utilisé";
-            //     }
-            //     if (result2.erreur.pseudo){
-            //         document.getElementById("Pseudo").style.borderColor = "red";
-            //         document.getElementById("Pseudo").value = "";
-            //         document.getElementById("Pseudo").placeholder= "pseudo déjà utilisé";
-            //     }
-            //     console.log({result2});
-            // }
+            if (result2.erreur==undefined || result2.erreur==false){
+                console.log("vrai");
+                location.assign("ctrlGeneral/getAccueil");
+            }else{
+                // document.getElementById("confirmation").style.display="modal";
+                if (result2.erreur.email){
+                    document.getElementById("Email").style.borderColor = "red";
+                    document.getElementById("Email").value = "";
+                    document.getElementById("Email").placeholder= "email déjà utilisé";
+                }
+                if (result2.erreur.pseudo){
+                    document.getElementById("Pseudo").style.borderColor = "red";
+                    document.getElementById("Pseudo").value = "";
+                    document.getElementById("Pseudo").placeholder= "pseudo déjà utilisé";
+                }
+                console.log({result2});
+            }
             
         },
         error: function (result) {
