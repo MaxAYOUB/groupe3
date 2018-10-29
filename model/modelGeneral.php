@@ -332,7 +332,7 @@ class modelGeneral
 
         //verifie si l'email rentré correspond bien à un utilisateur et récupére son pseudo
         $requetePseudo= "SELECT `pseudo` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
-
+echo $requetePseudo;
         if($result66 = $this->DAO->bddQuery($requetePseudo)){
             
             // traiter le retour / dire que ca s est bien passe
