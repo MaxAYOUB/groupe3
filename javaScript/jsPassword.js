@@ -39,9 +39,9 @@ function verification() {
         console.log("click");
         var compte1 = Object.create(Compte);
         compte1.setMotdepasse(document.getElementById("motdepasse").value);
-        var test1 = compte1.getIdentifiant();
+        var test1 = compte1.getMotdepasse();
         compte1.setMotdepasse1(document.getElementById("motdepasse1").value);
-        var test2 = compte1.getMotdepasse();
+        var test2 = compte1.getMotdepasse1();
         compte1.setMotdepasse2(document.getElementById("motdepasse2").value);
         var test3 = compte1.getMotdepasse();
         if (test1 != "" && test2 != "" && test2==test3) {
