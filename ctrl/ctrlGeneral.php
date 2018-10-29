@@ -219,6 +219,6 @@ class ctrlGeneral
         // var_dump($_POST);
         $this->user=new Compte($_POST);
         $result['erreur']=$this->model->modifierPassword($this->user);
-        $this->vue->afficherConnexionOk($result);
+        // $this->vue->afficherConnexionOk($result);
     }
 }
