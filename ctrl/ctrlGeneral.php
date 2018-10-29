@@ -145,6 +145,8 @@ class ctrlGeneral
         // var_dump($this->user);
         $verifAuthentification = $this->model->authentification($this->user);
         if ($verifAuthentification != false) {
+            $avatar = $this->model->getAvatar();
+            $verifAuthentification['avatar']=$avatar;
             $this->gererSession($verifAuthentification);
             $data['bon']=true;
             $this->vue->afficherConnexionOk($data);

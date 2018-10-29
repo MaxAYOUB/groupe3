@@ -81,7 +81,7 @@
                       </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">valider</button>
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">valider</button>
                   </div>
                 </div>
               </form>
