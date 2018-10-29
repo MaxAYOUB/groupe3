@@ -360,12 +360,14 @@ class modelGeneral
             for ($i = 0; $i < 15; $i++){
                 $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
             }
+            var_dump($chaineAleatoire);
 
             //sauvegarde la version non codée du mot de passe pour la donner au client
             $sesDonnees['mot_de_passe']=$chaineAleatoire;
 
             //code le mot de passe
             $chaineAleatoire=md5($chaineAleatoire,$raw_output = false);
+            var_dump($chaineAleatoire);
 
             //change le mot de passe dans la base de donnée
             $requeteUpdate= "UPDATE `user` SET `mot_de_passe`='{$chaineAleatoire}'WHERE `email`='{$obj->getIdentifiant()}'";
@@ -380,6 +382,7 @@ class modelGeneral
                 foreach($result3 as $obj3){
                     $compte5[] = $obj3;
                 }
+                var_dump($compte5);
                 //a été changé ou pas = erreur ou pas
                 if($compte5[0]['mot_de_passe']==$chaineAleatoire){
                     $sesDonnees['erreurPassword']=false;
@@ -394,6 +397,7 @@ class modelGeneral
                 $sesDonnees['erreurPassword']=true;
             }
         }
+        var_dump($sesDonnees);
         return $sesDonnees;
     }
 }
