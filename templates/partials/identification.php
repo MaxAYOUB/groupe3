@@ -81,7 +81,7 @@
                 <div class="modal-body">
                     <p>Entrez l'adresse courriel associée à votre compte pour recevoir les instructions de réinitialisation
                         de votre mot de passe.</p>
-                    <input type="text" id="fname" name="firstname" placeholder="Email">
+                    <input type="text" id="fname" name="identifiant" placeholder="Email">
                 </div>
 
                 <div class="modal-footer">
