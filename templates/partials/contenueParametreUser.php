@@ -59,7 +59,6 @@
           <!-- Modal mot de passe-->
           <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog">
-              <form method="POST" action="ctrlGeneral/modifierMotDePasse">
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
@@ -69,22 +68,21 @@
 
                   <div class="modal-body">
                     <p>Ancien mot de passe</p>
-                      <input type="text" id="fname" name="firstname" placeholder="************">
+                      <input type="text" id="motdepasse" name="motdepasse" placeholder="************">
                   </div>
                   <div class="modal-body">
                       <p>Nouveau mot de passe</p>
-                      <input type="text" id="fname1" name="motdepasse" placeholder="************">
+                      <input type="text" id="motdepasse1" name="motdepasse1" placeholder="************">
                   </div>
                   <div class="modal-body">
                           <p>confimation mot de passe</p>
-                          <input type="text" id="fname2" name="firstname" placeholder="************">
+                          <input type="text" id="motdepasse2" name="motdepasse2" placeholder="************">
                       </div>
 
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">valider</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="validerPassword">valider</button>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
 
