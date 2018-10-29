@@ -67,7 +67,7 @@ function verification() {
 }
 // Fonction ajax pour lancer VerifierAuthentification
 function myAjax(obj) {
-    console.log(typeof obj);
+    console.log(obj);
     $.ajax({
         url: "ctrlGeneral/modifierMotDePasse",
         type: "POST",
