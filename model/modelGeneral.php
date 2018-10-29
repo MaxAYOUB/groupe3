@@ -331,7 +331,7 @@ class modelGeneral
         $sesDonnees=array();
         $sesDonnees['pseudo']="";
         $sesDonnees['erreurPseudo']=true;
-        $sesDonnees['mo_de_passe']="";
+        $sesDonnees['mot_de_passe']="";
         $sesDonnees['erreurPassword']=true;
 
         //verifie si l'email rentré correspond bien à un utilisateur et récupére son pseudo
