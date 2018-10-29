@@ -408,7 +408,7 @@ var_dump($requetePseudo);
     }
 
     public function modifierPassword($obj){
-        $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}'WHERE `email`='{$_SESSION['email']}'";
+        $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}' WHERE `email`='{$_SESSION['email']}'";
         $result2 = $this->DAO->bddQuery($sql);
 
         $verif= "SELECT `mot_de_passe` FROM `user` WHERE  `email`='{$_SESSION['email']}'";
@@ -424,7 +424,7 @@ var_dump($requetePseudo);
             if($compte5[0]['mot_de_passe']==$obj->getMotdepasse()){
                 return true;
             }else{
-                $this->modifierPassword();
+                $this->modifierPassword($obj);
             }
         }
     }
