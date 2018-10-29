@@ -43,7 +43,7 @@ function verification() {
         compte1.setMotdepasse1(document.getElementById("motdepasse1").value);
         var test2 = compte1.getMotdepasse1();
         compte1.setMotdepasse2(document.getElementById("motdepasse2").value);
-        var test3 = compte1.getMotdepasse3();
+        var test3 = compte1.getMotdepasse2();
         if (test1 != "" && test2 != "" && test2==test3) {
             var result = {};
             result.identifiant = test1;
