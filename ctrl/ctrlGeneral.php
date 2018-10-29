@@ -216,8 +216,9 @@ class ctrlGeneral
 
     public function modifierMotDePasse(){
         // var_dump($_SESSION);
-        // var_dump($_POST);
+        var_dump($_POST);
         $this->user=new Compte($_POST);
+        var_dump($this->user);
         $result['erreur']=$this->model->modifierPassword($this->user);
         // $this->vue->afficherConnexionOk($result);
     }
