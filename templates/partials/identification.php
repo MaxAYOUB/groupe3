@@ -71,7 +71,7 @@
 <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <form style="padding:10%" action="" method="POST" action="ctrlGeneral/gererPassword">
+        <form style="padding:10%" method="POST" action="ctrlGeneral/gererPassword">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
