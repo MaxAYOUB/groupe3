@@ -105,8 +105,8 @@ function ajaxError(data){
             
             var_dump($data);?>
             <tr>
-                <td><?php echo $data['pseudo']?></td>
-                <td><img id="imgListe" src="images/<?php echo $data['avatar']?>"></td>
+                <td><?php echo $val['pseudo']?></td>
+                <td><img id="imgListe" src="images/<?php echo $val['avatar']['avatar']?>"></td>
                 <td>
                     <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
                     <button id="btnAdmin" type="button" class="btn btn-default col-sm-4 col-xs-6">Admin</button>
