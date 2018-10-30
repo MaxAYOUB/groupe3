@@ -34,7 +34,7 @@ function ajaxError(data){
 
 $( document ).ready(function() { 
 
-$( "#iconEdit" ).click( function () {
+$( ".glyphicon-pencil" ).click( function () {
   	$.ajax({
 		url: 'ctrlGeneral/getEditUser',
 		type: 'POST',
@@ -106,7 +106,7 @@ function ajaxError(data){
                 <td><?php echo $val['pseudo']?></td>
                 <td><img id="imgListe" src="<?php echo $val['avatar']['avatar']?>"></td>
                 <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
+                
                     <button id="btnAdmin" type="button" class="btn btn-default col-sm-4 col-xs-6" <?php echo $val['admin']? "disabled":"" ?>>Admin</button>
                     <a id="iconEdit"><span id="edit" class="glyphicon glyphicon-pencil col-xs-1"
                                       aria-hidden="true"></span></a>
