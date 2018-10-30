@@ -403,7 +403,7 @@ var_dump($requetePseudo);
                 $sesDonnees['erreurPassword']=true;
             }
         }
-        var_dump($sesDonnees);
+        // var_dump($sesDonnees);
         return $sesDonnees;
     }
 
@@ -416,8 +416,8 @@ var_dump($requetePseudo);
             foreach($result4 as $obj1){
                 $compte1[] = $obj1;
             }
-            var_dump($compte1);
-            var_dump(md5($obj->getIdentifiant(), $raw_output = false));
+            // var_dump($compte1);
+            // var_dump(md5($obj->getIdentifiant(), $raw_output = false));
             //a été changé ou pas = erreur ou pas
             if($compte1[0]['mot_de_passe']==md5($obj->getIdentifiant(), $raw_output = false)){
                 $sql="UPDATE `user` SET `mot_de_passe`='{$obj->getMotdepasse()}' WHERE `email`='{$_SESSION['email']}'";

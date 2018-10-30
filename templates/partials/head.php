@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<title>TITRE DE L'APP</title>
+<title>TRACK ME</title>
 <link rel="shortcut icon" type="image/png" href=""/> <!--changer le favicon-->
     <!-- <base href="http://localhost/groupe3.1/"/> -->
 <base href="http://cdi.afpa-balma.fr"/>
