@@ -110,7 +110,7 @@ function ajaxError(data){
                     <button id="btnAdmin" type="button" class="btn btn-default col-sm-4 col-xs-6" <?php echo $val['admin']? "disabled":"" ?>>Admin</button>
                     <a id="iconEdit"><span id="edit" class="glyphicon glyphicon-pencil col-xs-1"
                                       aria-hidden="true"></span></a>
-                    <a id="iconRemove" data-toggle="modal" data-target="#myModal1" ><span id="remove"  class="glyphicon glyphicon-minus-sign col-xs-1"
+                    <a style="cursor:pointer;" id="iconRemove" data-toggle="modal" data-target="#myModal1" ><span id="remove"  class="glyphicon glyphicon-minus-sign col-xs-1"
                                       aria-hidden="true"></span></a>
 
                 </td>
