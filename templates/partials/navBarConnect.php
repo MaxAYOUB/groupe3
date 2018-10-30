@@ -39,6 +39,7 @@
 
                         <li><a href="ctrlGeneral/getParametre/bon">Paramètres</a></li>
                         <?php if ($_SESSION['admin']==true){
+                          var_dump($data);
                         echo '<li><a href="CtrlAdmin/afficherListeUtilisateur">Liste des utilisateurs</a></li>
                               
                               <li><a href="ctrlGeneral/getGalerie">Galerie avatars</a></li>
