@@ -39,7 +39,7 @@
 
                         <li><a href="ctrlGeneral/getParametre/bon">Paramètres</a></li>
                         <?php if ($_SESSION['admin']==true){
-                        echo '<li><a href="ctrlGeneral/getListe">Liste des utilisateurs</a></li>
+                        echo '<li><a href="ctrlAdmin/afficherListeUtilisateur">Liste des utilisateurs</a></li>
                               
                               <li><a href="ctrlGeneral/getGalerie">Galerie avatars</a></li>
                               '
