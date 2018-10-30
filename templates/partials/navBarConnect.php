@@ -12,7 +12,7 @@
                 <!-- <a class="navbar-brand" style='padding: 0px 0px;' href="#"><img id ="logo" class="img-responsive logo" src="images/logo.png" alt=""></a> -->
               </div>
               <div id="navbar" class="collapse navbar-collapse">
-                  <ul class="nav navbar-nav navbar-left" ><li id ="home" ><a href="">Home</a>
+              <ul class="nav navbar-nav navbar-left" > <li id="home"><a href="#" style="font-size: 140%"><span class="glyphicon glyphicon-home hidden-xs" aria-hidden="true" style="font-size: 90%; margin-right: 10px"></span>Accueil</a>
                   </li> </ul>
                
                 <ul class="nav navbar-nav navbar-right" >
