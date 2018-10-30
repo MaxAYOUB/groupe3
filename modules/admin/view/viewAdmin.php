@@ -37,8 +37,8 @@ class viewAdmin
     
     public function afficherListeOk($data)
     {
-        echo ('affiche liste ok');
-        /// include "templates/default.php";
+        $_SESSION['page']= "ongletListe.php";
+        include "templates/default.php";
     }
     public function afficherListeNotOk()
     {

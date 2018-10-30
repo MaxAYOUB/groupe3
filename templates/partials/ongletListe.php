@@ -100,9 +100,10 @@ function ajaxError(data){
                 <th>Avatar</th>
                 <th>Editer</th>
             </tr>
+            <?php foreach($data as $val):?>
             <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
+                <td><?php echo $data['pseudo']?></td>
+                <td><img id="imgListe" src="images/<?php echo $data['avatar']?>"></td>
                 <td>
                     <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
                     <button id="btnAdmin" type="button" class="btn btn-default col-sm-4 col-xs-6">Admin</button>
@@ -113,123 +114,7 @@ function ajaxError(data){
 
                 </td>
             </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4" disabled>Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4" disabled>Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4" disabled>Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4">Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4">Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4" disabled>Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4" disabled>Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4" disabled>Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Elfyka</td>
-                <td><img id="imgListe" src="images/Image-1.png"></td>
-                <td>
-                    <!--<button id="btnModifier" type="button" class="btn btn-default col-sm-4">Modifier</button>-->
-                    <button id="btnAdmin" type="button" class="btn btn-default col-sm-4">Admin</button>
-                    <a href="#"><span id="edit" class="glyphicon glyphicon-pencil"
-                                      aria-hidden="true"></span></a>
-                    <a href="#"><span id="remove" class="glyphicon glyphicon-minus-sign"
-                                      aria-hidden="true"></span></a>
-
-                </td>
-            </tr>
+            <?php endforeach?>
 
         </table>
     </div>
