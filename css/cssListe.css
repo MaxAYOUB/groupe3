@@ -5,9 +5,9 @@
     border-right: 1px solid grey;
     overflow: auto;
   }
-  #divGeneral {
+  /* #divGeneral {
     margin: 5% 20% 0 20%;
-  }
+  } */
 }
 #h1Liste,
 #h1Add {

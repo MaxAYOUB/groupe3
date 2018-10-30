@@ -291,16 +291,14 @@ function myAjax(obj) {
         data: obj,
         success: function (result) {
             // document.getElementById("article").innerHTML = result;
-            // console.log(typeof result);
-            // console.log({result});
             var result2 = JSON.parse(result);
             console.log(result2.erreur);
             
             if (result2.erreur==undefined || result2.erreur==false){
-                console.log("vrai");
+                
                 location.assign("ctrlGeneral/getAccueil");
             }else{
-                // document.getElementById("confirmation").style.display="modal";
+                
                 if (result2.erreur.email){
                     document.getElementById("Email").style.borderColor = "red";
                     document.getElementById("Email").value = "";
@@ -311,15 +309,12 @@ function myAjax(obj) {
                     document.getElementById("Pseudo").value = "";
                     document.getElementById("Pseudo").placeholder= "pseudo déjà utilisé";
                 }
-                console.log({result2});
             }
             
         },
         error: function (result) {
-            document.getElementById("article").innerHTML = result;
             // alert("error");
             console.log("pas "+{result2});
-            // document.getElementById("confirmation").style.display="modal";
         },
         complete: function (result) {}
     });

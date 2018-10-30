@@ -1,0 +1,49 @@
+#divMoncompte{
+    margin: 5% 20% 0 20%;
+    background-color: #f2f2f2
+}
+#compteAvatar{
+    width: 146px;
+    height: 117px;
+
+}
+
+
+@media only screen and (min-width:0px) and (max-width:767px) {
+
+    #divMoncompte{
+        margin: 5% 0% 0 0%;
+
+    }
+
+    #compteAvatar{
+        width: 137px;
+        height: 108px;
+
+
+    }
+
+    @media only screen and (min-width:0px) and (max-width:520px){
+        #nomID{
+            font-size:5vw;
+            font-weight: 550;
+        }
+        #pseudoID{
+            font-size:5vw;
+
+        }
+    }
+
+}
+
+@media only screen and (min-width:0px) and (max-width:350px) {
+    #compteAvatar{
+        width: 120px;
+        height: 95px;
+
+
+    }
+
+
+
+}

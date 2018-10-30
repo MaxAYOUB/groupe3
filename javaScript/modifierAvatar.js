@@ -41,18 +41,14 @@ function myAjaxAvatar(obj) {
         dataType: 'html',
         data: obj,
         success: function (result) {
-            console.log(result);
             // document.getElementById('article').innerHTML=result;
             var result2 = JSON.parse(result);
-            console.log(result2);
             
             if (result2.erreur==true){
-                console.log("vrai");
                 location.assign("ctrlGeneral/getParametre/passe");
             }else{
-                // document.getElementById("confirmation").style.display="modal";
+                
                 location.assign("ctrlGeneral/getParametre/PasPasse");
-                console.log({result2});
             }
         },
         error: function (result) {

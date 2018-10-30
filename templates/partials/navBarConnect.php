@@ -1,6 +1,7 @@
 <div id="nav">
         <div id= "navresp" class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
-            <div class="container">
+        <a class="navbar-brand" style='padding: 0 0 0 4%;' href="#"><img id ="logo" class="img-responsive logo" src="images/logo.png" alt=""></a>
+              <div class="container">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                   <span class="sr-only">Toggle navigation</span>

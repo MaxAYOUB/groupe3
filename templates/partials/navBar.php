@@ -3,7 +3,7 @@
 <div id="nav">
     <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
 
-        <a class="navbar-brand" id="logo" style='padding: 0 0 0 4%;' href="#"><img class="img-responsive logo"
+        <a class="navbar-brand" id="logo" style='padding: 0 0 0 4%;' href="#"><img id="logo" class="img-responsive logo"
                                                                                    src="images/logo.png" alt=""></a>
 
         <div class="container">
