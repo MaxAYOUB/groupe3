@@ -1,0 +1,31 @@
+#divProfil {
+  margin: 5% 20% 5% 20%;
+  background-color: #f2f2f2;
+}
+#divProfil #tableProfil {
+  box-shadow: #eaeaea 8px 8px;
+  float: left;
+  margin: auto;
+}
+#divProfil #tableProfil td {
+  width: 20%;
+}
+#divProfil #divA {
+  float: right;
+  margin: 5% 0 5% 0 ;
+}
+@media (max-width: 768px) {
+  #divProfil {
+    margin: 5% 0 5% 0;
+  }
+  #divProfil #tableProfil {
+    width: 100%;
+  }
+  #divProfil #tableProfil td {
+    width: 40%;
+  }
+  #divProfil #divA {
+    margin: 5% 0 5% 0;
+  }
+}
+/*# sourceMappingURL=cssProfil.css.map */

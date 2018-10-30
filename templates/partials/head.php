@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/cssAccueil.css"/>
 <link rel="stylesheet" type="text/css" href="css/cssInscription.css"/>
 <link rel="stylesheet" type="text/css" href="css/cssMonCompte.css"/>
+<link rel="stylesheet" type="text/css" href="css/cssProfil.css"/>
 <link rel="stylesheet" type="text/css" href="css/cssListe.css"/>
 <link rel="stylesheet" type="text/css" href="css/nav.css"/>
 <link rel="stylesheet" type="text/css" href="css/footer.css"/>

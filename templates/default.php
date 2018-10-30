@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  style="height: 100%; margin: 0; padding: 0;">
 
 <head>
     <?php include "templates/partials/head.php"; ?>
 </head>
 
-<body style="padding-top:150px;">
+<body style="margin: 0; padding: 150px 0 60px 0; height: 100%; position: relative; display : table; width: 100%;">
 
 <header>
     <?php 
