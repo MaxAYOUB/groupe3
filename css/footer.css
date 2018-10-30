@@ -1,5 +1,43 @@
-#footer{
+#footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #222222;
+    display: table-row;
     height: 60px;
-    position: fixed;
-    bottom:0;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#divP {
+    color: #cccccc;
+}
+
+/*
+#p1{
+
+}*/
+
+#p2 {
+    cursor: pointer;
+    color: #cccccc;
+}
+
+@media (max-width: 400px) {
+    #footer {
+        font-size: 12px;
+    }
+
+    #divP {
+        padding-top: 5px;
+    }
+
+}
+
+@media (min-width: 768px) {
+    #divP {
+        padding-top: 20px;
+    }
 }

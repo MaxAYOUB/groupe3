@@ -10,11 +10,11 @@ var Compte = {
      * Setter
      */
     'setMotdepasse1': function (n) {
-        this.identifiant = n;
+        this.motdepasse1 = n;
         return;
     },
     'setMotdepasse2': function (n) {
-        this.motdepasse = n;
+        this.motdepasse2 = n;
         return;
     },
     'setMotdepasse': function (n) {
@@ -22,13 +22,13 @@ var Compte = {
         return;
     },
     'getMotdepasse': function (n) {
-        return this.identifiant;
+        return this.motdepasse;
     },
     'getMotdepasse1': function (n) {
-        return this.identifiant;
+        return this.motdepasse1;
     },
     'getMotdepasse2': function (n) {
-        return this.motdepasse;
+        return this.motdepasse2;
     },
 }
 window.onload = verification;
@@ -45,22 +45,27 @@ function verification() {
         compte1.setMotdepasse2(document.getElementById("motdepasse2").value);
         var test3 = compte1.getMotdepasse2();
         if (test1 != "" && test2 != "" && test2==test3) {
-            var result = {};
-            result.identifiant = test1;
-            result.motdepasse = test2;
+            var result = {'identifiant':test1,'motdepasse':test2};
+            // result.identifiant = test1;
+            // result.motdepasse = test2;
             // console.log("passe");
             // Convertion de la chaine de caractére en JSON 
-            myAjax(JSON.stringify(result));
+            myAjax(result);
         } else {
             if (test1 != "") {
-                document.getElementById("inputEmail3").style.borderColor = "none";
+                document.getElementById("motdepasse").style.borderColor = "none";
             } else {
-                document.getElementById("inputEmail3").style.borderColor = "red";
+                document.getElementById("motdepasse").style.borderColor = "red";
             }
             if (test2 != "") {
-                document.getElementById("inputPassword3").style.borderColor = "none";
+                document.getElementById("motdepasse1").style.borderColor = "none";
             } else {
-                document.getElementById("inputPassword3").style.borderColor = "red";
+                document.getElementById("motdepasse1").style.borderColor = "red";
+            }
+            if (test3 == test2 && test3!="") {
+                document.getElementById("motdepasse2").style.borderColor = "none";
+            } else {
+                document.getElementById("motdepasse2").style.borderColor = "red";
             }
         }
     }, false);
@@ -75,20 +80,18 @@ function myAjax(obj) {
         data: obj,
         success: function (result) {
             console.log(result);
-            document.getElementById('article').innerHTML=result;
-            // var result2 = JSON.parse(result);
-            // // console.log(result2.erreur);
+            // document.getElementById('article').innerHTML=result;
+            var result2 = JSON.parse(result);
+            console.log(result2);
             
-            // if (result2.erreur==undefined){
-            //     console.log("vrai");
-            //     location.assign("ctrlGeneral/getAccueil");
-            // }else{
-            //     // document.getElementById("confirmation").style.display="modal";
-            //         document.getElementById("identifiant").style.borderColor = "red";
-            //         document.getElementById("motdepasse").style.borderColor = "red";
-                
-            //     console.log({result2});
-            // }
+            if (result2.erreur==true){
+                console.log("vrai");
+                location.assign("ctrlGeneral/getParametre/passe");
+            }else{
+                // document.getElementById("confirmation").style.display="modal";
+                location.assign("ctrlGeneral/getParametre/PasPasse");
+                console.log({result2});
+            }
         },
         error: function (result) {
             alert("error");

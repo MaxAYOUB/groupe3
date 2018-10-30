@@ -10,7 +10,14 @@
         }
         </style>
         <div class="container">
-
+<?php 
+if ($passe=="passe"){
+  echo "<h1>Vos changements ont été effectués</h1>";
+}else if ($passe=="PasPasse"){
+  echo "<h1>Vos changements n'ont pas pu être effectués</h1>";
+}else{
+  echo "";
+} ?>
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
     <img class="col-xs-12 col-sm-offset-7 col-sm-5 col-md-offset-7 col-md-5 col-lg-8 col-lg-offset-4"
          src="<?php  echo ($_SESSION['avatar']); ?>">
@@ -59,35 +66,65 @@
           <!-- Modal mot de passe-->
           <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modifier le mot de passe</h4>
-                  </div>
 
-                  <div class="modal-body">
-                    <p>Ancien mot de passe</p>
-                      <input type="text" id="motdepasse" name="motdepasse" placeholder="************">
-                  </div>
-                  <div class="modal-body">
-                      <p>Nouveau mot de passe</p>
-                      <input type="text" id="motdepasse1" name="motdepasse1" placeholder="************">
-                  </div>
-                  <div class="modal-body">
-                          <p>confimation mot de passe</p>
-                          <input type="text" id="motdepasse2" name="motdepasse2" placeholder="************">
-                      </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="validerPassword">valider</button>
-                    
-                  </div>
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modifier le mot de passe</h4>
                 </div>
+
+                <div class="modal-body">
+                  <p>Ancien mot de passe</p>
+                    <input type="text" id="motdepasse" name="motdepasse" placeholder="************">
+                </div>
+                <div class="modal-body">
+                    <p>Nouveau mot de passe</p>
+                     <input type="text" id="motdepasse1" name="motdepasse1" placeholder="************">
+                </div>
+                <div class="modal-body">
+                        <p>confimation mot de passe</p>
+                         <input type="text" id="motdepasse2" name="motdepasse2" placeholder="************">
+                    </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="validerPassword">valider</button>
+                </div>
+              </div>
+
             </div>
           </div>
           <script src="javaScript/jsPassword.js"></script>
-                   
+
+                   <!-- Modal mail-->
+                   <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Modifier email</h4>
+                            </div>
+
+                            <div class="modal-body">
+                              <p>adresse email actuelle</p>
+                              <p>adresse@actuelle.com</p>
+
+                            </div>
+
+                            <div class="modal-body">
+                                    <p>Nouvelle adresse email</p>
+                                     <input type="text" id="fname5" name="firstname" placeholder="************">
+                                </div>
+
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Modifier email</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
 
                       <!-- Modal galerie avatar -->
               <div class="modal fade" id="myModalgalerie" role="dialog">
@@ -104,10 +141,10 @@
                     <div class="modal-body" style="padding-left:10%;">
                      <!-- Boucle Php qui récupère les avatars dans la BDD locale -->
                      <?php
-                    $avatar = ($_SESSION['listeAvatar']);
-                    for ($i = 0; $i < count($avatar); $i++) {
-                        echo "<img style='cursor:pointer' src='{$avatar[$i]['avatar']}'</br>";
-                    }
+                      $avatar = ($_SESSION['listeAvatar']);
+                      for ($i = 0; $i < count($avatar); $i++) {
+                        echo "<img style='cursor:pointer' style='cursor:pointer; margin:3px ' id=\"{$avatar[$i]['slug_avatar']}\" onclick='modifAvatar(\"{$avatar[$i]['slug_avatar']}\")' src='{$avatar[$i]['avatar']}'</br>";
+                      }
                     ?>
                     <!-- Fin de la boucle Php -->
                     </div>
@@ -120,4 +157,5 @@
 
                 </div>
               </div>
+              <script src="javaScript/modifierAvatar.js"></script>
 </div>

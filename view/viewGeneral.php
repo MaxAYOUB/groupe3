@@ -50,7 +50,7 @@ class viewGeneral
         $_SESSION['page'] = "templateMonCompte.php";
         include "templates/default.php";
     }
-    public function afficherParametre()
+    public function afficherParametre($passe)
     {
         $_SESSION['page'] = "contenueParametreUser.php";
         include "templates/default.php";
@@ -72,6 +72,14 @@ class viewGeneral
     public function afficherEditUser()
     {
         include "templates/partials/editUser.php";
+    }
+    public function afficherCgu()
+    {
+        $_SESSION['page']= "cgu.php";
+        include "templates/default.php";
+    }
+    public function fichierAPK(){
+        include "templates/partials/APK.php";
     }
 // Fin d'ajout
 }

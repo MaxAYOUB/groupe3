@@ -26,11 +26,11 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden-xs"><a id="icon" class="lien" href="#"
+                    <li class="hidden-xs"><a id="icon" class="lien" href="ctrlGeneral/telechargerAPK"
                            style="padding: 0px;padding-top: 4px;padding-right: 10px;"><img
                                     src="images\androidicon.png "></a>
                     </li>
-                    <li class="hidden-xs"><a id="icon1" class="lien" href="#" style="padding: 0px;padding-top: 4px;padding-right: 10px; "><img
+                    <li class="hidden-xs"><a id="icon1" class="lien" href="https://www.bignox.com/" style="padding: 0px;padding-top: 4px;padding-right: 10px; "><img
                                     src="images\appleicon.png "></a>
                     </li>
                     <li><a id="inscrire" href="ctrlGeneral/getForm">S'inscrire</a></li>

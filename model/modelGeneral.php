@@ -450,4 +450,46 @@ var_dump($requetePseudo);
         }
         
     }
+
+    public function UpdateAvatar($obj){
+        $requeteAvatar="SELECT `id_avatar`, `avatar` FROM `avatar` WHERE `slug_avatar`='{$obj->getSlugavatar()}'";
+        // var_dump($requeteAvatar);
+        $leSlug="";
+        if($result3 = $this->DAO->bddQuery($requeteAvatar)){
+                
+            // traiter le retour / dire que ca s est bien passe
+            $compte5 = array();
+            foreach($result3 as $obj3){
+                $compte5[] = $obj3;
+            }
+            $leSlug=$compte5[0]['id_avatar'];
+            
+        }else{
+            return false;
+        }
+
+        if ($leSlug!=""){
+            $requeteUpdate="UPDATE `user` SET `id_avatar`='{$leSlug}' WHERE `pseudo`='{$_SESSION['pseudo']}'";
+            $result1 = $this->DAO->bddQuery($requeteUpdate);
+
+            $verif= "SELECT `id_avatar` FROM `user` WHERE  `pseudo`='{$_SESSION['pseudo']}'";
+                if($result2 = $this->DAO->bddQuery($verif)){
+                
+                    // traiter le retour / dire que ca s est bien passe
+                    $compte2 = array();
+                    foreach($result2 as $obj2){
+                        $compte2[] = $obj2;
+                    }
+                    //a été changé ou pas = erreur ou pas
+                    if($compte2[0]['id_avatar']==$leSlug){
+                        $_SESSION['avatar']=$compte5[0]['avatar'];
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+        }else{
+            return false;
+        }
+    }
 }

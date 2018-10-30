@@ -25,9 +25,9 @@ class ctrlGeneral
     {
         $this->vue->afficherCompte();
     }
-    public function getParametre()
+    public function getParametre($bienPasse)
     {
-        $this->vue->afficherParametre();
+        $this->vue->afficherParametre($bienPasse);
     }
     public function getListe()
     {
@@ -46,6 +46,10 @@ class ctrlGeneral
         $this->vue->afficherEditUser();
     }
 // Fin d'ajout
+    public function getCgu()
+    {
+        $this->vue->afficherCgu();
+    }
 
     public function getForm()
     {
@@ -169,7 +173,7 @@ class ctrlGeneral
         } else {
             $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";
         }
-        return json_encode($_SESSION);
+        $this->vue->afficherConnexionOk($_SESSION);
     }
 
     public function getModifierCompte()
@@ -216,10 +220,20 @@ class ctrlGeneral
 
     public function modifierMotDePasse(){
         // var_dump($_SESSION);
-        var_dump($_POST);
+        // var_dump($_POST);
         $this->user=new Compte($_POST);
-        var_dump($this->user);
+        // var_dump($this->user);
         $result['erreur']=$this->model->modifierPassword($this->user);
-        // $this->vue->afficherConnexionOk($result);
+        $this->vue->afficherConnexionOk($result);
+    }
+
+    public function modifierAvatar(){
+        // var_dump($_POST);
+        $this->user=new avatar($_POST);
+        $resultat['erreur']=$this->model->UpdateAvatar($this->user);
+        $this->vue->afficherConnexionOk($resultat);
+    }
+    public function telechargerAPK(){
+        $this->vue->fichierAPK();
     }
 }
