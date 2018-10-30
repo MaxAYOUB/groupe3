@@ -29,8 +29,8 @@ function __autoload($class_name = ""){
             "javaScript"
 	);
 	$modules= array(
-		"Modules/admin/",
-		"Modules/utilisateur/",
+		"modules/admin/",
+		"modules/utilisateur/",
 		""
 	);
 	foreach($modules as $module){
