@@ -30,10 +30,10 @@ function modifAvatar(s){
     sonAvatar.setSlug(s);
 
     var result ={'slug_avatar':sonAvatar.getSlug()}
-    myAjax(result);
+    myAjaxAvatar(result);
 }
 
-function myAjax(obj) {
+function myAjaxAvatar(obj) {
     console.log(obj);
     $.ajax({
         url: "ctrlGeneral/modifierAvatar",

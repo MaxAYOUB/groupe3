@@ -50,7 +50,7 @@ function verification() {
             // result.motdepasse = test2;
             // console.log("passe");
             // Convertion de la chaine de caractére en JSON 
-            myAjax(result);
+            myAjaxPassword(result);
         } else {
             if (test1 != "") {
                 document.getElementById("motdepasse").style.borderColor = "none";
@@ -71,7 +71,7 @@ function verification() {
     }, false);
 }
 // Fonction ajax pour lancer VerifierAuthentification
-function myAjax(obj) {
+function myAjaxPassword(obj) {
     console.log(obj);
     $.ajax({
         url: "ctrlGeneral/modifierMotDePasse",
