@@ -101,6 +101,9 @@ function ajaxError(data){
                 <th>Editer</th>
             </tr>
             <?php foreach($data as $val):?>
+            <?php var_dump($val);
+            
+            var_dump($data);?>
             <tr>
                 <td><?php echo $data['pseudo']?></td>
                 <td><img id="imgListe" src="images/<?php echo $data['avatar']?>"></td>
