@@ -29,7 +29,7 @@ if ($passe=="passe"){
   </div>
 </div>
 
-<div class="container-fluid" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-top: 5%; background-color: #f2f2f2">
+<div id="divMoncompte" class="container-fluid" style="margin: 5% 5% 0 5%; background-color: #f2f2f2">
 
           <h1>Paramètres</h1>
           <h2>Details du compte</h2>
