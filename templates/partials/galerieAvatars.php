@@ -56,7 +56,7 @@
 </div>
 
 
-<div class="container-fluid" style="margin: 5% 20% 5% 20%;background-color: #f2f2f2;">
+<div class="container-fluid" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-top: 5%;background-color: #f2f2f2;">
 
     <h1 id="h1Galerie">Galerie d'avatars</h1>
 
