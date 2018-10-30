@@ -9,7 +9,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style='padding: 0px 0px;' href="#"><img id ="logo" class="img-responsive logo" src="images/logo.png" alt=""></a>
+                <!-- <a class="navbar-brand" style='padding: 0px 0px;' href="#"><img id ="logo" class="img-responsive logo" src="images/logo.png" alt=""></a> -->
               </div>
               <div id="navbar" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav navbar-left" ><li id ="home" ><a href="">Home</a>
