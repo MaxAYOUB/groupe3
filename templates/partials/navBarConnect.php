@@ -17,7 +17,7 @@
                
                 <ul class="nav navbar-nav navbar-right" >
                  
-                  <li ><a id = "icon" class="lien" href="ctrlGeneral/telechargerAPK" style="padding: 0px;padding-top: 4px;padding-right: 10px;"  ><img src="images\androidicon.png "></a>
+                  <li ><a id = "icon" class="lien" href="versions/app-debug.apk" style="padding: 0px;padding-top: 4px;padding-right: 10px;"  ><img src="images\androidicon.png "></a>
                   </li>
                    
                   <li><a id = "icon1" class="lien" href="https://www.bignox.com/" style="padding: 0px;padding-top: 4px;padding-right: 10px; " ><img src="images\appleicon.png "></a>

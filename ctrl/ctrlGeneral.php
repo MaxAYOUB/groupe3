@@ -179,6 +179,9 @@ class ctrlGeneral
         }
         $this->vue->afficherConnexionOk($_SESSION);
     }
+    // public function envoieALappli(){
+    //     $this->vue->afficherConnexionOk($_SESSION);
+    // }
 
     public function getModifierCompte()
     {
