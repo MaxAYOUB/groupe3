@@ -7,10 +7,10 @@ function myAjaxAjout() {
 		async: true,
 		data: "",
 		success: function (result) {
-			ajaxSuccess(result);
+			ajaxSuccessAjout(result);
 		},
 		error: function (result) {
-			ajaxError(result);
+			ajaxErrorAjout(result);
 
 		},
 		complete: function (result) {
@@ -20,12 +20,12 @@ function myAjaxAjout() {
 
 	});
 }
-function ajaxSuccess(data){
+function ajaxSuccessAjout(data){
     document.getElementById("divAdd").innerHTML=data;
 
 }
 
-function ajaxError(data){
+function ajaxErrorAjout(data){
     document.getElementById("divAdd").innerHTML=data;
 
 
