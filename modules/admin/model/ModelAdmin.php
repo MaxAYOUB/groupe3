@@ -165,11 +165,11 @@ class ModelAdmin
 
     public function passerEnAdmin($obj){
         $requeteAdmin="";
-            $requeteAdmin = "UPDATE `user` SET `admin`='1' WHERE `pseudo`={$obj->getIdentifiant()}";
+            $requeteAdmin = "UPDATE `user` SET `admin`='1' WHERE `pseudo`='{$obj->getIdentifiant()}'";
 
         $result = $this->dao->bddQuery($requeteAdmin);
         $requeteVerif="";
-            $requeteVerif="SELECT `admin` FROM `user` WHERE `pseudo`={$obj->getIdentifiant()}";
+            $requeteVerif="SELECT `admin` FROM `user` WHERE `pseudo`='{$obj->getIdentifiant()}'";
 
         if ($result2 = $this->dao->bddQuery($requeteVerif)) {
             $compte2 = array();
