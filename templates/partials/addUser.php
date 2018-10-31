@@ -126,7 +126,6 @@
         </button>
 
     </form>
-    <script src="javaScript/jsFormulaire.js"></script>
 
 <!-- Modal avatar -->
 <div class="modal fade" id="myModal" role="dialog">
@@ -146,9 +145,9 @@
                     <?php
                         $avatar = ($_SESSION['listeAvatar']);
                         for ($i = 0; $i < count($avatar); $i++) {
-                            $slug = $avatar[$i]['slug_avatar'];
+                            $slug = $avatar['slug_avatar'];
                             // var_dump($slug);
-                            echo "<img name='avatar' id='{$slug}' onclick='enrgAvatar(\"{$slug}\")'style='cursor:pointer; margin:3px ' src='{$avatar[$i]['avatar']}'</br>";
+                            echo "<img name='avatar' id='{$slug}' onclick='enrgAvatar(\"{$slug}\")'style='cursor:pointer; margin:3px ' src='{$avatar['avatar']}'</br>";
                         }
                     ?>
                     <!-- Fin de la boucle Php -->
@@ -162,6 +161,7 @@
               </div>
               
             </div>
-          </div>
+</div>
+<script src="javaScript/jsFormulaire.js"></script>
 
           
