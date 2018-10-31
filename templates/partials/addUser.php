@@ -144,7 +144,7 @@
                  
                     <!-- Boucle Php qui récupère les avatars dans la BDD locale -->
                     <?php
-                        $avatar = ($database['avatar']);
+                        $avatar = ($_SESSION['listeAvatar']);
                         for ($i = 0; $i < count($avatar); $i++) {
                             $slug = $avatar[$i]['slug_avatar'];
                             // var_dump($slug);
