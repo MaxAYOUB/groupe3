@@ -163,9 +163,9 @@ class ctrlGeneral
 
     public function AuthentificationApplication()
     {
-        $tab = json_decode($_POST, true);
-        $tab['identifiant']=$tab['id'];
-        $tab['motdepasse']=$tab['password'];
+        $tab = array();
+        $tab['identifiant']=$_POST['id'];
+        $tab['motdepasse']=$_POST['password'];
         $this->user = new Compte($tab);
         $verifAuthentification = $this->model->authentification($this->user);
         if ($verifAuthentification != false) {
