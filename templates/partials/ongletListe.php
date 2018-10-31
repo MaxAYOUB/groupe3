@@ -116,7 +116,7 @@ function ajaxError(data){
                 </td>
             </tr>
             <?php endforeach?>
-            <script href="javaScript/jsBouttonAdmin.js"></script>
+            <script src="javaScript/jsBouttonAdmin.js"></script>
         </table>
     </div>
 
