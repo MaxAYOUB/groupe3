@@ -165,8 +165,8 @@ class ctrlGeneral
     {
         var_dump($_POST);
         $tab = array();
-        $tab['identifiant']=$_POST['id'];
-        $tab['motdepasse']=$_POST['password'];
+        $tab['identifiant']=$_POST['0']->id;
+        $tab['motdepasse']=$_POST['0']->password;
         $this->user = new Compte($tab);
         $verifAuthentification = $this->model->authentification($this->user);
         if ($verifAuthentification != false) {
