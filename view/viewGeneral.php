@@ -78,8 +78,5 @@ class viewGeneral
         $_SESSION['page']= "cgu.php";
         include "templates/default.php";
     }
-    public function fichierAPK(){
-        include "templates/partials/APK.php";
-    }
 // Fin d'ajout
 }

@@ -236,7 +236,4 @@ class ctrlGeneral
         $resultat['erreur']=$this->model->UpdateAvatar($this->user);
         $this->vue->afficherConnexionOk($resultat);
     }
-    public function telechargerAPK(){
-        $this->vue->fichierAPK();
-    }
 }

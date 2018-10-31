@@ -19,7 +19,7 @@
         <hr>
         <a id="aGooglePlay"
            class="btn btn-default col-xs-4 col-xs-offset-1 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2 col-lg-3 col-lg-offset-2"
-           href="ctrlGeneral/telechargerAPK" target="_blank" role="button">Google Play</a>
+           href="versions/app-debug-chat.apk" target="_blank" role="button">Google Play</a>
         <a id="aNox"
            class="btn btn-default col-xs-4 col-xs-offset-2 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2 col-lg-3 col-lg-offset-2"
            href="https://www.bignox.com/" target="_blank" role="button">Download Nox</a>
