@@ -163,7 +163,7 @@ class ctrlGeneral
 
     public function AuthentificationApplication()
     {
-        var_dump($_POST);
+        // var_dump($_POST);
         $tab = array();
         $tab['identifiant']=$_POST['0']->id;
         $tab['motdepasse']=$_POST['0']->password;
