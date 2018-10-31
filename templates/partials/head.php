@@ -1,5 +1,7 @@
 <meta charset="UTF-8">
 <title>TRACK ME</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" type="image/png" href=""/> <!--changer le favicon-->
     <!-- <base href="http://localhost/groupe3.1/"/> -->
 <base href="http://cdi.afpa-balma.fr"/>
