@@ -144,11 +144,9 @@
                     <!-- Boucle Php qui récupère les avatars dans la BDD locale -->
                     <?php
                         $avatar = ($_SESSION['listeAvatar']);
-                        var_dump($avatar);
                         for ($i = 0; $i < count($avatar); $i++) {
                             $slug = $avatar[$i]['slug_avatar'];
-                            // var_dump($slug);
-                            echo "<img name='avatar' id='{$slug}' onclick='enrgAvatar(\"{$slug}\")'style='cursor:pointer; margin:3px ' src='{$avatar[$i]['avatar']}'</br>";
+                            echo "<img name='avatar' id='{$slug}' onclick='enrgAvatar(\"{$slug}\")' style='cursor:pointer; margin:3px' src='{$avatar[$i]['avatar']}' </br>";
                         }
                     ?>
                     <!-- Fin de la boucle Php -->
