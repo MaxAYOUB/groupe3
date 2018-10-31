@@ -21,12 +21,14 @@ function myAjaxEdit(p) {
 	});
 }
 function ajaxSuccess(data){
-    document.getElementById("divAdd").innerHTML=data;
+	// document.getElementById("divAdd").innerHTML=data;
+	window.location.reload();
 
 }
 
 function ajaxError(data){
-    document.getElementById("divAdd").innerHTML=data;
+	// document.getElementById("divAdd").innerHTML=data;
+	window.location.reload();
 
 
 }
