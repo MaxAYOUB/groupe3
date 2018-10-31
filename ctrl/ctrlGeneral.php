@@ -164,18 +164,18 @@ class ctrlGeneral
     public function AuthentificationApplication()
     {
         var_dump($_POST);
-        $tab = json_decode(json_stringify($_POST), true);
-        $tab['identifiant']=$tab['id'];
-        $tab['motdepasse']=$tab['password'];
-        $this->user = new Compte($tab);
-        $verifAuthentification = $this->model->authentification($this->user);
-        if ($verifAuthentification != false) {
-            $avatar = $this->model->getAvatar();
-            $verifAuthentification['avatar']=$avatar;
-            $this->gererSession($verifAuthentification);
-        } else {
-            $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";
-        }
+        // $tab = json_decode(json_stringify($_POST), true);
+        // $tab['identifiant']=$tab['id'];
+        // $tab['motdepasse']=$tab['password'];
+        // $this->user = new Compte($tab);
+        // $verifAuthentification = $this->model->authentification($this->user);
+        // if ($verifAuthentification != false) {
+        //     $avatar = $this->model->getAvatar();
+        //     $verifAuthentification['avatar']=$avatar;
+        //     $this->gererSession($verifAuthentification);
+        // } else {
+        //     $_SESSION['erreur'] = "mauvais identifiant ou mot de passe";
+        // }
         // $this->vue->afficherConnexionOk($_SESSION);
     }
 
