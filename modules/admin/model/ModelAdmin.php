@@ -171,7 +171,7 @@ class ModelAdmin
         $requeteVerif="";
             $requeteVerif="SELECT `admin` FROM `user` WHERE `pseudo`={$obj->getIdentifiant()}";
 
-        if ($result2 = $this->DAO->bddQuery($requeteVerif)) {
+        if ($result2 = $this->dao->bddQuery($requeteVerif)) {
             $compte2 = array();
             foreach ($result2 as $obj2) {
                 $compte2[] = $obj2;
