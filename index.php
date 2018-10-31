@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// var_dump($_GET);
+var_dump($_POST);
 if (isset($_GET['c']) && isset($_GET['m']) && isset($_GET['a'])){
 	
 $m=$_GET['m'];
