@@ -164,7 +164,7 @@ class ctrlGeneral
     public function AuthentificationApplication()
     {
         var_dump($_POST);
-        // $tab = json_decode(json_stringify($_POST), true);
+        $tab = json_decode($_POST, false);
         // $tab['identifiant']=$tab['id'];
         // $tab['motdepasse']=$tab['password'];
         // $this->user = new Compte($tab);
