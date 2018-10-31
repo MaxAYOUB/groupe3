@@ -33,7 +33,7 @@
             Vous pouvez tracer la route vers votre nouveaux rendez-vous et avoir son itinéraire en un clic !
             Pratique non ?
         </p>
-        <img id="imgFonctionnalite1" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/localise.png">
+        <img id="imgFonctionnalite1" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/localise.PNG">
     </div>
 
     <div id="divFonctionnalite2" class="container-fluid col-xs-11 col-sm-11 col-md-11 col-lg-11">
@@ -51,7 +51,7 @@ Personne n'aura accès aux messages échangés en privés.
         <p id="pFonctionnalite3" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 Vous avez accès à une galerie d’Avatars spécial Halloween pour personnaliser  votre profil.<br/><br/> Vous avez la possibilité de modifier votre Avatar par la suite dans vos paramètres.
 </p>
-        <img id="imgFonctionnalite3" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/AvatarsAccueil.png">
+        <img id="imgFonctionnalite3" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/AvatarsAccueil.PNG">
     </div>
 
     <div id="divFonctionnalite4" class="container-fluid col-xs-11 col-sm-11 col-md-11 col-lg-11">
@@ -60,6 +60,6 @@ Vous avez accès à une galerie d’Avatars spécial Halloween pour personnalise
         <br/><br/>  Vous pourrez en créer vous-même,
 les modifier et les supprimer.<br/><br/>  Il seront automatiquement supprimés dés lors que la date de fin sera atteinte ! Il apparaitront directement
 sur la carte.</p>
-        <img id="imgFonctionnalite4" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/PointDeRDV.png">
+        <img id="imgFonctionnalite4" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/pointDeRDV.png">
     </div>
 </div>
