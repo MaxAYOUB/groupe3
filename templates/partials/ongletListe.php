@@ -22,6 +22,7 @@ function myAjaxAjout() {
 }
 function ajaxSuccessAjout(data){
     document.getElementById("divAdd").innerHTML=data;
+    verificationAdmin();
 
 }
 

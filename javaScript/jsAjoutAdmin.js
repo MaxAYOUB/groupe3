@@ -170,9 +170,9 @@ var contact = {
 
 
 var Sonslug = "";
-window.onload = verification;
+// window.onload = verification;
 
-function verification() {
+function verificationAdmin() {
     var btn2 = document.getElementById("BoutonFormulaire");
     btn2.addEventListener("click", function () {
         console.log("son slug "+Sonslug);
