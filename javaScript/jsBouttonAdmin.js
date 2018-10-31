@@ -3,7 +3,7 @@ function myAjaxEdit(p) {
 	$.ajax({
 		url: 'CtrlAdmin/mettreEnAdmin',
 		type: 'POST',
-		dataType: 'html',
+		dataType: '',
 		async: true,
 		data: resultat,
 		success: function (result) {

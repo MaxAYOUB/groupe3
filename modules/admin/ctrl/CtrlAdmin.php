@@ -108,7 +108,8 @@ class CtrlAdmin
 
         $this->user=new Compte($_POST);
 
-        $this->model->passerEnAdmin($this->user);
+        $result=$this->model->passerEnAdmin($this->user);
+        var_dump($result);
     }
 
 }
