@@ -165,19 +165,11 @@ class ModelAdmin
 
     public function passerEnAdmin($obj){
         $requeteAdmin="";
-        if ($obj->getTypetape()=="email"){
-            $requeteAdmin = "UPDATE `user` SET `admin`='true' WHERE `email`={$obj->getIdentifiant()}";
-        }else{
-            $requeteAdmin = "UPDATE `user` SET `admin`='true' WHERE `pseudo`={$obj->getIdentifiant()}";
-        }
+            $requeteAdmin = "UPDATE `user` SET `admin`='1' WHERE `pseudo`={$obj->getIdentifiant()}";
 
         $result = $this->dao->bddQuery($requeteAdmin);
         $requeteVerif="";
-        if ($obj->getTypetape()=="email"){
-            $requeteVerif="SELECT `admin` FROM `user` WHERE `email`={$obj->getIdentifiant()}";
-        }else{
             $requeteVerif="SELECT `admin` FROM `user` WHERE `pseudo`={$obj->getIdentifiant()}";
-        }
 
         if ($result2 = $this->DAO->bddQuery($requeteVerif)) {
             $compte2 = array();
@@ -185,7 +177,7 @@ class ModelAdmin
                 $compte2[] = $obj2;
             }
             $tabErreur['pseudo'] = true;
-            if ($compte2[0]['admin']==true){
+            if ($compte2[0]['admin']=='1'){
                 return true;
             }else{
                 return false;

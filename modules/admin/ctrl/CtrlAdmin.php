@@ -101,14 +101,14 @@ class CtrlAdmin
         }
     }
 
-    public function mettreEnAdmin($pseudo){
-        $a=array();
-        $a['identifiant']=$pseudo;
-        $a['motdepasse']="";
+    public function mettreEnAdmin(){
+        // $a=array();
+        // $a['identifiant']=$pseudo;
+        // $a['motdepasse']="";
 
-        $this->Compte=new Compte($a);
+        $this->user=new Compte($_POST);
 
-        $this->model->passerEnAdmin($this->compte);
+        $this->model->passerEnAdmin($this->user);
     }
 
 }

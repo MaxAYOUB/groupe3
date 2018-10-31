@@ -1,10 +1,11 @@
-function myAjaxEdit() {
+function myAjaxEdit(p) {
+	var resultat = {'identifiant':p};
 	$.ajax({
-		url: 'CtrlAdmin/afficherListeUtilisateur',
+		url: 'CtrlAdmin/mettreEnAdmin',
 		type: 'POST',
 		dataType: 'html',
 		async: true,
-		data: "",
+		data: resultat,
 		success: function (result) {
 			ajaxSuccess(result);
 		},
