@@ -1,7 +1,7 @@
 <?php header('Access-Control-Allow-Origin: *'); ?>
 <?php 
 session_start();
-var_dump($_POST);
+
 if (isset($_GET['c']) && isset($_GET['m']) && isset($_GET['a'])){
 	
 $m=$_GET['m'];
