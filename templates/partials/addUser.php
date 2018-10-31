@@ -16,14 +16,14 @@
         <div class="form-group">
             <label for="nom" class="col-sm-3 control-label">Nom</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="nom" id="Nom" placeholder="Entrer votre nom"
+                <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrer votre nom"
                        value=""/>
             </div>
         </div>
         <div class="form-group">
             <label for="prenom" class="col-sm-3 control-label">Prénom</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="prenom" id="Prenom"
+                <input type="text" class="form-control" name="prenom" id="prenom"
                        placeholder="Entrer votre prénom">
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input type="email" class="form-control" name="email" id="Email"
+                <input type="email" class="form-control" name="email" id="email"
                        placeholder="Entrer votre email">
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="adresse" class="col-sm-3 control-label">Adresse</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="adresse" id="Adresse"
+                <input type="text" class="form-control" name="adresse" id="adresse"
                        placeholder="Entrer votre adresse (facultatif)">
             </div>
         </div>
@@ -47,7 +47,7 @@
         <div class="form-group">
             <label for="codepostal" class="col-sm-3 control-label">Code Postal</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="codepostal" id="CodePostal"
+                <input type="text" class="form-control" name="codepostal" id="codePostal"
                        placeholder="Entrer votre code postal (facultatif)">
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="form-group">
             <label for="ville" class="col-sm-3 control-label">Ville</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="ville" id="AjoutVille"
+                <input type="text" class="form-control" name="ville" id="ville"
                        placeholder="Entrer votre ville (facultatif)">
             </div>
         </div>
@@ -64,13 +64,13 @@
             <label for="inlineRadio1" class="col-sm-3 control-label">Type mobile</label>
             <div class="col-sm-9">
                 <label class="radio-inline col-sm-3">
-                    <input type="radio" name="appareil" id="inlineRadio1" value="Android"> Android
+                    <input type="radio" name="appareil" id="InlineRadio1" value="Android"> Android
                 </label>
                 <label class="radio-inline col-sm-3">
-                    <input type="radio" name="appareil" id="inlineRadio2" value="iOS"> iOS
+                    <input type="radio" name="appareil" id="InlineRadio2" value="iOS"> iOS
                 </label>
                 <label class="radio-inline col-sm-3">
-                    <input type="radio" name="appareil" id="inlineRadio3" value="Windows"> Windows
+                    <input type="radio" name="appareil" id="InlineRadio3" value="Windows"> Windows
                 </label>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="form-group">
             <label for="tel" class="col-sm-3 control-label">Téléphone</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="tel" id="Telephone"
+                <input type="text" class="form-control" name="tel" id="telephone"
                        placeholder="Entrer votre téléphone">
             </div>
         </div>
@@ -87,7 +87,7 @@
         <div class="form-group">
             <label for="pseudo" class="col-sm-3 control-label">Pseudonyme</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="pseudo" id="Pseudo"
+                <input type="text" class="form-control" name="pseudo" id="pseudo"
                        placeholder="Entrer votre pseudo"
                        value=""/>
             </div>
@@ -96,7 +96,7 @@
         <div class="form-group">
             <label for="inputPassword" class="col-sm-3 control-label">Mot de passe</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="Motdepasse"
+                <input type="password" class="form-control" id="motdepasse"
                        placeholder="Entrer votre mot de passe">
             </div>
         </div>
@@ -104,7 +104,7 @@
         <div class="form-group">
             <label for="inputPassword2" class="col-sm-3 control-label">Confirmation</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="Confirmationmotdepasse"
+                <input type="password" class="form-control" id="confirmationmotdepasse"
                        placeholder="Confirmer votre mot de passe">
             </div>
         </div>
@@ -113,8 +113,8 @@
             <label for="exampleInputFile" class="col-sm-3 control-label">Avatar</label>
             <div class="col-sm-9">
                <!-- bouton choisir avatars -->
-                <input type="button" value="Choisir avatar" id="exampleInputFile" data-toggle="modal" data-target="#myModal" name="avatar">
-                <div><p id="textAvatar">Avatar obligatoire</p></div>
+                <input type="button" value="Choisir avatar" id="ExampleInputFile" data-toggle="modal" data-target="#myModal" name="avatar">
+                <div><p id="TextAvatar">Avatar obligatoire</p></div>
             </div>
         </div>
 
@@ -122,7 +122,7 @@
         <br>
 
         <button id="btn2" type="reset" class="btn btn-default col-sm-3 col-sm-offset-3">Annuler</button>
-        <button id="boutonFormulaire" type="button" class="btn btn-success col-sm-3" style="float: right">Ajouter
+        <button id="BoutonFormulaire" type="button" class="btn btn-success col-sm-3" style="float: right">Ajouter
         </button>
 
     </form>
@@ -148,7 +148,7 @@
                         for ($i = 0; $i < count($avatar); $i++) {
                             $slug = $avatar[$i]['slug_avatar'];
                             var_dump($slug);
-                            echo "<img name='avatar' id='{$slug}' onclick='enrgAvatar(\"{$slug}\")' style='cursor:pointer; margin:3px' src='{$avatar[$i]['avatar']}' </br>";
+                            echo "<img name='avatar' id='admin{$slug}' onclick='enrgAvatar(\"{$slug}\")' style='cursor:pointer; margin:3px' src='{$avatar[$i]['avatar']}' </br>";
                         }
                     ?>
                     <!-- Fin de la boucle Php -->
@@ -163,6 +163,6 @@
               
             </div>
 </div>
-<script src="javaScript/jsFormulaire.js"></script>
+<script src="javaScript/jsAjoutAdmin.js"></script>
 
           
