@@ -154,7 +154,7 @@
                     <!-- Fin de la boucle Php -->
 
                 </div>
-                
+                <script src="javaScript/jsAjoutAdmin.js"></script>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annulez</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Valider</button>
@@ -163,6 +163,6 @@
               
             </div>
 </div>
-<script src="javaScript/jsAjoutAdmin.js"></script>
+
 
           
