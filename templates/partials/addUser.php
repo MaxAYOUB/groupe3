@@ -148,13 +148,13 @@
                         for ($i = 0; $i < count($avatar); $i++) {
                             $slug = $avatar[$i]['slug_avatar'];
                             var_dump($slug);
-                            echo "<img name='avatar' id='admin{$slug}' onclick='enrgAvatarAjoutAvatar(\'{$slug}\')' style='cursor:pointer; margin:3px' src='{$avatar[$i]['avatar']}' </br>";
+                            echo "<img name='avatar' id='admin{$slug}' onclick='enrgAvatarAjoutAvatar(\"{$slug}\")' style='cursor:pointer; margin:3px' src='{$avatar[$i]['avatar']}' </br>";
                         }
                     ?>
                     <!-- Fin de la boucle Php -->
 
                 </div>
-                <script src="javaScript/jsAjoutAdmin.js"></script>
+                
                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annulez</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Valider</button>

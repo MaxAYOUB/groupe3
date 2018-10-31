@@ -71,7 +71,7 @@ function ajaxError(data){
 
 
 </script>
-
+<script src="javaScript/jsAjoutAdmin.js"></script>
 <div class="container" >
 
     <div id="divCompteAvatar" class="col-xs-5 col-sm-4 col-md-4 col-lg-3">
