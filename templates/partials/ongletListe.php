@@ -122,7 +122,7 @@ function ajaxError(data){
 
     <div id="divAdd" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <br><br><br><br><br><br><br><br><br><br>
-        <button id="btnAdd" onclick="myAjaxAjout()" type="submit" class="btn btn-default col-sm-4 col-sm-offset-4">Ajouter User</button>
+        <button id="btnAdd" onclick="myAjaxAjout()" type="button" class="btn btn-default col-sm-4 col-sm-offset-4">Ajouter User</button>
     </div>
 
 </div>
