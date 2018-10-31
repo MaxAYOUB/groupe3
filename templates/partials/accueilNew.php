@@ -43,7 +43,7 @@ Il vous est possible de discuter en direct avec tous les utilisateurs de l'appli
 Si vous désirez écrire à une personne en particulier, il vous est toujours possible de le faire à travers la messagerie privée.<br/>
 Personne n'aura accès aux messages échangés en privés.
 </p>
-        <img id="imgFonctionnalite2" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="">
+        <img id="imgFonctionnalite2" class="col-xs-12 col-sm-12 col-md-12 col-lg-8" src="images/Chat.png">
     </div>
 
     <div id="divFonctionnalite3" class="container-fluid col-xs-11 col-sm-11 col-md-11 col-lg-11">
