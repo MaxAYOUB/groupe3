@@ -126,7 +126,7 @@
         </button>
 
     </form>
-
+    <script src="javaScript/jsFormulaire.js"></script>
 
 <!-- Modal avatar -->
 <div class="modal fade" id="myModal" role="dialog">
@@ -164,4 +164,4 @@
             </div>
           </div>
 
-          <script src="javaScript/jsFormulaire.js"></script>
+          
