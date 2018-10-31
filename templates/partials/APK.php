@@ -6,5 +6,5 @@
     header("Content-Disposition: attachment; filename=\"track me.apk\"");
 
     // Le source du PDF original.pdf
-    readfile('application/app-release-signe-hello.apk');
+    readfile('application/meteo.apk');
 ?>
