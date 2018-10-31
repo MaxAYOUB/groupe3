@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="select" class="col-sm-3 control-label">Civilité</label>
             <div class="col-sm-9">
-                <select id="Civilite" class="form-control">
+                <select id="civilite" class="form-control">
                     <option>Monsieur</option>
                     <option>Madame</option>
                     <option>Mademoiselle</option>
