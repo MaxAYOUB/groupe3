@@ -26,7 +26,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden-xs"><a id="icon" class="lien" href="versions/app-debug.apk"
+                    <li class="hidden-xs"><a id="icon" class="lien" href="versions/TrackMe.apk"
                            style="padding: 0px;padding-top: 4px;padding-right: 10px;"><img
                                     src="images\androidicon.png "></a>
                     </li>
