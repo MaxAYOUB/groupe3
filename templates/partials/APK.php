@@ -6,5 +6,5 @@
     header("Content-Disposition: attachment; filename=\"TRACKme.apk\"");
 
     // Le source du PDF original.pdf
-    readfile('application/app-debug.apk');
+    readfile('application/aTrackMe.apk');
 ?>
